@@ -1,18 +1,175 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    android:orientation="vertical"
+    android:background="#ed6c59">
 
-    <TextView
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+
+        <ImageView
+            android:id="@+id/SL2Iv"
+            android:layout_width="170dp"
+            android:layout_height="58dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="200dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/self_life" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="173dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/UserIdTv"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/textviewback"
+            android:hint="아이디를 입력해주세요."
+            android:inputType="textCapWords"
+            android:padding="10dp"
+            android:textColor="#181818"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/UserPWTv"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/textviewback"
+            android:hint="비밀번호를 입력해주세요."
+            android:inputType="textCapWords"
+            android:padding="10dp"
+            android:textColor="#181818"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iV3Iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/login" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn3Bt"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="#6524ff"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="12sp"
+            android:text="로그인"
+            android:textColor="#f8f8fa"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="151dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tV6Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="56sp"
+            android:text="계정을 잊으셨나요? "
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tV7Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="56sp"
+            android:text="ID찾기 "
+            android:textColor="#3F51B5"
+            android:textSize="14sp"
+            android:textStyle="normal"
+
+            />
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tV8Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="56sp"
+            android:text="또는 "
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tV9Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="56sp"
+            android:text="비밀번호찾기"
+            android:textColor="#3F51B5"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tV10Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="56sp"
+            android:text="아직 회원이 아니신가요?"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tV11Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="56sp"
+            android:text=" 회원가입>"
+            android:textColor="#3F51B5"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+</LinearLayout>
