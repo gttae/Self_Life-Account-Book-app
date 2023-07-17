@@ -31,7 +31,7 @@
         android:orientation="vertical">
 
 
-        <TextView
+        <EditText
             android:id="@+id/UserIdTv"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
@@ -42,8 +42,8 @@
             android:textColor="#181818"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/UserPWTv"
+        <EditText
+            android:id="@+id/UserPwdTv"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginTop="14dp"
