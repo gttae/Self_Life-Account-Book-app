@@ -30,14 +30,14 @@ public class Register_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_signup);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life");
 
-         UserId=findViewById(R.id.UserIdTv);
-         UserPwd=findViewById(R.id.UserPwdTv);
-         Login=findViewById(R.id.btn3Bt);
+         //UserId=findViewById(R.id.UserIdTv);
+         //UserPwd=findViewById(R.id.UserPwdTv);
+         //Login=findViewById(R.id.btn3Bt);
 
         SignUp.setOnClickListener(new View.OnClickListener(){
             @Override

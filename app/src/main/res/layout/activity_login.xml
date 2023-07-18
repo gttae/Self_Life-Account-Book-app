@@ -2,7 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="360dp"
-    android:layout_height="7600dp"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ed6c59">
 
@@ -34,7 +34,7 @@
         <EditText
             android:id="@+id/UserIdTv"
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:background="@drawable/textviewback"
             android:hint="아이디를 입력해주세요."
             android:inputType="textEmailAddress"
@@ -45,7 +45,7 @@
         <EditText
             android:id="@+id/UserPwdTv"
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/textviewback"
             android:hint="비밀번호를 입력해주세요."
@@ -138,39 +138,41 @@
             android:textColor="#3F51B5"
             android:textSize="14sp"
             android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tV10Tv"
         android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="56sp"
+        android:text="아직 회원이 아니신가요?"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/tV10Tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="56sp"
-            android:text="아직 회원이 아니신가요?"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            android:textStyle="normal" />
-
-        <Button
-            android:id="@+id/tV11Tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center"
-            android:letterSpacing="-0.02"
-            android:lineSpacingExtra="56sp"
-            android:text="회원가입>"
-            android:textColor="#3F51B5"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:background="#00ff0000"/>
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/tV11Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:background="#00ff0000"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="56sp"
+        android:text="회원가입>"
+        android:textColor="#3F51B5"
+        android:textSize="14sp"
+        android:textStyle="normal" />
 
 </LinearLayout>
