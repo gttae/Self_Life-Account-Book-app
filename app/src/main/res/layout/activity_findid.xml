@@ -6,25 +6,22 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="360dp"
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="vertical"
-        android:background="#ed6c59">
-
+        android:background="@color/Base">
         <TextView
-            android:id="@+id/FindIDTv"
+            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:layout_marginTop="24dp"
+            android:text="ID 찾기"
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="60sp"
-            android:text="ID 찾기"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textStyle="normal" />
-
-    </LinearLayout>
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="360dp"
@@ -106,7 +103,7 @@
             android:textSize="18sp"
             android:textColor="#f8f8fa"
             android:lineSpacingExtra="12sp"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:background="@drawable/btncolor"/>
 
     </LinearLayout>
