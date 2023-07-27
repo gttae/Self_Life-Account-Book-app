@@ -24,13 +24,13 @@ public class User_Account{
 
     private String idToken;
 
-    public String genEmailId(){return emailId;}
+    public String getEmailId(){return emailId;}
 
     public void setEmailId(String emailId){this.emailId=emailId;}
 
     private String emailId;
 
-    public String gePassword(){return password;}
+    public String getPassword(){return password;}
 
     public void setPassword(String password){this.password=password;}
 
