@@ -80,7 +80,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/txtcolor"
-            android:hint="휴대폰 번호를 입력해주세요.(-제외)"
+            android:hint="생년월일을 입력해주세요."
             android:textSize="15sp"
             android:padding="10dp"
             android:textColor="#181818" />

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="100dp"
+    android:background="#ffffff"
+   >
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="180dp"
+        android:orientation="horizontal"
+        android:outlineProvider="none"
+        android:padding="5dp"
+        android:gravity="end"
+        android:background="@drawable/button_round_scarch_border"
+        tools:context=".MainActivity">
+
+        <ImageButton
+            android:id="@+id/button18"
+            android:layout_width="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_height="20dp"
+            android:background="@drawable/button_round_scarch_icon"
+            android:src="@drawable/search_icon"/>
+
+        <EditText
+            android:id="@+id/sample_EditText"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="14sp"
+            android:text="검색"
+            android:textColor="#232732"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:gravity="center"
+        android:layout_width="720dp"
+        android:layout_height="550dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:outlineProvider="none">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="1. 인증) 본인 만원으로 한 주 살기 인증함" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="2. 자유) 나처럼 달에 술값으로만 100쓰는 분?" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="3. 자유) 요즘 볼 만한 드라마 추천점" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="4. 정보) 쿠팡에 샴푸 특가 올라왔다 가즈아" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="5. 인증) (인증)무지출챌린지3주차인증" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="6. 자유) 내플레이리스트공유함띵곡들개많음들어..." />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="7. 정보) 하나은행 괜찮은 적금 추천해드림" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="8. 정보) 하나은행 괜찮은 적금 추천해드림" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="9. 인증) 하루5000원으로 살기" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/button_round_top_bottom"
+            android:gravity="center|left"
+            android:outlineProvider="none"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="10. 자유) 미안하다이거보여줄려고어그로끌었다나..." />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="284dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:outlineProvider="none">
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="◀"
+            android:textColor="#ed6c59"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="1"
+            android:textColor="#232732"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button13"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="2"
+            android:textColor="#232732"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="3"
+            android:textColor="#232732"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button15"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="4"
+            android:textColor="#232732"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button16"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="5"
+            android:textColor="#232732"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/button17"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:textColor="#ed6c59"
+            android:text="▶"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

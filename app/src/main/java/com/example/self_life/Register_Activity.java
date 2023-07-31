@@ -1,29 +1,22 @@
 package com.example.self_life;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.self_life.R;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Register_Activity extends AppCompatActivity {
 
@@ -177,7 +170,7 @@ public class Register_Activity extends AppCompatActivity {
                     Toast.makeText(Register_Activity.this, "아이디 또는 닉네임이 입력되지 않았습니다.", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    if(String.valueOf(task.getResult().getValue()).contains(userNickname.getText().toString())) {
+                    if(String.valueOf(task.getResult().getValue()).equals(userNickname.getText().toString())) {
                         Toast.makeText(Register_Activity.this, "이미 사용 중인 닉네임입니다.", Toast.LENGTH_SHORT).show();
                     }
                     else {

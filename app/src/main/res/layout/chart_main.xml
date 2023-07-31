@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    android:orientation="vertical"
+    tools:context=".Chart_Activity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Base">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Person Image -->
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="#ffffff"
+                android:src="@drawable/person" />
+
+            <!-- Chart Text -->
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="차트"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="60sp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="44dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="145dp"
+            android:layout_height="44dp"
+            android:paddingLeft="14dp"
+            android:paddingTop="8dp"
+            android:text="@string/_2023_5"
+            android:textColor="#232732"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="111dp"
+            android:layout_height="0dp"
+            />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:background="@drawable/but"
+            android:text="추천모델"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="173dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="MissingClass" />
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29dp"
+            android:textSize="16sp"
+            android:textColor="#232732"
+            android:lineHeight="30sp"
+            android:text="계획 기반 운용 현황"/>
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="94dp"
+            android:textSize="16sp"
+            android:textColor="#232732"
+            android:lineHeight="30sp"
+            android:text="총 현황"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rec">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="-0.04"
+            android:lineSpacingExtra="14sp"
+            android:layout_marginLeft="99dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#232732"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:text="지난 달 대비 지출량" />
+
+
+
+
+    </LinearLayout>
+    
+
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rec">
+
+        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="123dp"
+            android:textColor="#232732"
+            android:letterSpacing="-0.04"
+            android:lineSpacingExtra="14sp"
+            android:text="주간 레포트"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button2"
+            android:background="@drawable/rec"
+            android:text="지출·수입 내역 변경하기"
+            android:textSize="16sp"
+            android:textColor="#ed6c59">
+        </Button>
+
+    </LinearLayout>
+</LinearLayout>

@@ -68,7 +68,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/txtcolor"
-            android:hint="이메일 주소를 입력해주세요."
+            android:hint="생년월일을 입력해주세요."
             android:inputType="textCapWords"
             android:textSize="15sp"
             android:padding="10dp"

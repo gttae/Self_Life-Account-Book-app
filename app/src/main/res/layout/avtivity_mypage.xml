@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:paddingTop="100dp">
+
+    <LinearLayout
+
+        android:layout_width="360dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:outlineProvider="none"
+        android:padding="20dp">
+
+
+        <ImageView
+            android:id="@+id/button18"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+
+            android:src="@drawable/baseline_person_24" />
+
+        <EditText
+            android:id="@+id/sample_EditText"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@null"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="14sp"
+            android:text="기태폼미쳤다"
+            android:textColor="#232732"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:outlineProvider="none"
+            android:text="로그아웃"
+            android:textColor="#afafb5"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/button_round_scarch_border"
+        android:orientation="vertical"
+        android:outlineProvider="none"
+        android:padding="5dp"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:outlineProvider="none"
+            android:padding="5dp"
+            tools:context=".MainActivity">
+
+            <EditText
+                android:id="@+id/mypageid"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:gravity="right"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="ID  :"
+                android:textColor="#ed6c59"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/mypageids"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:gravity="left"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="  1906053"
+                android:textColor="#ed6c59"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:outlineProvider="none"
+            android:padding="5dp"
+            tools:context=".MainActivity">
+
+            <EditText
+                android:id="@+id/mypagejoin"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:gravity="right"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="가입날짜  :"
+                android:textColor="#ed6c59"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/mypagejoins"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:gravity="left"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="  2019-03-04"
+                android:textColor="#ed6c59"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:outlineProvider="none"
+            android:padding="5dp"
+            tools:context=".MainActivity">
+
+            <EditText
+                android:id="@+id/mypageemail"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:gravity="right"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="Email  :"
+                android:textColor="#ed6c59"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:id="@+id/mypageemails"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:gravity="left"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="  1906053@du.ac.kr"
+                android:textColor="#ed6c59"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center"
+        android:layout_margin="49dp"
+        android:background="@drawable/button_round_scarch_border"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:outlineProvider="none"
+        tools:context=".MainActivity">
+
+
+        <Button
+            android:id="@+id/question"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:gravity="center"
+            android:outlineProvider="none"
+            android:text="문의하기"
+            android:textSize="20sp"
+            android:textColor="#ed6c59"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/conditions"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:gravity="center"
+            android:outlineProvider="none"
+            android:text="앱 이용약관"
+            android:textSize="20sp"
+            android:textColor="#ed6c59"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/information"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:gravity="center"
+            android:outlineProvider="none"
+            android:text="앱 정보"
+            android:textSize="20sp"
+            android:textColor="#ed6c59"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/fix"
+            android:layout_width="160dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:gravity="center"
+            android:outlineProvider="none"
+            android:text="회원정보 수정하기"
+            android:textSize="20sp"
+            android:textColor="#ed6c59"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/out"
+            android:layout_width="150dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:background="#00ff0000"
+            android:gravity="center"
+            android:outlineProvider="none"
+            android:text="회원탈퇴"
+            android:textSize="20sp"
+            android:textColor="#ed6c59"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

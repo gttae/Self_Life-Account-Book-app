@@ -20,9 +20,11 @@
 
         <activity
             android:name=".Login_Activity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".Loading_Activity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +37,10 @@
         <activity
             android:name=".findPwd_Activity"
             android:exported="true"/>
+        <activity
+            android:name=".Chart_Activity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>
