@@ -57,7 +57,7 @@ public class findId_Activity extends AppCompatActivity
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // 에러 처리
+                        Toast.makeText(findId_Activity.this, "없는 데이터", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

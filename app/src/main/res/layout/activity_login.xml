@@ -42,6 +42,19 @@
             android:textColor="#181818"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/wrongIdTv"
+            android:layout_width="166dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="16dp"
+            android:text="존재하지 않는 아이디입니다."
+            android:textColor="#a72d2d"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/UserPwdTv"
             android:layout_width="fill_parent"
@@ -54,12 +67,42 @@
             android:textColor="#181818"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/iV3Iv"
+        <TextView
+            android:id="@+id/wrongPwdTv"
+            android:layout_width="180dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="16dp"
+            android:text="존재하지 않는 비밀번호입니다."
+            android:textColor="#a72d2d"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/autologinbtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginTop="14dp"
-            app:srcCompat="@drawable/login" />
+            app:srcCompat="@drawable/autologin" />
+            <TextView
+                android:id="@+id/autologintv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginLeft="10dp"
+                android:text="자동로그인"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="14dp"
+                />
+
+        </LinearLayout>
 
 
     </LinearLayout>

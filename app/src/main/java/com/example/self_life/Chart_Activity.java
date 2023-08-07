@@ -1,7 +1,10 @@
 package com.example.self_life;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -9,17 +12,20 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
 public class Chart_Activity extends AppCompatActivity {
-
+    private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_main);
 
         PieChart pieChart = findViewById(R.id.chart1);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(80f, "maths"));
@@ -52,5 +58,30 @@ public class Chart_Activity extends AppCompatActivity {
         pieChart2.getDescription().setEnabled(false);
         pieChart2.animateY(1000);
         pieChart2.invalidate();
+
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.action_cal) {
+                    Intent intent = new Intent(Chart_Activity.this, Calendar_Activity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (item.getItemId() == R.id.action_chart) {
+                    Intent intent = new Intent(Chart_Activity.this, Chart_Activity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (item.getItemId() == R.id.action_lifeitem) {
+                    Intent intent = new Intent(Chart_Activity.this, LifeItem_Activity.class);
+                    startActivity(intent);
+                    return true;
+                } else if (item.getItemId() == R.id.action_board) {
+                    Intent intent = new Intent(Chart_Activity.this, Board_Activity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }

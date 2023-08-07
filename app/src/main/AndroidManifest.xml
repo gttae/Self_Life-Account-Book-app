@@ -21,7 +21,6 @@
         <activity
             android:name=".Login_Activity"
             android:exported="true"/>
-
         <activity
             android:name=".Loading_Activity"
             android:exported="true">
@@ -39,6 +38,15 @@
             android:exported="true"/>
         <activity
             android:name=".Chart_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".LifeItem_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".Calendar_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".Board_Activity"
             android:exported="true"/>
 
     </application>

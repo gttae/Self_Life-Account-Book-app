@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_cal"
+        android:icon="@drawable/calendar"
+        android:title="캘린더"
+        app:showAsAction="withText"
+        />
+    <item
+        android:id="@+id/action_chart"
+        android:icon="@drawable/chart"
+        android:title="차트"
+        app:showAsAction="withText"
+        />
+
+    <item
+        android:title=""
+        />
+
+    <item
+        android:id="@+id/action_lifeitem"
+        android:icon="@drawable/lifeitem"
+        android:title="생활용품"
+        app:showAsAction="withText"
+        />
+
+    <item
+        android:id="@+id/action_board"
+        android:icon="@drawable/board"
+        android:title="게시판"
+        app:showAsAction="withText"
+        />
+
+</menu>

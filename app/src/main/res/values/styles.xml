@@ -4,4 +4,8 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
     </style>
+    <style name="BottomNavigationTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">36dp</item> <!-- 아이템 텍스트 크기를 원하는 값으로 변경 -->
+        <item name="android:textColor">@color/black</item> <!-- 원하는 텍스트 색상으로 변경 -->
+    </style>
 </resources>

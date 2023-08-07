@@ -1,5 +1,6 @@
 package com.example.self_life;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,14 +56,9 @@ public class Register_Activity extends AppCompatActivity {
                 String phoneNumber = userPhoneNumber.getText().toString().trim();
                 String DOB = userDOB.getText().toString().trim();
                 // 이메일, 비밀번호, 이름, 전화번호가 모두 입력되었는지 확인
-                if (isEmptyField(name) || isEmptyField(nickname) || isEmptyField(phoneNumber) || isEmptyField(DOB)) {
+                if (isEmptyField(name) || isEmptyField(phoneNumber) || isEmptyField(DOB)) {
                     // 입력값이 하나라도 비어있을 경우, 사용자에게 알림
                     Toast.makeText(Register_Activity.this, "모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (!isValidEmail(strEmail)) {
-                    Toast.makeText(Register_Activity.this, "유효하지 않은 이메일입니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -122,11 +118,30 @@ public class Register_Activity extends AppCompatActivity {
         checkPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (isEmptyField(userPwd.getText().toString().trim())){
+                    Toast.makeText(Register_Activity.this, "비밀번호가 입력되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                    int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
+                    checkPwd.setBackgroundResource(drawableResourceId);
+                    checkPwd.setTextColor(Color.RED);
+                    checkPwd.setText("사용 불가능 비밀번호");
+                    userPwd.setBackgroundResource(drawableResourceId);
+                }
                 if (!isValidPwd(userPwd.getText().toString().trim())) {
                     Toast.makeText(Register_Activity.this, "유효하지 않은 비밀번호입니다.", Toast.LENGTH_SHORT).show();
+                    int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
+                    checkPwd.setBackgroundResource(drawableResourceId);
+                    checkPwd.setTextColor(Color.RED);
+                    checkPwd.setText("사용 불가능 비밀번호");
+                    userPwd.setBackgroundResource(drawableResourceId);
                 }
                 else {
                     Toast.makeText(Register_Activity.this, "사용 가능한 비밀번호입니다.", Toast.LENGTH_SHORT).show();
+                    int drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());
+                    checkPwd.setBackgroundResource(drawableResourceId);
+                    checkPwd.setTextColor(Color.parseColor("#44b0e8"));
+                    drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
+                    userPwd.setBackgroundResource(drawableResourceId);
+                    checkPwd.setText("사용 가능한 비밀번호");
                 }
             }
         });
@@ -149,7 +164,7 @@ public class Register_Activity extends AppCompatActivity {
 
     private boolean isValidName(String name) {
 
-        return name.matches("^[a-zA-Z]{2,}$");
+        return name.matches("^[a-zA-Z]{1,10}$");
     }
 
     private boolean isValidEmail(String email) {
@@ -166,19 +181,46 @@ public class Register_Activity extends AppCompatActivity {
         mDatabaseRef.child("UserAccount1").child("NickName").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (isEmptyField(email) || isEmptyField(nickname)) {
-                    Toast.makeText(Register_Activity.this, "아이디 또는 닉네임이 입력되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                if (!isValidEmail(email)) {
+                    Toast.makeText(Register_Activity.this, "이메일이 유효하지 않았습니다.", Toast.LENGTH_SHORT).show();
+                    int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
+                    checkIdNickName.setBackgroundResource(drawableResourceId);
+                    checkIdNickName.setTextColor(Color.RED);
+                    checkIdNickName.setText("유효하지 않는 이메일");
+                    userEmail.setBackgroundResource(drawableResourceId);
                 }
                 else {
-                    if(String.valueOf(task.getResult().getValue()).equals(userNickname.getText().toString())) {
-                        Toast.makeText(Register_Activity.this, "이미 사용 중인 닉네임입니다.", Toast.LENGTH_SHORT).show();
+                    int drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
+                    userEmail.setBackgroundResource(drawableResourceId);
+                    if (!isValidName(nickname)) {
+                        Toast.makeText(Register_Activity.this, "닉네임이 유효하지 않았습니다.", Toast.LENGTH_SHORT).show();
+                        drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
+                        checkIdNickName.setBackgroundResource(drawableResourceId);
+                        checkIdNickName.setTextColor(Color.RED);
+                        checkIdNickName.setText("유효하지 않는 닉네임");
+                        userNickname.setBackgroundResource(drawableResourceId);
                     }
                     else {
-                        Toast.makeText(Register_Activity.this, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
+                        if (String.valueOf(task.getResult().getValue()).equals(nickname)) {
+                            Toast.makeText(Register_Activity.this, "이미 사용 중인 닉네임입니다.", Toast.LENGTH_SHORT).show();
+                            drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
+                            checkIdNickName.setBackgroundResource(drawableResourceId);
+                            checkIdNickName.setTextColor(Color.RED);
+                            checkIdNickName.setText("존재하는 닉네임");
+                            userNickname.setBackgroundResource(drawableResourceId);
+                        }
+                        else {
+                            Toast.makeText(Register_Activity.this, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
+                            drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());
+                            checkIdNickName.setBackgroundResource(drawableResourceId);
+                            checkIdNickName.setTextColor(Color.parseColor("#44b0e8"));
+                            checkIdNickName.setText("사용 가능한 닉네임");
+                            drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
+                            userNickname.setBackgroundResource(drawableResourceId);
+                        }
                     }
                 }
             }
         });
     }
 }
-
