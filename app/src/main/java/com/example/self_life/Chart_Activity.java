@@ -3,30 +3,28 @@ package com.example.self_life;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
-
 public class Chart_Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
+    private ImageView mypageBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_main);
 
-        PieChart pieChart = findViewById(R.id.chart1);
+        //PieChart pieChart = findViewById(R.id.chart1);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        mypageBtn = findViewById(R.id.mypageBtn);
 
+        /*
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(80f, "maths"));
         entries.add(new PieEntry(90f, "Science"));
@@ -58,7 +56,7 @@ public class Chart_Activity extends AppCompatActivity {
         pieChart2.getDescription().setEnabled(false);
         pieChart2.animateY(1000);
         pieChart2.invalidate();
-
+*/
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -81,6 +79,13 @@ public class Chart_Activity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+        mypageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Chart_Activity.this, MyPage_Activity.class);
+                startActivity(intent);
             }
         });
     }

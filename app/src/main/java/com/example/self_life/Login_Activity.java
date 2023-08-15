@@ -35,7 +35,7 @@ public class Login_Activity extends AppCompatActivity
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_login);
-
+        //변수선언
         mFirebaseAuth = FirebaseAuth.getInstance();
         UserId=findViewById(R.id.UserIdTv);
         UserPwd=findViewById(R.id.UserPwdTv);
@@ -166,7 +166,6 @@ public class Login_Activity extends AppCompatActivity
                         UserPwd.setBackgroundResource(drawableResourceId);
                     }
                 }
-
             }
         });
     }

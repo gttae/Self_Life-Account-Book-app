@@ -48,7 +48,9 @@
         <activity
             android:name=".Board_Activity"
             android:exported="true"/>
-
+        <activity
+            android:name=".MyPage_Activity"
+            android:exported="true"/>
     </application>
 
 </manifest>

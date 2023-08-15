@@ -1,5 +1,6 @@
 package com.example.self_life;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -23,15 +24,15 @@ public class Register_Activity extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth;             //파이어베이스 인증
     private DatabaseReference mDatabaseRef;         //실시간 데이터 베이스
-    private EditText userName, userEmail, userPwd, userNickname, userPhoneNumber, userDOB;
-    private Button signup, checkIdNickName, checkPwd;
+    private EditText userName, userEmail, userPwd, userNickname, userPhoneNumber, userDOB;         //회원가입 입력 내용
+    private Button signup, checkEmailNickName, checkPwd;         //회원가입, 이메일닉네임 유효성 검사, 비밀번호 검사 버튼
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
+        //변수선언
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life");
         userName = findViewById(R.id.eT1Et);
@@ -40,10 +41,9 @@ public class Register_Activity extends AppCompatActivity {
         userNickname = findViewById(R.id.eT5Et);
         userPhoneNumber = findViewById(R.id.eT6Et);
         userDOB = findViewById(R.id.eT7Et);
-        checkIdNickName = findViewById(R.id.btn1Btn);
+        checkEmailNickName = findViewById(R.id.btn1Btn);
         checkPwd = findViewById(R.id.bt2Btn);
         signup = findViewById(R.id.bt3Btn);
-
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +77,6 @@ public class Register_Activity extends AppCompatActivity {
                     return;
                 }
 
-
                 //Firebase Auth 진행
                 mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(Register_Activity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -89,13 +88,13 @@ public class Register_Activity extends AppCompatActivity {
                             account.setIdToken(firebaseUser.getUid());
                             account.setEmailId(firebaseUser.getEmail());
                             account.setPassword(strPwd);
-
                             mDatabaseRef.child("UserAccount1").child("userId").setValue(account);
                             mDatabaseRef.child("UserAccount1").child("Name").setValue(name);
                             mDatabaseRef.child("UserAccount1").child("phoneNumber").setValue(phoneNumber);
                             mDatabaseRef.child("UserAccount1").child("NickName").setValue(nickname);
                             mDatabaseRef.child("UserAccount1").child("DOB").setValue(DOB);
-                            Toast.makeText(Register_Activity.this, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Register_Activity.this, SignUpSucces.class);
+                            startActivity(intent);
                         }
                         else {
                             Toast.makeText(Register_Activity.this, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
@@ -105,16 +104,14 @@ public class Register_Activity extends AppCompatActivity {
             }
         });
 
-
-        checkIdNickName.setOnClickListener(new View.OnClickListener() {
+        checkEmailNickName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkNicknameAvailability(userEmail.getText().toString().trim(),userNickname.getText().toString().trim());
+                checkEmailNicknameAvailability(userEmail.getText().toString().trim(),userNickname.getText().toString().trim());
             }
 
         });
-
-
+        //비밀번호 유효성 검사
         checkPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,9 +142,9 @@ public class Register_Activity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
+    //입력내용 유효성 검사 메소드
     private boolean isEmptyField(String fieldValue) {
         return fieldValue.isEmpty();
     }
@@ -176,17 +173,17 @@ public class Register_Activity extends AppCompatActivity {
 
         return Pwd.matches("^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).{8,}$");
     }
-
-    private void checkNicknameAvailability(String email, String nickname) {
+    //이메일 닉네임 유효성 검사 메소드
+    private void checkEmailNicknameAvailability(String email, String nickname) {
         mDatabaseRef.child("UserAccount1").child("NickName").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!isValidEmail(email)) {
                     Toast.makeText(Register_Activity.this, "이메일이 유효하지 않았습니다.", Toast.LENGTH_SHORT).show();
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
-                    checkIdNickName.setBackgroundResource(drawableResourceId);
-                    checkIdNickName.setTextColor(Color.RED);
-                    checkIdNickName.setText("유효하지 않는 이메일");
+                    checkEmailNickName.setBackgroundResource(drawableResourceId);
+                    checkEmailNickName.setTextColor(Color.RED);
+                    checkEmailNickName.setText("유효하지 않는 이메일");
                     userEmail.setBackgroundResource(drawableResourceId);
                 }
                 else {
@@ -195,26 +192,26 @@ public class Register_Activity extends AppCompatActivity {
                     if (!isValidName(nickname)) {
                         Toast.makeText(Register_Activity.this, "닉네임이 유효하지 않았습니다.", Toast.LENGTH_SHORT).show();
                         drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
-                        checkIdNickName.setBackgroundResource(drawableResourceId);
-                        checkIdNickName.setTextColor(Color.RED);
-                        checkIdNickName.setText("유효하지 않는 닉네임");
+                        checkEmailNickName.setBackgroundResource(drawableResourceId);
+                        checkEmailNickName.setTextColor(Color.RED);
+                        checkEmailNickName.setText("유효하지 않는 닉네임");
                         userNickname.setBackgroundResource(drawableResourceId);
                     }
                     else {
                         if (String.valueOf(task.getResult().getValue()).equals(nickname)) {
                             Toast.makeText(Register_Activity.this, "이미 사용 중인 닉네임입니다.", Toast.LENGTH_SHORT).show();
                             drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
-                            checkIdNickName.setBackgroundResource(drawableResourceId);
-                            checkIdNickName.setTextColor(Color.RED);
-                            checkIdNickName.setText("존재하는 닉네임");
+                            checkEmailNickName.setBackgroundResource(drawableResourceId);
+                            checkEmailNickName.setTextColor(Color.RED);
+                            checkEmailNickName.setText("존재하는 닉네임");
                             userNickname.setBackgroundResource(drawableResourceId);
                         }
                         else {
                             Toast.makeText(Register_Activity.this, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
                             drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());
-                            checkIdNickName.setBackgroundResource(drawableResourceId);
-                            checkIdNickName.setTextColor(Color.parseColor("#44b0e8"));
-                            checkIdNickName.setText("사용 가능한 닉네임");
+                            checkEmailNickName.setBackgroundResource(drawableResourceId);
+                            checkEmailNickName.setTextColor(Color.parseColor("#44b0e8"));
+                            checkEmailNickName.setText("사용 가능한 닉네임");
                             drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
                             userNickname.setBackgroundResource(drawableResourceId);
                         }

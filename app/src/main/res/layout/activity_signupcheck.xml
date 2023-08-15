@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    android:orientation="vertical"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Base">
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:layout_marginTop="24dp"
+            android:text="회원가입"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="60sp"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        app:srcCompat="@drawable/succes"
+        android:layout_marginTop="146dp"
+        android:layout_marginLeft="147dp">
+
+    </ImageView>
+
+    <TextView
+        android:layout_width="310dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="25dp"
+        android:text="회원가입이 완료되었습니다. 환영합니다"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:letterSpacing="-0.04"
+        android:lineSpacingExtra="20sp"
+        android:gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/GoMainBtn1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="240dp"
+        android:layout_gravity="center"
+        android:text="메인화면 이동하기"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        android:textColor="#f8f8fa"
+        android:lineSpacingExtra="12dp"
+        android:gravity="center"
+        android:background="@drawable/btncolor"/>
+
+</LinearLayout>

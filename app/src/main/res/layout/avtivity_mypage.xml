@@ -1,22 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="360dp"
+    android:layout_height="760dp">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    android:paddingTop="100dp">
+    >
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Base">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Person Image -->
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="#ffffff"
+                android:src="@drawable/person" />
+
+            <!-- Chart Text -->
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="60sp"
+                android:text="마이페이지"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
 
         android:layout_width="360dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:outlineProvider="none"
-        android:padding="20dp">
+        android:padding="10dp">
 
 
         <ImageView
@@ -42,10 +81,10 @@
 
         <Button
             android:id="@+id/button12"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:outlineProvider="none"
+
             android:text="로그아웃"
             android:textColor="#afafb5"
             android:textSize="18sp"
@@ -193,7 +232,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:outlineProvider="none"
-        tools:context=".MainActivity">
+        >
 
 
         <Button
@@ -266,3 +305,46 @@
 
 
 </LinearLayout>
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plubottonback" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_bottom_navigation"
+            app:itemIconTint="#000000"
+            app:itemTextColor="#000000"
+            app:itemIconSize="26dp"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu">
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plusbotton" />
+    <FrameLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plusbottnreal" >
+
+    </FrameLayout>
+</FrameLayout>
