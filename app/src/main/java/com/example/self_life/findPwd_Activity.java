@@ -33,7 +33,7 @@ public class findPwd_Activity extends AppCompatActivity
         setContentView(R.layout.activity_findpass);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData");
         userName = findViewById(R.id.eT2Et);
         userEmail = findViewById(R.id.eT3Et);
         userDOB = findViewById(R.id.eT4Et);
@@ -44,15 +44,15 @@ public class findPwd_Activity extends AppCompatActivity
             @Override
             public void onClick(View view){
 
-                Query query = mDatabaseRef.orderByChild("phoneNumber").equalTo(userPhoneNumber.getText().toString().trim());
+                Query query = mDatabaseRef.orderByChild("UserInfo/userPhoneNumber").equalTo(userPhoneNumber.getText().toString().trim());
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String name = snapshot.child("Name").getValue(String.class);
-                            String DOB = snapshot.child("DOB").getValue(String.class);
+                            String name = snapshot.child("UserInfo").child("userName").getValue(String.class);
+                            String DOB = snapshot.child("UserInfo").child("userDOB").getValue(String.class);
                             if ((userName.getText().toString().trim().equals(name)) && (userDOB.getText().toString().trim().equals(DOB))) {
-                                String email = snapshot.child("userId").child("emailId").getValue(String.class);
+                                String email = snapshot.child("UserInfo").child("userEmail").getValue(String.class);
                                 if(userEmail.getText().toString().trim().equals(email)){
                                     mFirebaseAuth.sendPasswordResetEmail(userEmail.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -65,12 +65,11 @@ public class findPwd_Activity extends AppCompatActivity
                                 }
                             }
                         }
-
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // 에러 처리
+                        Toast.makeText(findPwd_Activity.this,"메일보내기 실패", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

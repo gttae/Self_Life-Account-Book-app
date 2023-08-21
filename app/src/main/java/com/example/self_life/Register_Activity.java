@@ -20,6 +20,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Register_Activity extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth;             //파이어베이스 인증
@@ -85,15 +88,22 @@ public class Register_Activity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
                             User_Account account = new User_Account();
+                            long currentTimeMillis = System.currentTimeMillis();
+                            // Date 객체 생성
+                            Date currentDate = new Date(currentTimeMillis);
+                            // SimpleDateFormat을 사용하여 연월일 형식으로 변환
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                            String formattedDate = sdf.format(currentDate);
                             account.setIdToken(firebaseUser.getUid());
                             account.setEmailId(firebaseUser.getEmail());
-                            account.setPassword(strPwd);
-                            mDatabaseRef.child("UserAccount1").child("userId").setValue(account);
-                            mDatabaseRef.child("UserAccount1").child("Name").setValue(name);
-                            mDatabaseRef.child("UserAccount1").child("phoneNumber").setValue(phoneNumber);
-                            mDatabaseRef.child("UserAccount1").child("NickName").setValue(nickname);
-                            mDatabaseRef.child("UserAccount1").child("DOB").setValue(DOB);
-                            Intent intent = new Intent(Register_Activity.this, SignUpSucces.class);
+                            account.setCreationDate(formattedDate);
+                            mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userEmail").setValue(account.getEmailId());
+                            mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userName").setValue(name);
+                            mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userPhoneNumber").setValue(phoneNumber);
+                            mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userNickName").setValue(nickname);
+                            mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userDOB").setValue(DOB);
+                            mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("CreateTime").setValue(account.getCreationDate());
+                            Intent intent = new Intent(Register_Activity.this, SignUpSucces_Activity.class);
                             startActivity(intent);
                         }
                         else {

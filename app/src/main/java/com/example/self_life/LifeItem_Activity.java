@@ -20,7 +20,7 @@ public class LifeItem_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daiso);
+        setContentView(R.layout.activity_lifeitem);
         bottomNavigationView = findViewById(R.id.bottomNavigationView2);
         mypageBtn = findViewById(R.id.mypageBtn);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

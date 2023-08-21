@@ -51,6 +51,9 @@
         <activity
             android:name=".MyPage_Activity"
             android:exported="true"/>
+        <activity
+            android:name=".SignUpSucces_Activity"
+            android:exported="true"/>
     </application>
 
 </manifest>

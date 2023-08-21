@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUpSucces extends AppCompatActivity {
+public class SignUpSucces_Activity extends AppCompatActivity {
 
     private Button goMainBtn;
 
@@ -20,7 +20,7 @@ public class SignUpSucces extends AppCompatActivity {
         goMainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUpSucces.this, Login_Activity.class);
+                Intent intent = new Intent(SignUpSucces_Activity.this, Login_Activity.class);
                 startActivity(intent);
             }
         });

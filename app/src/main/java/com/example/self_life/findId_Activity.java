@@ -31,7 +31,7 @@ public class findId_Activity extends AppCompatActivity
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_findid);
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData");
         userName = findViewById(R.id.eT1Et);
         userDOB = findViewById(R.id.eT2Et);
         userPhoneNumber = findViewById(R.id.eT3Et);
@@ -40,24 +40,27 @@ public class findId_Activity extends AppCompatActivity
             @Override
             public void onClick(View view){
 
-                Query query = mDatabaseRef.orderByChild("Name").equalTo(userName.getText().toString().trim());
+                Query query = mDatabaseRef.orderByChild("UserInfo/userName").equalTo(userName.getText().toString().trim());
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        boolean userFound = false;
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String name = snapshot.child("phoneNumber").getValue(String.class);
-                            if (userPhoneNumber.getText().toString().trim().equals(name)) {
-                                String userEmail = snapshot.child("userId").child("emailId").getValue(String.class);
-                                Toast.makeText(findId_Activity.this,userEmail, Toast.LENGTH_SHORT).show();
+                            String phoneNumber = snapshot.child("UserInfo").child("userPhoneNumber").getValue(String.class);
+                            if (userPhoneNumber.getText().toString().trim().equals(phoneNumber)) {
+                                String userEmail = snapshot.child("UserInfo").child("userEmail").getValue(String.class);
+                                Toast.makeText(findId_Activity.this, userEmail, Toast.LENGTH_SHORT).show();
+                                userFound = true;
                                 break; // 원하는 데이터를 찾았으므로 더 이상 반복할 필요가 없습니다.
                             }
                         }
-
+                        if (!userFound) {
+                            Toast.makeText(findId_Activity.this, "해당 사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(findId_Activity.this, "없는 데이터", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(findId_Activity.this, "데이터베이스 에러", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

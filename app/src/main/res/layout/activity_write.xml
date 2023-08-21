@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Base">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Person Image -->
+            <ImageView
+                android:id="@+id/mypageBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="#ffffff"
+                android:src="@drawable/person" />
+
+            <!-- Chart Text -->
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="60sp"
+                android:text="게시판"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="22sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:lineSpacingExtra="60sp"
+                android:text="글쓰기"/>
+            
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="44dp"
+                    android:layout_height="25dp"
+                    android:textStyle="normal"
+                    android:textSize="18sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:text="제목 : "
+                    android:layout_marginLeft="20dp" />
+
+                <EditText
+                    android:id="@+id/TitleEt"
+                    android:layout_width="275dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textStyle="normal"
+                    android:textSize="15sp"
+                    android:textColor="#d4d4d8"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"/>
+            
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/InformCb2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="자유"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:layout_marginLeft="8dp" />
+
+                <CheckBox
+                    android:id="@+id/InformCb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="정보"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:layout_marginLeft="8dp" />
+
+                <CheckBox
+                    android:id="@+id/MeCb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인증"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:layout_marginLeft="8dp" />
+
+
+            </LinearLayout>
+            
+            <ScrollView
+                android:id="@+id/boardSv"
+                android:layout_width="320dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/WriteEt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:text="내용을 입력하세요."
+                    android:textColor="#d4d4d8"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+                
+            </ScrollView>
+            
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/GallaryIv"
+                    android:layout_width="43dp"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="356dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/gongji"
+                android:orientation="vertical">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:text="게시판 이용규칙"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:text=""
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:text="1) 욕설, 비방, 혐오 표현, 차별적인 언어 사용은 금지됩니다."
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:text="2) 거짓 정보를 유포하거나 허위 사실을 전파하는 행위는 금지됩니다."
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:text="3) 스팸 또는 광고성 내용을 게시하는 것은 금지됩니다. "
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:text="4) 욕설, 음란물, 선정적인 콘텐츠를 게시하는 것은 금지됩니다."
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="13sp"
+                    android:textColor="#000000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="10sp"
+                    android:text="5) 타인을 비방 및 명예를 훼손하는 내용을 게시하는 것은 금지됩니다."
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"/>
+                
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/WriteLl"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btnrectangle"
+                    android:elevation="5dp"
+                    android:layout_marginTop="10dp">
+                    
+                    <TextView
+                        android:id="@+id/WriteTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:letterSpacing="-0.05"
+                        android:layout_gravity="center"
+                        android:lineSpacingExtra="62sp"
+                        android:layout_marginLeft="27dp"
+                        android:text="작성하기"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+</LinearLayout>
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plubottonback" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_bottom_navigation"
+            app:itemIconTint="#000000"
+            app:itemTextColor="#000000"
+            app:itemIconSize="26dp"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu">
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plusbotton" />
+    <FrameLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plusbottnreal" >
+
+    </FrameLayout>
+</FrameLayout>

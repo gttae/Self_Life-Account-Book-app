@@ -17,7 +17,7 @@ public class MyPage_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.avtivity_mypage);
+        setContentView(R.layout.activity_mypage);
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

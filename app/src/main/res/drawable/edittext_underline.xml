@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/transparent" />
+    <item
+        android:top="-2dp"
+        android:right="-2dp"
+        android:left="-2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke
+                android:width="2dp"
+                android:color="#d4d4d8" /> <!-- This color represents the underline -->
+        </shape>
+    </item>
+</layer-list>

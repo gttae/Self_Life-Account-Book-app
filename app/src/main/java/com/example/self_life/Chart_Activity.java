@@ -18,7 +18,7 @@ public class Chart_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chart_main);
+        setContentView(R.layout.activity_chart);
 
         //PieChart pieChart = findViewById(R.id.chart1);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
