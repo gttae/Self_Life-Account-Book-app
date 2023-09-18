@@ -21,7 +21,7 @@ public class Calendar_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView3);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         mypageBtn = findViewById(R.id.mypageBtn);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

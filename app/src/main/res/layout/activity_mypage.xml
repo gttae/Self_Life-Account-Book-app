@@ -84,7 +84,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-
             android:text="로그아웃"
             android:textColor="#afafb5"
             android:textSize="18sp"
@@ -238,8 +237,7 @@
         <Button
             android:id="@+id/question"
             android:layout_width="150dp"
-            android:layout_height="10dp"
-            android:layout_weight="1"
+            android:layout_height="30dp"
             android:background="#00ff0000"
             android:gravity="center"
             android:outlineProvider="none"
@@ -247,13 +245,13 @@
             android:textSize="20sp"
             android:textColor="#ed6c59"
             android:textStyle="bold" />
-
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></View>
         <Button
             android:id="@+id/conditions"
             android:layout_width="150dp"
-            android:layout_height="10dp"
-            android:layout_weight="1"
+            android:layout_height="30dp"
             android:background="#00ff0000"
             android:gravity="center"
             android:outlineProvider="none"
@@ -261,12 +259,13 @@
             android:textSize="20sp"
             android:textColor="#ed6c59"
             android:textStyle="bold" />
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></View>
         <Button
             android:id="@+id/information"
             android:layout_width="150dp"
-            android:layout_height="10dp"
-            android:layout_weight="1"
+            android:layout_height="30dp"
             android:background="#00ff0000"
             android:gravity="center"
             android:outlineProvider="none"
@@ -274,12 +273,13 @@
             android:textSize="20sp"
             android:textColor="#ed6c59"
             android:textStyle="bold" />
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></View>
         <Button
             android:id="@+id/fix"
             android:layout_width="160dp"
-            android:layout_height="10dp"
-            android:layout_weight="1"
+            android:layout_height="30dp"
             android:background="#00ff0000"
             android:gravity="center"
             android:outlineProvider="none"
@@ -287,12 +287,13 @@
             android:textSize="20sp"
             android:textColor="#ed6c59"
             android:textStyle="bold" />
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></View>
         <Button
             android:id="@+id/out"
             android:layout_width="150dp"
-            android:layout_height="10dp"
-            android:layout_weight="1"
+            android:layout_height="30dp"
             android:background="#00ff0000"
             android:gravity="center"
             android:outlineProvider="none"
@@ -301,8 +302,6 @@
             android:textColor="#ed6c59"
             android:textStyle="bold" />
     </LinearLayout>
-
-
 
 </LinearLayout>
     <FrameLayout
@@ -329,7 +328,6 @@
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_menu">
 
-
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </FrameLayout>
@@ -345,6 +343,13 @@
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="24dp"
         android:background="@drawable/plusbottnreal" >
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/baseline_add_24_1"
+            android:layout_marginBottom="7dp" >
+        </FrameLayout>
 
     </FrameLayout>
 </FrameLayout>

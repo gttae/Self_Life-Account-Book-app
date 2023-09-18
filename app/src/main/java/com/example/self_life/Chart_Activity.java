@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -15,14 +16,16 @@ import com.google.android.material.navigation.NavigationBarView;
 public class Chart_Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ImageView mypageBtn;
+    private FrameLayout dataInput;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
         //PieChart pieChart = findViewById(R.id.chart1);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         mypageBtn = findViewById(R.id.mypageBtn);
+        dataInput = findViewById(R.id.chartPlus);
 
         /*
         ArrayList<PieEntry> entries = new ArrayList<>();
@@ -85,6 +88,13 @@ public class Chart_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Chart_Activity.this, MyPage_Activity.class);
+                startActivity(intent);
+            }
+        });
+        dataInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Chart_Activity.this, Input_Fund_Data.class);
                 startActivity(intent);
             }
         });
