@@ -185,7 +185,7 @@
                     android:textColor="#232732"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="14sp"
-                    android:text="아침 굶고 점심은 친구들 식당가서 같이 앉은 다음에 불쌍한 눈빛으로 애들 먹는거 쳐다보면서 얻어먹고 저녁은 집밥 \n 3주째 이렇게 생활함 곧 애들한테 손절 당할 듯"
+                    android:text="아침 굶고 점심은 친구들 식당가서 같이 앉은 다음에 불쌍한 눈빛으로 애들 먹는거 쳐다보면서 얻어먹고 저녁은 집밥 3주째 이렇게 생활함 곧 애들한테 손절 당할 듯"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp"/>
 
