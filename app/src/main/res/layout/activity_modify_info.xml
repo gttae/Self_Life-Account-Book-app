@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/Base">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Person Image -->
+            <ImageView
+                android:id="@+id/mypageBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:background="#ffffff"
+                android:src="@drawable/person" />
+
+            <!-- Chart Text -->
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="60sp"
+                android:text="마이페이지"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="회원정보 수정하기"
+        android:textSize="20dp"
+        android:textStyle="normal"
+        android:textAlignment="center"
+        android:textColor="@color/black">
+    </TextView>
+    
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="275dp"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center"
+        android:background="@drawable/back"
+        android:orientation="vertical"
+        android:elevation="5dp">
+        
+        <LinearLayout
+            android:layout_width="141dp"
+            android:layout_height="26dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="9dp"
+            android:layout_gravity="center">
+            
+            <TextView
+                android:layout_width="56dp"
+                android:layout_height="26dp"
+                android:text="ID"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:textColor="#ed6c59">
+            </TextView>
+            <TextView
+                android:layout_width="5dp"
+                android:layout_height="26dp"
+                android:text=":"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:textColor="#ed6c59">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:text="1906012"
+                android:textSize="18dp"
+                android:textColor="#ed6c59">
+            </TextView>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="141dp"
+                android:layout_height="26dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="56dp"
+                    android:layout_height="26dp"
+                    android:text="가입날짜"
+                    android:textSize="18dp"
+                    android:textColor="#ed6c59" />
+
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="26dp"
+                    android:textSize="18dp"
+                    android:text=":"
+                    android:textColor="#ed6c59"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:text="2023-09-12"
+                    android:textSize="16dp"
+                    android:textColor="#ed6c59">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="141dp"
+                android:layout_height="26dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="56dp"
+                    android:layout_height="26dp"
+                    android:text="이름"
+                    android:textSize="18dp"
+                    android:textAlignment="center"
+                    android:textColor="#ed6c59"/>
+                <TextView
+                    android:layout_width="5dp"
+                    android:layout_height="26dp"
+                    android:text=":"
+                    android:textSize="18dp"
+                    android:textColor="#ed6c59"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:text="이름"
+                    android:textAlignment="center"
+                    android:background="#D3D3D3"
+                    android:textSize="18dp"
+                    style="@style/Hyperlink"
+                    android:textColor="#ed6c59">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임 변경하기"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textColor="#ed6c59"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                style="@style/Hyperlink" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일 변경하기"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textColor="#ed6c59"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                style="@style/Hyperlink" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 변경하기"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:textColor="#ed6c59"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                style="@style/Hyperlink" />
+
+            <TextView
+                style="@style/Hyperlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="휴대폰 번호 변경하기"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="#ed6c59"
+                android:textSize="20sp" />
+
+
+        
+        
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/back"
+        android:elevation="5dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="#0C0200"
+         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="60sp"
+            android:text="수정완료"
+            android:textColor="@color/Base"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plubottonback" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_gravity="bottom">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_bottom_navigation"
+            app:itemIconTint="#000000"
+            app:itemTextColor="#000000"
+            app:itemIconSize="26dp"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_menu">
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plusbotton" />
+    <FrameLayout
+        android:id="@+id/chartPlus"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/plubottonback" >
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/baseline_add_24_1"
+            android:layout_marginBottom="7dp" >
+        </FrameLayout>
+
+    </FrameLayout>
+</FrameLayout>

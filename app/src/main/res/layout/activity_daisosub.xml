@@ -1,53 +1,40 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="360dp"
-    android:layout_height="760dp">
-<LinearLayout
-    android:id="@+id/baseLl"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="360dp"
     android:layout_height="760dp"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <androidx.appcompat.widget.Toolbar
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/Base">
+<LinearLayout
+    android:layout_width="360dp"
+    android:layout_height="760dp"
+    android:orientation="vertical"
+    >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <!-- Person Image -->
-        <ImageView
-            android:id="@+id/mypageBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
-            android:background="#ffffff"
-            android:src="@drawable/person" />
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:background="#ed6c59">
 
-        <!-- Chart Text -->
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/FindIDTv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="생활용품"
-            android:textColor="#ffffff"
-            android:textSize="20sp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="60sp"
-            android:layout_centerInParent="true" />
+            android:text="생활용품"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:textStyle="normal" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</androidx.appcompat.widget.Toolbar>
 
     <RelativeLayout
-        android:layout_width="326dp"
+        android:layout_width="360dp"
         android:layout_height="70dp"
         android:orientation="vertical"
         android:layout_gravity="center">
@@ -56,7 +43,8 @@
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:background="@drawable/square"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp">
 
             <TextView
                 android:layout_width="82dp"
@@ -86,7 +74,8 @@
         android:layout_width="340dp"
         android:layout_height="534dp"
         android:layout_gravity="center"
-        android:background="@drawable/boxback2">
+        android:layout_marginTop="20dp"
+        android:background="@drawable/box1">
 
 
         <LinearLayout
@@ -101,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/boxback"
+                android:background="@drawable/box"
                 android:elevation="10dp"
                 android:orientation="horizontal">
 
@@ -111,29 +100,31 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_width="57dp"
-                        android:layout_height="54dp"
-                        android:layout_marginLeft="13dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|top"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/roundshape"
-                        android:elevation="5dp">
+                        android:elevation="3dp">
 
                     </ImageView>
 
                     <ImageView
-                        android:layout_width="33dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="26dp"
+                        android:id="@+id/Daiso1Iv"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_marginTop="13dp"
                         android:background="@drawable/shampoo"
                         android:elevation="10dp" />
 
                     <TextView
+                        android:id="@+id/Daiso1Tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="27dp"
+                        android:layout_gravity="center|bottom"
                         android:letterSpacing="-0.05"
+                        android:layout_marginBottom="4dp"
                         android:lineSpacingExtra="12sp"
                         android:text="샴푸"
                         android:textColor="#232732"
@@ -324,7 +315,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/boxback"
+                android:background="@drawable/box"
                 android:elevation="10dp"
                 android:orientation="horizontal">
 
@@ -334,29 +325,31 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_width="57dp"
-                        android:layout_height="54dp"
-                        android:layout_marginLeft="13dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|top"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/roundshape"
-                        android:elevation="5dp">
+                        android:elevation="3dp">
 
                     </ImageView>
 
                     <ImageView
-                        android:layout_width="33dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="26dp"
+                        android:id="@+id/Daiso2Iv"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_marginTop="13dp"
                         android:background="@drawable/shampoo"
                         android:elevation="10dp" />
 
                     <TextView
+                        android:id="@+id/Daiso2Tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="27dp"
+                        android:layout_gravity="center|bottom"
                         android:letterSpacing="-0.05"
+                        android:layout_marginBottom="4dp"
                         android:lineSpacingExtra="12sp"
                         android:text="샴푸"
                         android:textColor="#232732"
@@ -548,7 +541,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/boxback"
+                android:background="@drawable/box"
                 android:elevation="10dp"
                 android:orientation="horizontal">
 
@@ -558,29 +551,31 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_width="57dp"
-                        android:layout_height="54dp"
-                        android:layout_marginLeft="13dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|top"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/roundshape"
-                        android:elevation="5dp">
+                        android:elevation="3dp">
 
                     </ImageView>
 
                     <ImageView
-                        android:layout_width="33dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="26dp"
+                        android:id="@+id/Daiso3Iv"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_marginTop="13dp"
                         android:background="@drawable/shampoo"
                         android:elevation="10dp" />
 
                     <TextView
+                        android:id="@+id/Daiso3Tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="27dp"
+                        android:layout_gravity="center|bottom"
                         android:letterSpacing="-0.05"
+                        android:layout_marginBottom="4dp"
                         android:lineSpacingExtra="12sp"
                         android:text="샴푸"
                         android:textColor="#232732"
@@ -772,7 +767,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/boxback"
+                android:background="@drawable/box"
                 android:elevation="10dp"
                 android:orientation="horizontal">
 
@@ -782,29 +777,31 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:layout_width="57dp"
-                        android:layout_height="54dp"
-                        android:layout_marginLeft="13dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center|top"
                         android:layout_marginTop="4dp"
                         android:background="@drawable/roundshape"
-                        android:elevation="5dp">
+                        android:elevation="3dp">
 
                     </ImageView>
 
                     <ImageView
-                        android:layout_width="33dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="26dp"
+                        android:id="@+id/Daiso4Iv"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_marginTop="13dp"
                         android:background="@drawable/shampoo"
                         android:elevation="10dp" />
 
                     <TextView
+                        android:id="@+id/Daiso4Tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="27dp"
+                        android:layout_gravity="center|bottom"
                         android:letterSpacing="-0.05"
+                        android:layout_marginBottom="4dp"
                         android:lineSpacingExtra="12sp"
                         android:text="샴푸"
                         android:textColor="#232732"
@@ -997,15 +994,14 @@
 
 
     </ScrollView>
-
 </LinearLayout>
+
     <FrameLayout
         android:id="@+id/DaisoFl"
         android:layout_width="360dp"
         android:layout_height="216dp"
         android:layout_gravity="center|bottom"
         android:background="@drawable/eotrmf"
-        android:visibility="gone"
         android:layout_marginBottom="2dp">
 
         <LinearLayout
@@ -1083,12 +1079,14 @@
                     android:textColor="#232732"
                     android:textSize="14sp"
                     android:textStyle="normal" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="56dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <EditText
                     android:id="@+id/Max5Et"
                     android:layout_width="50dp"
@@ -1103,6 +1101,7 @@
                     android:textColor="#232732"
                     android:textSize="16sp"
                     android:textStyle="normal" />
+
                 <EditText
                     android:id="@+id/Min5Et"
                     android:layout_width="50dp"
@@ -1119,14 +1118,19 @@
                     android:textStyle="normal" />
 
             </LinearLayout>
+
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="90dp"
                 android:orientation="vertical">
+
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:orientation="horizontal">
+
                     <EditText
                         android:id="@+id/Day5Et"
                         android:layout_width="10dp"
@@ -1206,7 +1210,12 @@
                     android:textSize="12sp"
                     android:textStyle="normal" />
             </LinearLayout>
+
+
+
+
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/Write1Ll"
             android:layout_width="90dp"
@@ -1215,6 +1224,10 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/btnrectangle"
             android:elevation="3dp" >
+
+
+
+
             <TextView
                 android:id="@+id/Write1Tv"
                 android:layout_width="wrap_content"
@@ -1227,9 +1240,15 @@
                 android:lineSpacingExtra="62sp"
                 android:layout_marginLeft="17dp"
                 android:text="추가하기"/>
+
         </LinearLayout>
 
+
+
+
     </FrameLayout>
+
+
     <FrameLayout
         android:layout_width="60dp"
         android:layout_height="58dp"
@@ -1265,7 +1284,6 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/plusbotton" />
     <FrameLayout
-        android:id="@+id/lifeitem_plus"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_gravity="center|bottom"
@@ -1281,3 +1299,6 @@
 
     </FrameLayout>
 </FrameLayout>
+
+
+

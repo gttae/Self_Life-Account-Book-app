@@ -4,828 +4,864 @@
     android:layout_width="360dp"
     android:layout_height="760dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<LinearLayout
-    android:layout_width="360dp"
-    android:layout_height="760dp"
-    android:orientation="vertical"
-    >
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/Base">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:background="#ffffff"
-                android:src="@drawable/person" />
-
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:letterSpacing="-0.05"
-                android:lineSpacingExtra="60sp"
-                android:text="차트"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
-
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
     <LinearLayout
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/incomeSelectBtn"
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="40dp"
-            android:textStyle="normal"
-            android:textSize="18sp"
-            android:textColor="#ed6c59"
-            android:letterSpacing="-0.05"
-            android:lineSpacingExtra="62sp"
-            tools:text="수 입"
-            android:background="@drawable/box1"/>
-
-        <Button
-            android:id="@+id/expenseSelectBtn"
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="40dp"
-            android:textStyle="normal"
-            android:textSize="18sp"
-            android:textColor="#d4d4d8"
-            android:letterSpacing="-0.05"
-            android:lineSpacingExtra="62sp"
-            android:gravity="center"
-            tools:text="지 출"
-            android:background="@drawable/box"/>
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-    <LinearLayout
-        android:id="@+id/incomeLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="760dp"
         android:orientation="vertical"
-        android:visibility="visible">
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/Base">
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="30dp"
-                android:letterSpacing="-0.05"
-                android:lineSpacingExtra="62sp"
-                android:textColor="#ed6c59"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                tools:text="날짜" />
-
-            <TextView
-                android:id="@+id/incomeDayTv"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="27dp"
-                android:background="@drawable/edittext_underline"
-                android:text="2023-05-03 (수)"
-                android:textColor="#ed6c59"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="12sp"
-                android:letterSpacing="-0.05"
-                android:lineSpacingExtra="62sp"
-                android:textColor="#ed6c59"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                tools:text="분류" />
-
-            <EditText
-                android:id="@+id/incomeCategoryEt"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/line_orange" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="12sp"
-                android:letterSpacing="-0.05"
-                android:lineSpacingExtra="62sp"
-                android:textColor="#ed6c59"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                tools:text="금액" />
-
-            <EditText
-                android:id="@+id/incomeFundEt"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/edittext_underline" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="12sp"
-                android:letterSpacing="-0.05"
-                android:lineSpacingExtra="62sp"
-                android:textColor="#ed6c59"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                tools:text="내용" />
-
-            <EditText
-                android:id="@+id/incomeMemoEt"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/edittext_underline" />
-
-        </LinearLayout>
-
-
-            <RadioGroup
-                android:id="@+id/incomeRgroup"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="고정(실수령)"
-                    android:layout_width="0dp"
+                <ImageView
+                    android:id="@+id/mypageBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="#ffffff"
+                    android:src="@drawable/person" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11dp" />
+                    android:layout_centerInParent="true"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="60sp"
+                    android:text="차트"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
 
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="고정(계획)"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="유동"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp" />
+            <Button
+                android:id="@+id/incomeSelectBtn"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="40dp"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#ed6c59"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="수 입"
+                android:background="@drawable/box1"/>
 
-            </RadioGroup>
+            <Button
+                android:id="@+id/expenseSelectBtn"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="40dp"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#d4d4d8"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:gravity="center"
+                android:text="지 출"
+                android:background="@drawable/box"/>
 
-
-
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="240dp">
-
-            <View
-                android:layout_width="280dp"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/a"></View>
-                <LinearLayout
-                android:id="@+id/incomeBtn1"
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:elevation="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="39dp"
-                android:background="@drawable/a1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="12sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:text="월급"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/incomeBtn2"
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:elevation="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginLeft="89dp"
-                android:layout_marginTop="39dp"
-                android:background="@drawable/a1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="12sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:text="부수입"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/incomeBtn3"
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:elevation="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="39dp"
-                android:background="@drawable/a1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="12sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:text="용돈"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/incomeBtn4"
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:elevation="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginLeft="221dp"
-                android:layout_marginTop="39dp"
-                android:background="@drawable/a1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="12sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:text="송금"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/incomeBtn5"
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:elevation="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginLeft="23dp"
-                android:layout_marginTop="85dp"
-                android:background="@drawable/a1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="12sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:text="금융소득"
-                    android:textSize="12sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/incomeBtn6"
-                android:layout_width="60dp"
-                android:layout_height="36dp"
-                android:elevation="15dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_marginLeft="89dp"
-                android:layout_marginTop="85dp"
-                android:background="@drawable/a1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:lineSpacingExtra="12sp"
-                    android:gravity="center"
-                    android:textColor="#000000"
-                    android:text="기타"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-        </LinearLayout>
-
-    </FrameLayout>
-    <Button
-        android:id="@+id/incomeSaveBtn"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:textStyle="normal"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:letterSpacing="-0.05"
-        android:lineSpacingExtra="62sp"
-        tools:text="저 장"
-        android:background="@drawable/a2">
-    </Button>
-    </LinearLayout>
-        <LinearLayout
-            android:id="@+id/expenseLayout"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-
+            android:layout_gravity="center">
             <LinearLayout
+                android:id="@+id/incomeLayout"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="30dp"
-                    android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="62sp"
-                    android:textColor="#ed6c59"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
-                    tools:text="날짜" />
-
-                <EditText
-                    android:id="@+id/expenseDayEt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/edittext_underline"
-                    android:text="2023-05-03 (수)"
-                    android:textColor="#ed6c59"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="12sp"
-                    android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="62sp"
-                    android:textColor="#ed6c59"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
-                    tools:text="분류" />
-
-                <EditText
-                    android:id="@+id/expenseCategoryEt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/line_orange" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="12sp"
-                    android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="62sp"
-                    android:textColor="#ed6c59"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
-                    tools:text="금액" />
-
-                <EditText
-                    android:id="@+id/expenseFund"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/edittext_underline" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="12sp"
-                    android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="62sp"
-                    android:textColor="#ed6c59"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
-                    tools:text="내용" />
-
-                <EditText
-                    android:id="@+id/expneseMemoEt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/edittext_underline" />
-
-            </LinearLayout>
-
-            <RadioGroup
-                android:id="@+id/expenseRgroup"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:visibility="visible">
 
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="고정(실사용)"
-                    android:layout_width="0dp"
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="30dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="날짜" />
+
+                    <TextView
+                        android:id="@+id/incomeDayTv"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="27dp"
+                        android:background="@drawable/edittext_underline"
+                        android:text="2023-05-03 (수)"
+                        android:textColor="#ed6c59"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="12sp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="분류" />
+
+                    <EditText
+                        android:id="@+id/incomeCategoryEt"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/line_orange" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="12sp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="금액" />
+
+                    <EditText
+                        android:id="@+id/incomeFundEt"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_underline" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="12sp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="내용" />
+
+                    <EditText
+                        android:id="@+id/incomeMemoEt"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_underline" />
+
+                </LinearLayout>
+
+
+                <RadioGroup
+                    android:id="@+id/incomeRgroup"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="normal"
-                    android:textSize="12sp"
-                    android:textColor="#000000"
-                    />
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:layout_weight="1"
-                    android:text="고정(계획)"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp" />
+                    <RadioButton
+                        android:layout_weight="1"
+                        android:text="고정(실수령)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp" />
 
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="유동"
-                    android:textSize="14sp" />
+                    <RadioButton
+                        android:layout_weight="1"
+                        android:text="고정(계획)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="12dp" />
 
-            </RadioGroup>
+                    <RadioButton
+                        android:layout_weight="1"
+                        android:text="유동"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp" />
+
+                </RadioGroup>
 
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <View
+                <LinearLayout
                     android:layout_width="280dp"
                     android:layout_height="200dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="29dp"
-                    android:background="@drawable/a"></View>
+                    android:layout_gravity="center"
+                    android:elevation="10dp"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/a">
 
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:id="@+id/incomeBtn1"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/a1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="월급"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/incomeBtn2"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/a1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="부수입"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/incomeBtn3"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/a1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="용돈"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/incomeBtn4"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/a1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="송금"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:id="@+id/incomeBtn5"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/a1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="금융소득"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/incomeBtn6"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/a1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:text="기타"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="5dp">
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/expenseLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
                 <LinearLayout
-                    android:id="@+id/expense1"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginTop="39dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/loginTv"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="식비"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="30dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="날짜" />
+
+                    <TextView
+                        android:id="@+id/expenseDayEt"
+                        android:layout_width="200dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="27dp"
+                        android:background="@drawable/edittext_underline"
+                        android:text="2023-05-03 (수)"
+                        android:textColor="#ed6c59"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="12sp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="분류" />
+
+                    <EditText
+                        android:id="@+id/expenseCategoryEt"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/line_orange" />
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/expense2"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="89dp"
-                    android:layout_marginTop="39dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="교통/차량"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="12sp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="금액" />
+
+                    <EditText
+                        android:id="@+id/expenseFund"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_underline" />
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/expense3"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="155dp"
-                    android:layout_marginTop="39dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="문화생활"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="12sp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="62sp"
+                        android:textColor="#ed6c59"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        android:text="내용" />
+
+                    <EditText
+                        android:id="@+id/expneseMemoEt"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/edittext_underline" />
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/expense4"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="221dp"
-                    android:layout_marginTop="39dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                <RadioGroup
+                    android:id="@+id/expenseRgroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="마트"
-                        android:textColor="#000000"
-                        android:textSize="14sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expense5"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginTop="85dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="패션/미용"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expense6"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="89dp"
-                    android:layout_marginTop="85dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="생활용품"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expense7"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="155dp"
-                    android:layout_marginTop="85dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="주거/통신"
-                        android:textColor="#000000"
-                        android:textSize="12sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expense8"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="221dp"
-                    android:layout_marginTop="85dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="건강"
-                        android:textColor="#000000"
-                        android:textSize="14sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expense9"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="23dp"
-                    android:layout_marginTop="131dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="교육"
-                        android:textColor="#000000"
-                        android:textSize="14sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expense10"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="89dp"
-                    android:layout_marginTop="131dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="경조사/회비"
-                        android:textColor="#000000"
+                    <RadioButton
+                        android:layout_weight="1"
+                        android:text="고정(실사용)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
                         android:textSize="11sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
+                        android:textColor="#000000"
+                        />
+
+                    <RadioButton
+                        android:layout_weight="1"
+                        android:text="고정(계획)"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="유동"
+                        android:textSize="14sp" />
+
+                </RadioGroup>
+
 
                 <LinearLayout
-                    android:id="@+id/expense11"
-                    android:layout_width="60dp"
-                    android:layout_height="36dp"
-                    android:layout_marginLeft="155dp"
-                    android:layout_marginTop="131dp"
-                    android:background="@drawable/a1"
-                    android:elevation="15dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_width="280dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:elevation="10dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/a">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:lineSpacingExtra="12sp"
-                        android:text="기타"
-                        android:textColor="#000000"
-                        android:textSize="14sp"
-                        android:textStyle="normal" />
-                </LinearLayout>
-            </FrameLayout>
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
 
-            <Button
-                android:id="@+id/expneseSaveBtn"
+                        <LinearLayout
+                            android:id="@+id/expense1"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/loginTv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="식비"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense2"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="교통/차량"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense3"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="문화생활"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense4"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="마트"
+                                android:textColor="#000000"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:id="@+id/expense5"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="패션/미용"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense6"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="생활용품"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense7"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="주거/통신"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense8"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="건강"
+                                android:textColor="#000000"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="280dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center">
+                        <LinearLayout
+                            android:id="@+id/expense9"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="교육"
+                                android:textColor="#000000"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense10"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="경조사/회비"
+                                android:textColor="#000000"
+                                android:textSize="11sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/expense11"
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/a1"
+                            android:elevation="15dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="12sp"
+                                android:text="기타"
+                                android:textColor="#000000"
+                                android:textSize="14sp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="36dp"
+                            android:elevation="15dp"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center">
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </FrameLayout>
+        <LinearLayout
+            android:id="@+id/incomeSaveBtn"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:background="@drawable/a2">
+
+            <TextView
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="92dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/a2"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="@color/white"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="62sp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                tools:text="저 장"></Button>
-        </LinearLayout>
-    </FrameLayout>
+                android:gravity="center"
+                android:text="저 장"></TextView>
 
-</LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
     <FrameLayout
         android:layout_width="60dp"
         android:layout_height="58dp"

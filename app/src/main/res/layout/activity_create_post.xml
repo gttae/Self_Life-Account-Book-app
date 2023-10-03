@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="normal"
-                android:textSize="22sp"
+                android:textSize="22dp"
                 android:textColor="#000000"
                 android:letterSpacing="-0.05"
                 android:layout_gravity="center"
@@ -86,58 +86,69 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text=""
                     android:textStyle="normal"
-                    android:textSize="15sp"
-                    android:textColor="#d4d4d8"
+                    android:textSize="15dp"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"/>
             
             </LinearLayout>
             
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/categoryRadioGroup"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/InformCb2"
+                <RadioButton
+                    android:id="@+id/freerRb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="자유"
                     android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"
                     android:layout_marginLeft="8dp" />
 
-                <CheckBox
-                    android:id="@+id/InformCb"
+                <RadioButton
+                    android:id="@+id/InformRb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="정보"
                     android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"
                     android:layout_marginLeft="8dp" />
 
-                <CheckBox
-                    android:id="@+id/MeCb"
+                <RadioButton
+                    android:id="@+id/CertificationRb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="인증"
                     android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"
                     android:layout_marginLeft="8dp" />
+                <RadioButton
+                    android:id="@+id/NoticeRb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="공지"
+                    android:textStyle="normal"
+                    android:textSize="14dp"
+                    android:textColor="#FF0000"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="66sp"
+                    android:layout_marginLeft="8dp"
+                    android:visibility="gone"/>
 
 
-            </LinearLayout>
+            </RadioGroup>
             
             <ScrollView
                 android:id="@+id/boardSv"
@@ -148,14 +159,14 @@
 
                 <EditText
                     android:id="@+id/WriteEt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="10sp"
-                    android:text="내용을 입력하세요."
+                    android:hint="내용을 입력하세요"
                     android:textColor="#d4d4d8"
-                    android:textSize="14sp"
+                    android:textSize="16dp"
                     android:textStyle="normal" />
                 
             </ScrollView>
@@ -170,6 +181,41 @@
                     android:layout_width="43dp"
                     android:layout_height="match_parent"
                     app:srcCompat="@android:drawable/ic_menu_gallery" />
+                <ImageView
+                    android:id="@+id/UserGallaryIv1"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/UserGallaryIv2"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/UserGallaryIv3"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/UserGallaryIv4"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone"
+                     />
+                <ImageView
+                    android:id="@+id/UserGallaryIv5"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone"
+                     />
+
+
+
 
             </LinearLayout>
             

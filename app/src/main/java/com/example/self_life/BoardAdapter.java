@@ -33,21 +33,25 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         Board_List boardData = boardList.get(position);
         holder.categoryTextView.setText(boardData.getCategory());
         holder.titleTextView.setText(boardData.getTitle());
+        int sequenceNumber = position + 1;
+        holder.numberTextView.setText(String.valueOf(sequenceNumber));
     }
 
     @Override
     public int getItemCount() {
-        return boardList.size();
+        return Math.min(boardList.size(), 10);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView categoryTextView;
         public TextView titleTextView;
+        public TextView numberTextView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             categoryTextView = itemView.findViewById(R.id.board_category);
             titleTextView = itemView.findViewById(R.id.board_title);
+            numberTextView = itemView.findViewById(R.id.board_number);
         }
     }
 }

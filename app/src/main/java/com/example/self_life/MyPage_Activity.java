@@ -1,9 +1,11 @@
 package com.example.self_life;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ public class MyPage_Activity extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth;
     private BottomNavigationView bottomNavigationView;
+    private Button modifyInfo, secession,appInfo, appcond, question;
     private TextView logout;
 
     @Override
@@ -25,6 +28,11 @@ public class MyPage_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_mypage);
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         logout = findViewById(R.id.logoutTv);
+        modifyInfo = findViewById(R.id.fix);
+        secession = findViewById(R.id.out);
+        question = findViewById(R.id.question);
+        appInfo = findViewById(R.id.information);
+        appcond = findViewById(R.id.conditions);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -51,8 +59,23 @@ public class MyPage_Activity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mFirebaseAuth.signOut();
+
+                mFirebaseAuth.getInstance().signOut();
+                // 자동 로그인 설정 해제
+                SharedPreferences.Editor editor = getSharedPreferences("login_prefs", MODE_PRIVATE).edit();
+                editor.putBoolean("auto_login", false);
+                editor.remove("email");
+                editor.remove("password");
+                editor.apply();
                 Intent intent = new Intent(MyPage_Activity.this, Login_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        modifyInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyPage_Activity.this, Modify_Info_Activity.class);
                 startActivity(intent);
                 finish();
             }

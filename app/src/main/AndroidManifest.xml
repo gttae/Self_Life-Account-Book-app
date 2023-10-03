@@ -54,6 +54,15 @@
         <activity
             android:name=".SignUpSucces_Activity"
             android:exported="true"/>
+        <activity
+            android:name=".CreatePost_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".Input_FundData_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".Modify_Info_Activity"
+            android:exported="true"/>
     </application>
 
 </manifest>

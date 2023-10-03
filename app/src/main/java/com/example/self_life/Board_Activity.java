@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ public class Board_Activity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private DatabaseReference mDatabaseRef;
     private List<Board_List> boardList;
+    private FrameLayout derivationPage;
 
 
     @Override
@@ -38,6 +40,7 @@ public class Board_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_board);
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         mypageBtn = findViewById(R.id.mypageBtn);
+        derivationPage = findViewById(R.id.DerivationPage);
         recyclerView = findViewById(R.id.board_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -89,6 +92,13 @@ public class Board_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Board_Activity.this, MyPage_Activity.class);
+                startActivity(intent);
+            }
+        });
+        derivationPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Board_Activity.this, CreatePost_Activity.class);
                 startActivity(intent);
             }
         });

@@ -216,6 +216,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/plusbotton" />
     <FrameLayout
+        android:id="@+id/DerivationPage"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_gravity="center|bottom"
