@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -62,6 +65,9 @@
             android:exported="true"/>
         <activity
             android:name=".Modify_Info_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".Select_Board"
             android:exported="true"/>
     </application>
 

@@ -14,13 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MyPage_Activity extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mDatabaseRef;
     private BottomNavigationView bottomNavigationView;
     private Button modifyInfo, secession,appInfo, appcond, question;
-    private TextView logout;
+    private TextView logout, userName;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,31 @@ public class MyPage_Activity extends AppCompatActivity {
         question = findViewById(R.id.question);
         appInfo = findViewById(R.id.information);
         appcond = findViewById(R.id.conditions);
+        userName = findViewById(R.id.userNameTv);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+        userId = firebaseUser.getUid();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId);
+
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String userNametemp = dataSnapshot.child("UserInfo").child("userName").getValue(String.class);
+                userName.setText(userNametemp);
+                }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+                // 오류 처리
+            }
+
+
+        });
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

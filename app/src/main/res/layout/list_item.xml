@@ -64,5 +64,17 @@
         android:letterSpacing="-0.08"
         android:lineSpacingExtra="14dp"
         android:text="Title"/>
+    <TextView
+        android:id="@+id/board_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textStyle="normal"
+        android:textSize="16dp"
+        android:textColor="#232732"
+        android:letterSpacing="-0.08"
+        android:lineSpacingExtra="14dp"
+        android:text="postId"
+        android:visibility="gone"/>
 
 </LinearLayout>

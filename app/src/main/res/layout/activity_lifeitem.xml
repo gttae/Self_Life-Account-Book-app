@@ -999,6 +999,14 @@
     </ScrollView>
 
 </LinearLayout>
+    <LinearLayout
+        android:id="@+id/backFl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone"
+        android:orientation="vertical">
+    </LinearLayout>
     <FrameLayout
         android:id="@+id/DaisoFl"
         android:layout_width="360dp"

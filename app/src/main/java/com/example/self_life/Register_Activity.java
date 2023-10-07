@@ -32,9 +32,7 @@ public class Register_Activity extends AppCompatActivity {
     private EditText userName, userEmail, userPwd, userNickname, userPhoneNumber, userDOB;         //회원가입 입력 내용
     private Button signup, checkEmailNickName, checkPwd;         //회원가입, 이메일닉네임 유효성 검사, 비밀번호 검사 버튼
 
-    private boolean registerNicknameaccess = false;
 
-    private boolean registerPwdaccess = false;
 
 
     @Override
@@ -65,7 +63,7 @@ public class Register_Activity extends AppCompatActivity {
                 String phoneNumber = userPhoneNumber.getText().toString().trim();
                 String DOB = userDOB.getText().toString().trim();
                 // 이메일, 비밀번호, 이름, 전화번호가 모두 입력되었는지 확인
-                if (isEmptyField(name) || isEmptyField(phoneNumber) || isEmptyField(DOB)) {
+                if (isEmptyField(name) || isEmptyField(phoneNumber) || isEmptyField(DOB) || isEmptyField(strEmail) || isEmptyField(strPwd)) {
                     // 입력값이 하나라도 비어있을 경우, 사용자에게 알림
                     Toast.makeText(Register_Activity.this, "모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
                     return;
@@ -73,16 +71,19 @@ public class Register_Activity extends AppCompatActivity {
 
                 if (!isValidName(name)) {
                     Toast.makeText(Register_Activity.this, "유효하지 않은 이름입니다.", Toast.LENGTH_SHORT).show();
+                    userName.setText("");
                     return;
                 }
                 // 전화번호와 생년월일 유효성 검사
                 if (!isValidPhoneNumber(phoneNumber)) {
                     Toast.makeText(Register_Activity.this, "유효하지 않은 전화번호입니다.", Toast.LENGTH_SHORT).show();
+                    userPhoneNumber.setText("");
                     return;
                 }
 
                 if (!isValidDOB(DOB)) {
                     Toast.makeText(Register_Activity.this, "유효하지 않은 생년월일입니다.", Toast.LENGTH_SHORT).show();
+                    userDOB.setText("");
                     return;
                 }
 
@@ -90,7 +91,8 @@ public class Register_Activity extends AppCompatActivity {
                 mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(Register_Activity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful() && (registerNicknameaccess && registerPwdaccess)) {
+
+                            if (task.isSuccessful()) {
                                 FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
                                 User_Account account = new User_Account();
                                 long currentTimeMillis = System.currentTimeMillis();
@@ -115,7 +117,10 @@ public class Register_Activity extends AppCompatActivity {
                             } else {
                                 Toast.makeText(Register_Activity.this, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
                             }
-                    }
+
+                        }
+
+
                 });
             }
         });
@@ -131,30 +136,33 @@ public class Register_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isEmptyField(userPwd.getText().toString().trim())){
-                    Toast.makeText(Register_Activity.this, "비밀번호가 입력되지 않았습니다.", Toast.LENGTH_SHORT).show();
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.RED);
-                    checkPwd.setText("사용 불가능 비밀번호");
+                    userPwd.setText("");
+                    userNickname.setText("");
+                    userEmail.setText("");
+                    checkPwd.setText("입력된 비밀번호X");
                     userPwd.setBackgroundResource(drawableResourceId);
                 }
                 if (!isValidPwd(userPwd.getText().toString().trim())) {
-                    Toast.makeText(Register_Activity.this, "유효하지 않은 비밀번호입니다.", Toast.LENGTH_SHORT).show();
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
+                    userPwd.setText("");
+                    userNickname.setText("");
+                    userEmail.setText("");
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.RED);
-                    checkPwd.setText("사용 불가능 비밀번호");
+                    checkPwd.setText("유효하지 않은 비밀번호");
                     userPwd.setBackgroundResource(drawableResourceId);
                 }
                 else {
-                    Toast.makeText(Register_Activity.this, "사용 가능한 비밀번호입니다.", Toast.LENGTH_SHORT).show();
                     int drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.parseColor("#44b0e8"));
                     drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
                     userPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setText("사용 가능한 비밀번호");
-                    registerPwdaccess();
+                    //registerPwdAccess = true;
                 }
             }
         });
@@ -195,23 +203,29 @@ public class Register_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!isValidEmail(email)) {
-                    Toast.makeText(Register_Activity.this, "이메일이 유효하지 않았습니다.", Toast.LENGTH_SHORT).show();
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                     checkEmailNickName.setTextColor(Color.RED);
                     checkEmailNickName.setText("유효하지 않는 이메일");
+                    userPwd.setText("");
+                    userNickname.setText("");
+                    userEmail.setText("");
                     userEmail.setBackgroundResource(drawableResourceId);
+
                 }
                 else {
                     int drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
                     userEmail.setBackgroundResource(drawableResourceId);
                     if (!isValidName(nickname)) {
-                        Toast.makeText(Register_Activity.this, "닉네임이 유효하지 않았습니다.", Toast.LENGTH_SHORT).show();
                         drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
                         checkEmailNickName.setBackgroundResource(drawableResourceId);
                         checkEmailNickName.setTextColor(Color.RED);
                         checkEmailNickName.setText("유효하지 않는 닉네임");
+                        userPwd.setText("");
+                        userNickname.setText("");
+                        userEmail.setText("");
                         userNickname.setBackgroundResource(drawableResourceId);
+                        ;
                     }
                     else {
                             if (dataSnapshot.exists()) {
@@ -224,21 +238,23 @@ public class Register_Activity extends AppCompatActivity {
                                     }
                             }
                                 if (isNicknameDuplicate) {
-                                    Toast.makeText(Register_Activity.this, "이미 사용 중인 닉네임입니다.", Toast.LENGTH_SHORT).show();
                                     drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
                                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                                     checkEmailNickName.setTextColor(Color.RED);
                                     checkEmailNickName.setText("존재하는 닉네임");
+                                    userPwd.setText("");
+                                    userNickname.setText("");
+                                    userEmail.setText("");
                                     userNickname.setBackgroundResource(drawableResourceId);
+
                                 } else {
-                                    Toast.makeText(Register_Activity.this, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
                                     drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());
                                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                                     checkEmailNickName.setTextColor(Color.parseColor("#44b0e8"));
                                     checkEmailNickName.setText("사용 가능한 닉네임");
                                     drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
                                     userNickname.setBackgroundResource(drawableResourceId);
-                                    registerNicknameaccess();
+                                    //registerIdAccess = true;
                                 }
                         }
                     }
@@ -251,10 +267,6 @@ public class Register_Activity extends AppCompatActivity {
             }
         });
     }
-    private void registerNicknameaccess() { registerNicknameaccess = true; }
 
-    private void registerPwdaccess() {
-        registerPwdaccess = true;
-    }
 
 }

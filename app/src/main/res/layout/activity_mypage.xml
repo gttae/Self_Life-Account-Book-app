@@ -74,7 +74,7 @@
             android:textColor="#000000"
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="62sp"
-            android:text="기태폼미쳤다"/>
+            android:text=""/>
 
         <TextView
             android:id="@+id/logoutTv"
@@ -302,7 +302,79 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+
+
 </LinearLayout>
+    <LinearLayout
+        android:id="@+id/backFl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone"
+        android:orientation="vertical">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/deleteIdLayout"
+        android:layout_width="360dp"
+        android:layout_height="216dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/eotrmf"
+        android:visibility="gone"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="56sp"
+            android:text="탈퇴하시겠습니까?"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:textColor="#ff0000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="64sp"
+            android:text="탈퇴를 하시면 지금까지의 정보가 모두 삭제됩니다."/>
+        <LinearLayout
+            android:id="@+id/deleteId"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnrectangle"
+            android:elevation="6dp"
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="회원탈퇴"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
     <FrameLayout
         android:layout_width="60dp"
         android:layout_height="58dp"

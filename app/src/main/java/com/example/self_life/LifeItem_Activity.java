@@ -20,7 +20,9 @@ public class LifeItem_Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private ImageView mypageBtn;
     private FrameLayout input_LifeItem,page_input;
-    private LinearLayout baseLayout;
+
+    private LinearLayout backLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class LifeItem_Activity extends AppCompatActivity {
         mypageBtn = findViewById(R.id.mypageBtn);
         input_LifeItem = findViewById(R.id.lifeitem_plus);
         page_input = findViewById(R.id.DaisoFl);
-        baseLayout = findViewById(R.id.baseLl);
+        backLayout = findViewById(R.id.backFl);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -64,16 +66,25 @@ public class LifeItem_Activity extends AppCompatActivity {
         input_LifeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 page_input.setVisibility(View.VISIBLE);
+                backLayout.setVisibility(View.VISIBLE);
             }
         });
-        baseLayout.setOnTouchListener(new View.OnTouchListener() {
+        backLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (page_input.getVisibility() == View.VISIBLE) {
                     page_input.setVisibility(View.GONE);
+                    backLayout.setVisibility(View.GONE);
                 }
                 return false;
+            }
+        });
+        page_input.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

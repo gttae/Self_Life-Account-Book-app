@@ -159,27 +159,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="닉네임 변경하기"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:textColor="#ed6c59"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 style="@style/Hyperlink" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이메일 변경하기"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:textColor="#ed6c59"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                style="@style/Hyperlink" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="비밀번호 변경하기"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:textColor="#ed6c59"
                 android:textAlignment="center"
@@ -190,7 +181,7 @@
                 style="@style/Hyperlink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="휴대폰 번호 변경하기"
                 android:layout_gravity="center"
                 android:textAlignment="center"
@@ -206,13 +197,13 @@
     <LinearLayout
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:background="@drawable/back"
+        android:background="@drawable/btnrectangle"
         android:elevation="5dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:textColor="#0C0200"
+        android:textColor="#FDFCFC"
          >
 
         <TextView
@@ -222,7 +213,7 @@
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="60sp"
             android:text="수정완료"
-            android:textColor="@color/Base"
+            android:textColor="#ffffff"
             android:textSize="20dp"
             android:textStyle="normal" />
     </LinearLayout>
@@ -231,6 +222,207 @@
 
 
 </LinearLayout>
+    <LinearLayout
+        android:id="@+id/backFl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone"
+        android:orientation="vertical">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/changeNickNameLayout"
+        android:layout_width="360dp"
+        android:layout_height="216dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/eotrmf"
+        android:visibility="gone"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="56sp"
+            android:text="닉니엠 변경"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="20dp"
+                android:textColor="@color/Base"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="변경할 닉네임  : "/>
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:background="@drawable/textviewback">
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/changeNickName"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnrectangle"
+            android:elevation="6dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="변경하기"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/changePwdLayout"
+        android:layout_width="360dp"
+        android:layout_height="216dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/eotrmf"
+        android:visibility="gone"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="56sp"
+            android:text="비밀번호 변경"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="16dp"
+            android:textColor="#ff0000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="64sp"
+            android:text="가입한 이메일로 비밀번호 변경 폼을 보내드립니다."/>
+        <LinearLayout
+            android:id="@+id/changePwd"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnrectangle"
+            android:elevation="6dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="변경하기"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/changePhoneNumberLayout"
+        android:layout_width="360dp"
+        android:layout_height="216dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/eotrmf"
+        android:visibility="gone"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="56sp"
+            android:text="휴대폰 번호 변경"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="20dp"
+                android:textColor="@color/Base"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="변경할 휴대폰 번호  : "/>
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:background="@drawable/textviewback">
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/changePhoneNumber"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnrectangle"
+            android:elevation="6dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="변경하기"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
     <FrameLayout
         android:layout_width="60dp"
         android:layout_height="58dp"

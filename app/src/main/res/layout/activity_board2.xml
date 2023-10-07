@@ -57,6 +57,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/BoardCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="normal"
@@ -66,9 +67,10 @@
             android:textColor="#ff0000"
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="14sp"
-            android:text="인증" />
+            android:text="category" />
 
         <TextView
+            android:id="@+id/BoardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="normal"
@@ -78,7 +80,7 @@
             android:textColor="#000000"
             android:letterSpacing="-0.05"
             android:lineSpacingExtra="14sp"
-            android:text="(인증)무지출챌린지3주차인증" />
+            android:text="title" />
 
     </LinearLayout>
     <LinearLayout
@@ -89,8 +91,8 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="360dp"
-        android:layout_height="660dp"
+        android:layout_width="match_parent"
+        android:layout_height="570dp"
         android:layout_gravity="center">
 
         <LinearLayout
@@ -125,7 +127,7 @@
                     android:textColor="#232732"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="16sp"
-                    android:text="기태폼 미쳤다 "
+                    android:text="writer "
                     android:layout_marginTop="5dp"/>
 
                 <TextView
@@ -148,7 +150,7 @@
                     android:textColor="#232732"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="16sp"
-                    android:text="2023.05.09"
+                    android:text="time"
                     android:layout_marginTop="5dp"/>
 
             </LinearLayout>
@@ -165,17 +167,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/PictureIv"
+                    android:layout_width="313dp"
+                    android:layout_height="201dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    app:srcCompat="@android:drawable/ic_menu_myplaces" />
 
                 <TextView
                     android:id="@+id/BoardTv"
-                    android:layout_width="313dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center|top"
+                    android:layout_gravity="center"
                     android:textStyle="normal"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textColor="#232732"
                     android:letterSpacing="-0.05"
-                    android:lineSpacingExtra="14sp"
+                    android:lineSpacingExtra="10sp"
                     android:text="아침 굶고 점심은 친구들 식당가서 같이 앉은 다음에 불쌍한 눈빛으로 애들 먹는거 쳐다보면서 얻어먹고 저녁은 집밥 \n 3주째 이렇게 생활함 곧 애들한테 손절 당할 듯"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp"/>
