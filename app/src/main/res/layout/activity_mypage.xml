@@ -109,8 +109,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:outlineProvider="none"
-            android:padding="5dp"
-            tools:context=".MainActivity">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/mypageid"
@@ -120,9 +119,9 @@
                 android:gravity="right"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="14sp"
-                android:text="ID  :"
+                android:text="이름  :"
                 android:textColor="#ed6c59"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
 
@@ -134,9 +133,10 @@
                 android:gravity="left"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="14sp"
-                android:text="  1906053"
+                android:layout_marginLeft="8dp"
+                android:text=""
                 android:textColor="#ed6c59"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -149,8 +149,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:outlineProvider="none"
-            android:padding="5dp"
-            tools:context=".MainActivity">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/mypagejoin"
@@ -162,7 +161,7 @@
                 android:lineSpacingExtra="14sp"
                 android:text="가입날짜  :"
                 android:textColor="#ed6c59"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
 
@@ -172,11 +171,12 @@
                 android:layout_height="30dp"
                 android:background="@null"
                 android:gravity="left"
+                android:layout_marginLeft="8dp"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="14sp"
-                android:text="  2019-03-04"
+                android:text=""
                 android:textColor="#ed6c59"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -188,8 +188,7 @@
             android:gravity="center"
             android:orientation="horizontal"
             android:outlineProvider="none"
-            android:padding="5dp"
-            tools:context=".MainActivity">
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/mypageemail"
@@ -201,7 +200,7 @@
                 android:lineSpacingExtra="14sp"
                 android:text="Email  :"
                 android:textColor="#ed6c59"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
 
@@ -211,11 +210,12 @@
                 android:layout_height="30dp"
                 android:background="@null"
                 android:gravity="left"
+                android:layout_marginLeft="8dp"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="14sp"
-                android:text="  1906053@du.ac.kr"
+                android:text=""
                 android:textColor="#ed6c59"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -235,9 +235,9 @@
 
         <Button
             android:id="@+id/question"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="#00ff0000"
+            style="@style/Hyperlink"
             android:gravity="center"
             android:outlineProvider="none"
             android:text="문의하기"
@@ -249,9 +249,9 @@
             android:layout_height="20dp"></View>
         <Button
             android:id="@+id/conditions"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="#00ff0000"
+            style="@style/Hyperlink"
             android:gravity="center"
             android:outlineProvider="none"
             android:text="앱 이용약관"
@@ -263,9 +263,9 @@
             android:layout_height="20dp"></View>
         <Button
             android:id="@+id/information"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="#00ff0000"
+            style="@style/Hyperlink"
             android:gravity="center"
             android:outlineProvider="none"
             android:text="앱 정보"
@@ -277,9 +277,9 @@
             android:layout_height="20dp"></View>
         <Button
             android:id="@+id/fix"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="#00ff0000"
+            style="@style/Hyperlink"
             android:gravity="center"
             android:outlineProvider="none"
             android:text="회원정보 수정하기"
@@ -291,9 +291,9 @@
             android:layout_height="20dp"></View>
         <Button
             android:id="@+id/out"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="#00ff0000"
+            style="@style/Hyperlink"
             android:gravity="center"
             android:outlineProvider="none"
             android:text="회원탈퇴"
@@ -316,13 +316,13 @@
 
 
     <LinearLayout
-        android:id="@+id/deleteIdLayout"
+        android:id="@+id/lossPage"
         android:layout_width="360dp"
         android:layout_height="216dp"
         android:layout_gravity="center|bottom"
         android:background="@drawable/eotrmf"
-        android:visibility="gone"
         android:layout_marginBottom="2dp"
+        android:visibility="gone"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -367,11 +367,8 @@
                 android:lineSpacingExtra="62sp"
                 android:text="회원탈퇴"/>
         </LinearLayout>
-
-
-
-
     </LinearLayout>
+
 
 
 

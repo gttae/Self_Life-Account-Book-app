@@ -20,10 +20,10 @@ public class User_Account{
 
     private String emailId;
 
-    public String getCreationDate() { return creationDate; }
+    public long getCreationDate() { return creationDate; }
 
-    public void setCreationDate(String creationDate) { this.creationDate = creationDate; }
+    public void setCreationDate(long creationDate) { this.creationDate = creationDate; }
 
-    private String creationDate; // 계정 생성일자 정보 추가
+    private long creationDate; // 계정 생성일자 정보 추가
 
 }

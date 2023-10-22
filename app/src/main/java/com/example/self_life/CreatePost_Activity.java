@@ -61,6 +61,8 @@ public class CreatePost_Activity extends AppCompatActivity {
     private long postTime;
     private static final int MAX_IMAGE_COUNT = 5;
 
+    ImageView[] imageViews = new ImageView[5];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +78,26 @@ public class CreatePost_Activity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+
+        imageViews[0] = findViewById(R.id.UserGallaryIv1);
+        imageViews[1] = findViewById(R.id.UserGallaryIv2);
+        imageViews[2] = findViewById(R.id.UserGallaryIv3);
+        imageViews[3] = findViewById(R.id.UserGallaryIv4);
+        imageViews[4] = findViewById(R.id.UserGallaryIv5);
+
+        for (int i = 0; i < imageViews.length; i++) {
+            final int index = i;
+            imageViews[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (selectedImageUris.size() > index) {
+                        // 해당 이미지뷰에 선택한 이미지를 표시
+                        imageViews[index].setImageURI(selectedImageUris.get(index));
+                    }
+                }
+            });
+        }
+
 
         galleryImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,10 +127,14 @@ public class CreatePost_Activity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         selectedImageUri = result.getData().getData();
                         // 선택한 이미지를 이미지뷰에 표시
-                        galleryImageView.setImageURI(selectedImageUri);
-                        // 이미지 Uri를 리스트에 추가
-                        selectedImageUris.add(selectedImageUri);
-                        selectedImageCount++;
+                        if (selectedImageCount < MAX_IMAGE_COUNT) {
+                            imageViews[selectedImageCount].setImageURI(selectedImageUri);
+                            // 이미지 Uri를 리스트에 추가
+                            selectedImageUris.add(selectedImageUri);
+                            selectedImageCount++;
+                        } else {
+                            Toast.makeText(CreatePost_Activity.this, "최대 5개의 이미지를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
@@ -204,8 +230,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         mDatabaseRef2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String userNametemp = dataSnapshot.child("UserInfo").child("userName").getValue(String.class);
+                String userNametemp = dataSnapshot.child("UserInfo").child("userNickName").getValue(String.class);
                 mDatabaseRef.child(postId).child("writer").setValue(userNametemp);
             }
             @Override
@@ -219,7 +244,6 @@ public class CreatePost_Activity extends AppCompatActivity {
         mDatabaseRef.child(postId).child("title").setValue(title);
         mDatabaseRef.child(postId).child("content").setValue(content);
         mDatabaseRef.child(postId).child("category").setValue(category);
-
         mDatabaseRef.child(postId).child("time").setValue(postTime);
         mDatabaseRef.child(postId).child("image").setValue(imageUrls);
         mDatabaseRef.child(postId).child("comment").setValue("");
