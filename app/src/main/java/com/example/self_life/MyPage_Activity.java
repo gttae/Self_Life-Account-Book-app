@@ -9,10 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,10 +36,9 @@ public class MyPage_Activity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     private BottomNavigationView bottomNavigationView;
     private Button modifyInfo, secession,appInfo, appcond, question;
-    private LinearLayout backLayout,droppage;
+    private LinearLayout backLayout,droppage,deleteId;
     private TextView logout, userNickName, userName, userEmail, userJoin;
     private String userId;
-
 
 
     @Override
@@ -55,6 +58,7 @@ public class MyPage_Activity extends AppCompatActivity {
         userJoin = findViewById(R.id.mypagejoins);
         backLayout = findViewById(R.id.backFl);
         droppage = findViewById(R.id.lossPage);
+        deleteId = findViewById(R.id.deleteId);
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         userId = firebaseUser.getUid();
@@ -69,7 +73,6 @@ public class MyPage_Activity extends AppCompatActivity {
                 String userEmailtemp = dataSnapshot.child("UserInfo").child("userEmail").getValue(String.class);
                 long userJointemp = dataSnapshot.child("UserInfo").child("CreateTime").getValue(Long.class);
                 Date currentDate = new Date(userJointemp);
-                // SimpleDateFormat을 사용하여 연월일 형식으로 변환
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String formattedDate = sdf.format(currentDate);
                 userNickName.setText(userNickNametemp);
@@ -158,14 +161,83 @@ public class MyPage_Activity extends AppCompatActivity {
                 return false;
             }
         });
+        appInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 앱 정보를 표시하는 Dialog
+                showAppInfoDialog();
+            }
+        });
+
+        appcond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 앱 이용약관을 표시하는 Dialog
+                showAppConditionsDialog();
+            }
+        });
 
         droppage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mDatabaseRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // 데이터 삭제가 성공한 경우
+                                    // Firebase Authentication에서 사용자 삭제
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    if (user != null) {
+                                        user.delete()
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            // 사용자 삭제가 성공한 경우
+                                                            Toast.makeText(MyPage_Activity.this, "회원 탈퇴가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                                        } else {
+                                                            // 사용자 삭제가 실패한 경우
+                                                            Toast.makeText(MyPage_Activity.this, "회원 탈퇴 실패", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+                                    }
+                                } else {
+                                    // 데이터 삭제가 실패한 경우
+                                    Toast.makeText(MyPage_Activity.this, "데이터 삭제 실패", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
 
+    }
+    private void showAppInfoDialog() {
+        // Dialog 레이아웃 설정
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_appinfo, null);
+
+        // Dialog 생성 및 내용 설정
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setTitle("앱 정보");
+        dialogBuilder.setPositiveButton("확인", null); // 확인 버튼 추가
+
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+    private void showAppConditionsDialog() {
+        // Dialog 레이아웃 설정
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_appuse, null);
+
+        // Dialog 생성 및 내용 설정
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setTitle("앱 이용약관");
+        dialogBuilder.setPositiveButton("확인", null); // 확인 버튼 추가
+
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.show();
     }
 
 }

@@ -21,6 +21,7 @@
 
             <!-- Person Image -->
             <ImageView
+                android:id="@+id/mypageBtn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
@@ -63,6 +64,7 @@
         android:background="@drawable/backback">
 
         <EditText
+            android:id="@+id/questionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
@@ -83,6 +85,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/questionContent"
             android:layout_width="260dp"
             android:layout_height="380dp"
             android:layout_gravity="center"
@@ -94,17 +97,27 @@
 
         </EditText>
     </LinearLayout>
-    <Button
+    <LinearLayout
         android:id="@+id/Btn1"
         android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:gravity="center"
         android:background="@drawable/back"
         android:textColor="@color/Base"
         android:textSize="20dp"
-        android:text="작성완료">
-    </Button>
+        android:elevation="6dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="작성완료"
+            android:textSize="24dp"
+            android:layout_gravity="center"
+            android:textColor="@color/Base"/>
+
+    </LinearLayout>
 
 </LinearLayout>
     <FrameLayout

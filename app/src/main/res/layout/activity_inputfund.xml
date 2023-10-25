@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
 
                 <LinearLayout
@@ -111,7 +111,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="27dp"
                         android:background="@drawable/edittext_underline"
-                        android:text="2023-05-03 (수)"
+                        android:text="날짜 선택"
                         android:textColor="#ed6c59"
                         android:gravity="center"/>
 
@@ -134,12 +134,14 @@
                         android:textStyle="normal"
                         android:text="분류" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/incomeCategoryEt"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="12dp"
+                        android:textSize="18dp"
                         android:background="@drawable/line_orange" />
 
                 </LinearLayout>
@@ -156,7 +158,7 @@
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="normal"
                         android:text="금액" />
 
@@ -164,8 +166,10 @@
                         android:id="@+id/incomeFundEt"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="12dp"
+                        android:textSize="18dp"
                         android:background="@drawable/edittext_underline" />
 
                 </LinearLayout>
@@ -190,8 +194,10 @@
                         android:id="@+id/incomeMemoEt"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="12dp"
+                        android:textSize="18dp"
                         android:background="@drawable/edittext_underline" />
 
                 </LinearLayout>
@@ -204,6 +210,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/incomeRbtn1"
                         android:layout_weight="1"
                         android:text="고정(실수령)"
                         android:layout_width="0dp"
@@ -211,6 +218,7 @@
                         android:textSize="11dp" />
 
                     <RadioButton
+                        android:id="@+id/incomeRbtn2"
                         android:layout_weight="1"
                         android:text="고정(계획)"
                         android:layout_width="0dp"
@@ -218,6 +226,7 @@
                         android:textSize="12dp" />
 
                     <RadioButton
+                        android:id="@+id/incomeRbtn3"
                         android:layout_weight="1"
                         android:text="유동"
                         android:layout_width="0dp"
@@ -406,12 +415,17 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+
+            <!-- 수입지출레이아웃 경계-->
+
+
             <LinearLayout
                 android:id="@+id/expenseLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -435,9 +449,9 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="27dp"
                         android:background="@drawable/edittext_underline"
-                        android:text="2023-05-03 (수)"
-                        android:textColor="#ed6c59"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="날짜 선택"
+                        android:textColor="#ed6c59" />
 
                 </LinearLayout>
 
@@ -455,16 +469,18 @@
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="normal"
                         android:text="분류" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/expenseCategoryEt"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="12dp"
+                        android:textSize="18dp"
+                        android:gravity="center"
                         android:background="@drawable/line_orange" />
 
                 </LinearLayout>
@@ -491,6 +507,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="12dp"
+                        android:textSize="18dp"
+                        android:gravity="center"
                         android:background="@drawable/edittext_underline" />
 
                 </LinearLayout>
@@ -517,6 +535,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="12dp"
+                        android:textSize="18dp"
+                        android:gravity="center"
                         android:background="@drawable/edittext_underline" />
 
                 </LinearLayout>
@@ -528,6 +548,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/expenseRbtn1"
                         android:layout_weight="1"
                         android:text="고정(실사용)"
                         android:layout_width="0dp"
@@ -538,6 +559,7 @@
                         />
 
                     <RadioButton
+                        android:id="@+id/expenseRbtn2"
                         android:layout_weight="1"
                         android:text="고정(계획)"
                         android:layout_width="0dp"
@@ -545,6 +567,7 @@
                         android:textSize="12sp" />
 
                     <RadioButton
+                        android:id="@+id/expenseRbtn3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -840,7 +863,7 @@
             </LinearLayout>
         </FrameLayout>
         <LinearLayout
-            android:id="@+id/incomeSaveBtn"
+            android:id="@+id/SaveBtn"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"

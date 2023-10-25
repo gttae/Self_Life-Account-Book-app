@@ -72,6 +72,9 @@
         <activity
             android:name=".Question_Activity"
             android:exported="true"/>
+        <activity
+            android:name=".Question_input_Activity"
+            android:exported="true"/>
     </application>
 
 </manifest>

@@ -73,6 +73,7 @@
 </LinearLayout>
 
 <LinearLayout
+    android:id="@+id/input_question"
     android:layout_width="180dp"
     android:layout_height="60dp"
     android:layout_marginTop="20dp"
@@ -132,7 +133,7 @@
         android:layout_height="52dp"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/plusbottnreal" >
+        android:background="@drawable/plubottonback" >
         <FrameLayout
             android:layout_width="40dp"
             android:layout_height="40dp"

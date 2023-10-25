@@ -167,6 +167,7 @@
 
             <TextView
                 style="@style/Hyperlink"
+                android:id="@+id/changeNickNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -178,6 +179,7 @@
 
             <TextView
                 style="@style/Hyperlink"
+                android:id="@+id/changePwdTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -189,6 +191,7 @@
 
             <TextView
                 style="@style/Hyperlink"
+                android:id="@+id/changePhoneNumberTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -271,9 +274,11 @@
                 android:lineSpacingExtra="62sp"
                 android:text="변경할 닉네임  : "/>
             <EditText
+                android:id="@+id/changeNickNameEt"
                 android:layout_marginLeft="10dp"
                 android:layout_width="160dp"
                 android:layout_height="30dp"
+                android:gravity="center"
                 android:background="@drawable/textviewback">
             </EditText>
         </LinearLayout>
@@ -396,9 +401,11 @@
                 android:lineSpacingExtra="62sp"
                 android:text="변경할 휴대폰 번호  : "/>
             <EditText
+                android:id="@+id/changePhoneNumberEt"
                 android:layout_marginLeft="10dp"
                 android:layout_width="160dp"
                 android:layout_height="30dp"
+                android:gravity="center"
                 android:background="@drawable/textviewback">
             </EditText>
         </LinearLayout>

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class Question_Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
+    private LinearLayout input_question;
     private ExpandableListView expandableListView;
     private ExpandableListAdapter expandableListAdapter;
     private List<String> listDataHeader;
@@ -28,7 +30,7 @@ public class Question_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
-
+        input_question = findViewById(R.id.input_question);
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -51,6 +53,14 @@ public class Question_Activity extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        input_question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Question_Activity.this, Question_input_Activity.class);
+                startActivity(intent);
             }
         });
 
