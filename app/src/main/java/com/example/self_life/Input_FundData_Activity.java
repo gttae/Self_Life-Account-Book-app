@@ -26,7 +26,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Input_FundData_Activity extends AppCompatActivity {
 
@@ -208,55 +211,84 @@ public class Input_FundData_Activity extends AppCompatActivity {
                 if ((isEmptyField(incomeDayEt.getText().toString()) && isEmptyField(incomeCategoryEt.getText().toString()) && isEmptyField(incomeFundEt.getText().toString()) && isEmptyField(incomeMemoEt.getText().toString())) || (isEmptyField(expenseDayEt.getText().toString()) && isEmptyField(expenseCategoryEt.getText().toString()) && isEmptyField(expenseFundEt.getText().toString()) && isEmptyField(expenseMemoEt.getText().toString()))) {
                     Toast.makeText(Input_FundData_Activity.this, "모든 내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
-                        long currentTimeMillis = System.currentTimeMillis();
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.setTimeInMillis(currentTimeMillis);
-                        int month = calendar.get(Calendar.MONTH) + 1;
-                        String monthString = month + "월";
-                        String kind = "";
-                        if (incomeLl.getVisibility() == View.VISIBLE) {
-                            String incomeCategory = "";
-                            if(incomeRbtn1.isChecked()){
-                                incomeCategory = incomeRbtn1.getText().toString();
-                            }
-                            if(incomeRbtn2.isChecked()){
-                                incomeCategory = incomeRbtn2.getText().toString();
-                            }
-                            if(incomeRbtn3.isChecked()){
-                                incomeCategory = incomeRbtn3.getText().toString();
-                            }
-                            kind = "수입";
-                            String fundName = monthString + kind;
-                            String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
-                            mDatabaseRef.child("FundData").child(fundKey).child("Day").setValue(incomeDayEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("FundDivision").setValue(incomeCategoryEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("Price").setValue(incomeFundEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("Description").setValue(incomeMemoEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("Category").setValue(incomeCategory);
-                            Toast.makeText(Input_FundData_Activity.this, "입력이 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
-                        } else if (expenseLl.getVisibility() == View.VISIBLE) {
-                            String expenseCategory = "";
-                            if(expenseRbtn1.isChecked()){
-                                expenseCategory = expenseRbtn1.getText().toString();
+                            if (incomeLl.getVisibility() == View.VISIBLE) {
+                                String incomeCategory = "";
+                                String dateString =incomeDayEt.getText().toString();
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-d");
+                                try {
+                                    Date date = dateFormat.parse(dateString);
+                                    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+                                    SimpleDateFormat monthFormat = new SimpleDateFormat("M");
+                                    SimpleDateFormat dayFormat = new SimpleDateFormat("d");
+                                    String year = yearFormat.format(date);
+                                    String month = monthFormat.format(date);
+                                    String day = dayFormat.format(date);
+                                    String monthString = month + "월";
+                                    String kind = "";
+                                    if (incomeRbtn1.isChecked()) {
+                                        incomeCategory = incomeRbtn1.getText().toString();
+                                    }
+                                    if (incomeRbtn2.isChecked()) {
+                                        incomeCategory = incomeRbtn2.getText().toString();
+                                    }
+                                    if (incomeRbtn3.isChecked()) {
+                                        incomeCategory = incomeRbtn3.getText().toString();
+                                    }
+                                    kind = "수입";
+                                    String fundName = monthString + kind;
+                                    String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Year").setValue(year);
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Month").setValue(month);
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Day").setValue(day);
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("FundDivision").setValue(incomeCategoryEt.getText().toString());
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Price").setValue(incomeFundEt.getText().toString());
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Description").setValue(incomeMemoEt.getText().toString());
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Category").setValue(incomeCategory);
+                                    Toast.makeText(Input_FundData_Activity.this, "입력이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                }catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+
+                            } else if (expenseLl.getVisibility() == View.VISIBLE) {
+                                String expenseCategory = "";
+                                String dateString =expenseDayEt.getText().toString();
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-d");
+                                try {
+                                    Date date = dateFormat.parse(dateString);
+                                    SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+                                    SimpleDateFormat monthFormat = new SimpleDateFormat("M");
+                                    SimpleDateFormat dayFormat = new SimpleDateFormat("d");
+                                    String year = yearFormat.format(date);
+                                    String month = monthFormat.format(date);
+                                    String day = dayFormat.format(date);
+                                    String monthString = month + "월";
+                                    String kind = "";
+                                    if (expenseRbtn1.isChecked()) {
+                                        expenseCategory = expenseRbtn1.getText().toString();
+                                    }
+                                    if (expenseRbtn2.isChecked()) {
+                                        expenseCategory = expenseRbtn2.getText().toString();
+                                    }
+                                    if (expenseRbtn3.isChecked()) {
+                                        expenseCategory = expenseRbtn3.getText().toString();
+                                    }
+                                    kind = "지출";
+                                    String fundName = monthString + kind;
+                                    String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Year").setValue(year);
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Month").setValue(month);
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Day").setValue(day);
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("FundDivision").setValue(expenseCategoryEt.getText().toString());
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Price").setValue(expenseFundEt.getText().toString());
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Description").setValue(expenseMemoEt.getText().toString());
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Category").setValue(expenseCategory);
+                                    Toast.makeText(Input_FundData_Activity.this, "입력이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                }catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                            if(expenseRbtn2.isChecked()){
-                                expenseCategory = expenseRbtn2.getText().toString();
-                            }
-                            if(expenseRbtn3.isChecked()){
-                                expenseCategory = expenseRbtn3.getText().toString();
-                            }
-                            kind = "지출";
-                            String fundName = monthString + kind;
-                            String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
-                            mDatabaseRef.child("FundData").child(fundKey).child("Day").setValue(expenseDayEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("FundDivision").setValue(expenseCategoryEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("Price").setValue(expenseFundEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("Description").setValue(expenseMemoEt.getText().toString());
-                            mDatabaseRef.child("FundData").child(fundKey).child("Category").setValue(expenseCategory);
-                            Toast.makeText(Input_FundData_Activity.this, "입력이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                         }
-                }
             }
         });
     }

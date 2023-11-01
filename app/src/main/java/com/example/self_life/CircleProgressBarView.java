@@ -1,5 +1,7 @@
 package com.example.self_life;
 
+import static com.example.self_life.YearMonth_Value.getCurrentMonth;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,44 +10,134 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class CircleProgressBarView extends View {
 
-    private int segmentCount = 5;
-    private float[] segmentValues = {20, 20, 20, 20, 20}; // 각 구간의 값 (총 합은 100이 되어야 함)
-    private float[] usedValues = {5, 15, 7, 20, 5}; // 각 구간에서 사용된 값
+    private int segmentCount = 11;
+    private float[] segmentValues = new float[segmentCount];
+    private float[] usedValues = new float[segmentCount];
 
     private Paint[] usedPaints;
     private Paint remainingPaint;
     private RectF rectF;
 
-    private int[] colors = {Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW, Color.MAGENTA}; // 다양한 색상 배열
+    private int[] colors = {Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.DKGRAY, Color.WHITE, Color.BLACK, Color.CYAN, Color.RED, Color.GRAY};
 
     public CircleProgressBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
+        fetchDataFromFirebase(); // Firebase에서 데이터 가져오기
     }
 
     public CircleProgressBarView(Context context) {
         super(context);
         init();
+        fetchDataFromFirebase(); // Firebase에서 데이터 가져오기
     }
 
     private void init() {
-        int grayColor = Color.parseColor("#80CCCCCC"); // 50% 투명한 회색
+        int grayColor = Color.parseColor("#80CCCCCC");
         remainingPaint = new Paint();
         remainingPaint.setColor(grayColor);
-        remainingPaint.setStyle(Paint.Style.STROKE); // 원형에서 링 형태로 변경
+        remainingPaint.setStyle(Paint.Style.STROKE);
         remainingPaint.setStrokeWidth(10);
 
         usedPaints = new Paint[segmentCount];
         for (int i = 0; i < segmentCount; i++) {
             usedPaints[i] = new Paint();
-            usedPaints[i].setColor(colors[i % colors.length]); // 다양한 색상 배열에서 색상 선택
-            usedPaints[i].setStyle(Paint.Style.STROKE); // 원형에서 링 형태로 변경
-            usedPaints[i].setStrokeWidth(10); // 링 두께 조절
+            usedPaints[i].setColor(colors[i % colors.length]);
+            usedPaints[i].setStyle(Paint.Style.STROKE);
+            usedPaints[i].setStrokeWidth(10);
         }
 
         rectF = new RectF();
+    }
+
+    private void fetchDataFromFirebase() {
+        // Firebase Database 인스턴스 생성
+        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+        String userId;
+        userId = firebaseUser.getUid();
+        String monthString = getCurrentMonth() + "월";
+        String monthexpense = monthString + "지출";
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference fundDataRef = database.getReference("self_life/UserData/"+userId+"/FundData/"+monthexpense);
+
+        fundDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // 배열 초기화
+                for (int i = 0; i < segmentCount; i++) {
+                    segmentValues[i] = 0;
+                    usedValues[i] = 0;
+                }
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                    float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
+                    String category = snapshot.child("Category").getValue(String.class);
+
+                    // fundDivision을 기반으로 해당 세그먼트에 가격 할당
+                    int segmentIndex = getSegmentIndexByDivision(fundDivision);
+                    if (segmentIndex != -1) {
+                        if ("고정(계획)".equals(category)) {
+                            segmentValues[segmentIndex] += price;
+                        } else if ("고정(실사용)".equals(category) || "유동".equals(category)) {
+                            usedValues[segmentIndex] += price;
+                        }
+                    }
+                }
+
+                // 새 데이터로 뷰 업데이트
+                updateData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 여기서 오류 처리
+            }
+        });
+    }
+
+    private int getSegmentIndexByDivision(String fundDivision) {
+        // fundDivision을 올바른 세그먼트 인덱스로 매핑합니다.
+        switch (fundDivision) {
+            case "식비":
+                return 0;
+            case "교통/차량":
+                return 1;
+            case "문화생활":
+                return 2;
+            case "마트":
+                return 3;
+            case "패션/미용":
+                return 4;
+            case "생활용품":
+                return 5;
+            case "주거/통신":
+                return 6;
+            case "건강":
+                return 7;
+            case "교육":
+                return 8;
+            case "경조사/회비":
+                return 9;
+            default:
+                return 10;
+        }
+    }
+
+    private void updateData() {
+        // 뷰를 다시 그리도록 invalidate()를 호출하여 업데이트된 데이터로 뷰를 그립니다.
+        invalidate();
     }
 
     @Override
@@ -59,21 +151,30 @@ public class CircleProgressBarView extends View {
         float centerY = height / 2f;
         float radius = Math.min(width, height) / 2f - 20; // 중앙으로부터의 거리 조정
 
-        float totalValue = 100; // 총 값은 100이라 가정
-        float startAngle = -90; // 시작 각도
+        float totalSegmentValue = calculateArraySum(segmentValues);
+        float totalValue = totalSegmentValue;
+        float startAngle = -90;
 
         for (int i = 0; i < segmentCount; i++) {
             float remainingSweepAngle = (segmentValues[i] / totalValue) * 360;
             float usedSweepAngle = (usedValues[i] / segmentValues[i]) * remainingSweepAngle;
 
-            // Draw remaining part
+            // 남은 부분 그리기
             rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
-            canvas.drawArc(rectF, startAngle, remainingSweepAngle, false, remainingPaint); // 라인 스타일 변경
+            canvas.drawArc(rectF, startAngle, remainingSweepAngle, false, usedPaints[i]);
 
-            // Draw used part
-            canvas.drawArc(rectF, startAngle, usedSweepAngle, false, usedPaints[i]); // 라인 스타일 변경
+            // 사용된 부분 그리기
+            canvas.drawArc(rectF, startAngle, usedSweepAngle, false, remainingPaint);
 
-            startAngle += remainingSweepAngle; // 다음 구간의 시작 각도를 조정
+            startAngle += remainingSweepAngle; // 다음 세그먼트의 시작 각도 조정
         }
+    }
+
+    public static float calculateArraySum(float[] array) {
+        float sum = 0;
+        for (float value : array) {
+            sum += value;
+        }
+        return sum;
     }
 }

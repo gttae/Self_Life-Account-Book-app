@@ -1,5 +1,7 @@
 package com.example.self_life;
 
+import static com.example.self_life.YearMonth_Value.getCurrentMonth;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,10 +10,18 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class CircleProgressBarView3 extends View {
 
     private int segmentCount = 2;
-    private float[] segmentValues = {73,27}; // 각 구간의 값 (총 합은 100이 되어야 함)
+    private float[] segmentValues = new float[segmentCount];
 
     private Paint[] segmentPaints;
     private RectF rectF;
@@ -21,11 +31,13 @@ public class CircleProgressBarView3 extends View {
     public CircleProgressBarView3(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
+        fetchDataFromFirebase(); // Firebase에서 데이터 가져오기
     }
 
     public CircleProgressBarView3(Context context) {
         super(context);
         init();
+        fetchDataFromFirebase(); // Firebase에서 데이터 가져오기
     }
 
     private void init() {
@@ -39,6 +51,68 @@ public class CircleProgressBarView3 extends View {
         rectF = new RectF();
     }
 
+    private void fetchDataFromFirebase() {
+        // Firebase Database 인스턴스 생성
+        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+        String userId = firebaseUser.getUid();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String monthString = getCurrentMonth() + "월";
+        DatabaseReference incomeRef = database.getReference("self_life/UserData/" + userId + "/FundData/"+monthString+"수입");
+        DatabaseReference expenseRef = database.getReference("self_life/UserData/" + userId + "/FundData/"+monthString+"지출");
+        incomeRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                float incomeTotal = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String category = snapshot.child("Category").getValue(String.class);
+                    if("고정(계획)".equals(category)) {
+                        float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
+                        incomeTotal += price;
+                    }
+                }
+                segmentValues[0] = incomeTotal;
+
+                // 데이터 업데이트
+                updateData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 처리 중 에러가 발생한 경우
+            }
+        });
+
+        expenseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                float expenseTotal = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String category = snapshot.child("Category").getValue(String.class);
+                    if("고정(실사용)".equals(category)) {
+                        float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
+                        expenseTotal += price;
+                    }
+                }
+                segmentValues[1] = expenseTotal;
+
+                // 데이터 업데이트
+                updateData();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 처리 중 에러가 발생한 경우
+            }
+        });
+    }
+
+    private void updateData() {
+        // 데이터를 기반으로 segmentValues를 업데이트합니다.
+        // 이후 View를 다시 그리도록 invalidate()를 호출합니다.
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -50,7 +124,7 @@ public class CircleProgressBarView3 extends View {
         float centerY = height / 2f;
         float radius = Math.min(width, height) / 2f - 15;
 
-        float totalValue = 100; // 총 값은 100이라 가정
+        float totalValue = segmentValues[0] + segmentValues[1]; // 총 값은 두 세그먼트의 합
         float startAngle = -90; // 시작 각도
 
         for (int i = 0; i < segmentCount; i++) {
@@ -59,7 +133,7 @@ public class CircleProgressBarView3 extends View {
             rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
             canvas.drawArc(rectF, startAngle, sweepAngle, true, segmentPaints[i]);
 
-            startAngle += sweepAngle; // 다음 구간의 시작 각도를 조정
+            startAngle += sweepAngle; // 다음 세그먼트의 시작 각도를 조정
         }
     }
 }
