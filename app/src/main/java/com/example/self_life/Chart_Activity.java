@@ -103,6 +103,14 @@ public class Chart_Activity extends AppCompatActivity {
             }
         });
 
+        modifyFund.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Chart_Activity.this, Modify_FundList_Activity.class);
+                startActivity(intent);
+            }
+        });
+
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         String userId;

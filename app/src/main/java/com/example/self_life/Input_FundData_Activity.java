@@ -276,6 +276,7 @@ public class Input_FundData_Activity extends AppCompatActivity {
                                     kind = "지출";
                                     String fundName = monthString + kind;
                                     String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
+                                    mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("FundId").setValue(fundKey);
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Year").setValue(year);
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Month").setValue(month);
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Day").setValue(day);

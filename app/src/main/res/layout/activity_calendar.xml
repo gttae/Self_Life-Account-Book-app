@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="360dp"
-    android:layout_height="760dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     >
 <LinearLayout
-    android:layout_width="360dp"
-    android:layout_height="760dp"
+    android:id="@+id/baseLl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     >
 
@@ -302,6 +303,258 @@
 
 </LinearLayout>
     <FrameLayout
+        android:id="@+id/calendarPlus"
+        android:layout_width="340dp"
+        android:layout_height="580dp"
+        android:layout_gravity="center"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/boxback2"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:textStyle="normal"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.04"
+                android:lineSpacingExtra="62sp"
+                android:text="내  역">
+            </TextView>
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="156dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/back_black"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="지출  :  "
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:lineHeight="80sp"
+                        android:textAlignment="center">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="######"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:lineHeight="80sp"
+                        android:textAlignment="center"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="156dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/back_black"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="수입  :  "
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:lineHeight="80sp"
+                        android:textAlignment="center">
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="######"
+                        android:textSize="14dp"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:lineHeight="80sp"
+                        android:textAlignment="center"/>
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="314dp"
+                android:layout_height="166dp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="312dp"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:background="#0040FF"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="20dp"
+                        android:text=" 식사)점심식사"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="######"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="12:45PM"
+                        android:layout_marginLeft="75dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="312dp"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:background="#0040FF"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="20dp"
+                        android:text=" 식사)점심식사"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="######"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="12:45PM"
+                        android:layout_marginLeft="75dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="312dp"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:background="#0040FF"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="20dp"
+                        android:text=" 식사)점심식사"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="######"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="12:45PM"
+                        android:layout_marginLeft="75dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="312dp"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:background="#FA5858"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="20dp"
+                        android:text=" 식사)점심식사"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="######"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="12:45PM"
+                        android:layout_marginLeft="75dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="312dp"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:background="#0040FF"
+                    android:layout_marginTop="3dp"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="20dp"
+                        android:text=" 식사)점심식사"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="48dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="######"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="12:45PM"
+                        android:layout_marginLeft="75dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+    <FrameLayout
         android:layout_width="60dp"
         android:layout_height="58dp"
         android:layout_gravity="center|bottom"
@@ -336,6 +589,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/plusbotton" />
     <FrameLayout
+        android:id="@+id/calendarPlusLayout"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_gravity="center|bottom"

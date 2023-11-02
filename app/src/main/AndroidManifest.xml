@@ -81,6 +81,9 @@
         <activity
             android:name=".Modify_model_Activity"
             android:exported="true"/>
+        <activity
+            android:name=".Modify_FundList_Activity"
+            android:exported="true"/>
     </application>
 
 </manifest>
