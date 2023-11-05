@@ -1,5 +1,6 @@
 package com.example.self_life;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class fundAdapter extends RecyclerView.Adapter<fundAdapter.ViewHoler> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull fundAdapter.ViewHoler holder, int position) {
+    public void onBindViewHolder(@NonNull fundAdapter.ViewHoler holder, @SuppressLint("RecyclerView") int position) {
         final Fund_List fundData = fundlist.get(position);
         holder.fundId.setText(fundData.getFundId());
         holder.fundKind.setText(fundData.getFundKind());
@@ -47,6 +48,15 @@ public class fundAdapter extends RecyclerView.Adapter<fundAdapter.ViewHoler> {
         holder.fundMemo.setText(fundData.getFundMemo());
         holder.fundValue.setText(fundData.getFundValue());
         holder.fundDay.setText(fundData.getFundDay());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener != null){
+                    String fundId = fundData.getFundId();
+                    listener.onItemClick(position,fundId);
+                }
+            }
+        });
     }
 
     @Override

@@ -83,6 +83,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/smallExpense"
                 android:layout_width="156dp"
                 android:layout_height="30dp"
                 android:background="@drawable/back_black"
@@ -100,6 +101,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/smallExpenseValue"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:text="######"
@@ -110,6 +112,7 @@
                     android:textAlignment="center"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/smallIncome"
                 android:layout_width="156dp"
                 android:layout_height="30dp"
                 android:background="@drawable/back_black"
@@ -127,6 +130,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/smallIncomeValue"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:text="######"
@@ -136,167 +140,16 @@
                     android:lineHeight="80sp"
                     android:textAlignment="center"/>
             </LinearLayout>
-
-
-
-
-
-
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="314dp"
-            android:layout_height="166dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/DayFundList"
+            android:layout_marginTop="6dp"
+            android:layout_width="310dp"
+            android:layout_height="160dp"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            >
+        </androidx.recyclerview.widget.RecyclerView>
 
-            <LinearLayout
-                android:layout_width="312dp"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:background="#0040FF"
-                android:layout_marginTop="3dp"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text=" 식사)점심식사"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="######"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="56dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:text="12:45PM"
-                    android:layout_marginLeft="75dp"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="312dp"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:background="#0040FF"
-                android:layout_marginTop="3dp"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text=" 식사)점심식사"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="######"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="56dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:text="12:45PM"
-                    android:layout_marginLeft="75dp"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="312dp"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:background="#0040FF"
-                android:layout_marginTop="3dp"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text=" 식사)점심식사"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="######"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="56dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:text="12:45PM"
-                    android:layout_marginLeft="75dp"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="312dp"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:background="#FA5858"
-                android:layout_marginTop="3dp"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text=" 식사)점심식사"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="######"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="56dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:text="12:45PM"
-                    android:layout_marginLeft="75dp"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="312dp"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:background="#0040FF"
-                android:layout_marginTop="3dp"
-                android:layout_gravity="center">
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="20dp"
-                    android:text=" 식사)점심식사"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="48dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="######"
-                    android:textColor="@color/white"/>
-                <TextView
-                    android:layout_width="56dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:text="12:45PM"
-                    android:layout_marginLeft="75dp"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-
-
-
-
-
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -309,6 +162,7 @@
         android:layout_gravity="center"
         android:visibility="gone">
         <LinearLayout
+            android:id="@+id/calendarPlusLl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -320,7 +174,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-
                 android:textStyle="normal"
                 android:textSize="18dp"
                 android:textColor="#000000"
@@ -336,6 +189,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/bigExpense"
                     android:layout_width="156dp"
                     android:layout_height="30dp"
                     android:background="@drawable/back_black"
@@ -353,6 +207,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/bigExpenseValue"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:text="######"
@@ -363,6 +218,7 @@
                         android:textAlignment="center"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/bigIncome"
                     android:layout_width="156dp"
                     android:layout_height="30dp"
                     android:background="@drawable/back_black"
@@ -380,6 +236,7 @@
                     </TextView>
 
                     <TextView
+                        android:id="@+id/bigIncomeValue"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:text="######"
@@ -389,167 +246,19 @@
                         android:lineHeight="80sp"
                         android:textAlignment="center"/>
                 </LinearLayout>
-
-
-
-
-
-
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="314dp"
-                android:layout_height="166dp"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="312dp"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:background="#0040FF"
-                    android:layout_marginTop="3dp"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="20dp"
-                        android:text=" 식사)점심식사"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="48dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:text="######"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:text="12:45PM"
-                        android:layout_marginLeft="75dp"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="312dp"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:background="#0040FF"
-                    android:layout_marginTop="3dp"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="20dp"
-                        android:text=" 식사)점심식사"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="48dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:text="######"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:text="12:45PM"
-                        android:layout_marginLeft="75dp"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="312dp"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:background="#0040FF"
-                    android:layout_marginTop="3dp"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="20dp"
-                        android:text=" 식사)점심식사"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="48dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:text="######"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:text="12:45PM"
-                        android:layout_marginLeft="75dp"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="312dp"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:background="#FA5858"
-                    android:layout_marginTop="3dp"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="20dp"
-                        android:text=" 식사)점심식사"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="48dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:text="######"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:text="12:45PM"
-                        android:layout_marginLeft="75dp"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="312dp"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:background="#0040FF"
-                    android:layout_marginTop="3dp"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="20dp"
-                        android:text=" 식사)점심식사"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="48dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:text="######"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="56dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:text="12:45PM"
-                        android:layout_marginLeft="75dp"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
-
-
-
-
-
-
-            </LinearLayout>
+    <ScrollView
+        android:layout_width="310dp"
+        android:layout_height="480dp"
+        android:layout_marginTop="6dp"
+        android:layout_gravity="center">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/BigFundList"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
         </LinearLayout>
 

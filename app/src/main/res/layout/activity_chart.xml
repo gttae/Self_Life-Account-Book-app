@@ -187,11 +187,118 @@
             android:textColor="#232732"
             android:textSize="16sp"
             android:textStyle="normal"
-            android:text="지난 달 대비 지출량" />
-
-
-
-
+            android:text="계획 대비 지출량" />
+        <ScrollView
+            android:layout_width="300dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/expensePlan1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+                <TextView
+                    android:id="@+id/expensePlan11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="text"
+                    android:textColor="#232732"
+                    android:textSize="16sp"
+                    android:textStyle="normal"/>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
     

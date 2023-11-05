@@ -17,13 +17,24 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     private Context context;
     private List<Board_List> boardList;
     private OnItemClickListener listener;
+    private OnItemLongClickListener longClickListener;
 
     public interface OnItemClickListener {
         void onItemClick(int position, String postId);
+
     }
+
+    public interface OnItemLongClickListener {
+        void onItemLongClick(int position, String postId);
+    }
+
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener longClickListener) {
+        this.longClickListener = (OnItemLongClickListener) longClickListener;
     }
 
     public BoardAdapter(Context context, List<Board_List> boardList) {
@@ -56,6 +67,18 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
                     listener.onItemClick(position, postId);
                 }
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (longClickListener != null) {
+                    // postId를 가져와서 전달
+                    String postId = boardData.getPostId();
+                    longClickListener.onItemLongClick(position, postId);
+                }
+                return true; // 롱클릭 이벤트를 소비함
             }
         });
     }

@@ -37,6 +37,7 @@ public class Chart_Activity extends AppCompatActivity {
     private Button recommendChart;
     private int segmentCount = 11;
     private float[] segmentValues = new float[segmentCount];
+
     private float[] usedValues = new float[6];
     private float totalsegmentValues;
 

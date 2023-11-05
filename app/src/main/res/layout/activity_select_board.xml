@@ -235,8 +235,64 @@
 
             <LinearLayout
                 android:layout_width="360dp"
-                android:layout_height="20dp"
-                android:background="#f1f1f8">
+                android:layout_height="30dp"
+                android:background="#f1f1f8"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:background="@drawable/a"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="수 정"
+                        android:textSize="16dp"
+                        android:textStyle="normal"
+                        android:textColor="#232732"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="10sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/reportThisPost"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:background="@drawable/a"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="신 고"
+                        android:textSize="16dp"
+                        android:textStyle="normal"
+                        android:textColor="#232732"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="10sp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:background="@drawable/a"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="삭 제"
+                        android:textSize="16dp"
+                        android:textStyle="normal"
+                        android:textColor="#232732"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="10sp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 

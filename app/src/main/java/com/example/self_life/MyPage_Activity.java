@@ -35,7 +35,7 @@ public class MyPage_Activity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
     private BottomNavigationView bottomNavigationView;
-    private Button modifyInfo, secession,appInfo, appcond, question;
+    private Button modifyInfo, secession,appInfo, appcond, question, reportPost, reportComment;
     private LinearLayout backLayout,droppage,deleteId;
     private TextView logout, userNickName, userName, userEmail, userJoin;
     private String userId;
@@ -52,6 +52,8 @@ public class MyPage_Activity extends AppCompatActivity {
         question = findViewById(R.id.question);
         appInfo = findViewById(R.id.information);
         appcond = findViewById(R.id.conditions);
+        reportPost = findViewById(R.id.reportPost);
+        reportComment = findViewById(R.id.reportComment);
         userNickName = findViewById(R.id.userNameTv);
         userName = findViewById(R.id.mypageids);
         userEmail = findViewById(R.id.mypageemails);
@@ -63,6 +65,11 @@ public class MyPage_Activity extends AppCompatActivity {
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         userId = firebaseUser.getUid();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId);
+
+        if(userId.equals("4UgQCxYnrvWjwZTZkiN6JS0ur8D3")){
+            reportPost.setVisibility(View.VISIBLE);
+            reportComment.setVisibility(View.VISIBLE);
+        }
 
         mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

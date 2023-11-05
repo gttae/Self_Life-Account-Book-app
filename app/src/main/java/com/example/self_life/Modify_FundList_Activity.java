@@ -2,18 +2,26 @@ package com.example.self_life;
 
 import static com.example.self_life.YearMonth_Value.getCurrentMonth;
 
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,12 +42,17 @@ public class Modify_FundList_Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mFirebaseAuth;
-    private RecyclerView todayRecyclerView;
+    private RecyclerView todayRecyclerView, selectRecyclerView;
     private List<Fund_List> fundList = new ArrayList<>();
-    private Button selectIncome,selectExpense;
-    private fundAdapter adapter;
-    private ImageView mypageBtn;
-    private String uid="",kind="지출";
+    private List<Fund_List> bigfundList = new ArrayList<>();
+    private Button selectIncome,selectExpense,ModifyBtn,DeleteBtn;
+    private TextView selectKind,selectDivision,selectMemo,selectValue,selectDay,selectDateList;
+    private fundAdapter adapter,bigadapter;
+    private Calendar calendar;
+    private int year, month, day;
+    private ImageView mypageBtn,selectDate;
+    private int i,dayOfMonth,limitdayOfMonth;
+    private String uid="",kind="지출",tempFundId="",selectedPeriod="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +61,22 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         mypageBtn = findViewById(R.id.mypageBtn);
         todayRecyclerView = findViewById(R.id.todayFundList);
+        selectRecyclerView = findViewById(R.id.FundList);
         selectIncome = findViewById(R.id.kindIncome);
         selectExpense = findViewById(R.id.kindExpense);
+        selectKind = findViewById(R.id.selectKind);
+        selectDivision = findViewById(R.id.selectDivision);
+        selectMemo = findViewById(R.id.selectMemo);
+        selectValue = findViewById(R.id.selectValue);
+        selectDay = findViewById(R.id.selectDay);
+        selectDateList = findViewById(R.id.selectDateList);
+        selectDate = findViewById(R.id.selectDate);
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        ModifyBtn = findViewById(R.id.ModifyBtn);
+        DeleteBtn = findViewById(R.id.DeleteBtn);
         Date today = Calendar.getInstance().getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("d");
         String todayStr = dateFormat.format(today);
@@ -58,6 +85,8 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         uid = firebaseUser.getUid();
         todayRecyclerView.setHasFixedSize(true);
         todayRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        selectRecyclerView.setHasFixedSize(true);
+        selectRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         selectIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +96,7 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         fundList.clear();
+                        bigfundList.clear();
                         //fundList.add(new Fund_List("test","test","test","test","test","test"));
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             String day = snapshot.child("Day").getValue(String.class);
@@ -82,6 +112,7 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                             }
                         }
                         adapter.notifyDataSetChanged();
+                        bigadapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -100,6 +131,7 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         fundList.clear();
+                        bigfundList.clear();
                         //fundList.add(new Fund_List("test","test","test","test","test","test"));
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             String day = snapshot.child("Day").getValue(String.class);
@@ -115,6 +147,7 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                             }
                         }
                         adapter.notifyDataSetChanged();
+                        bigadapter.notifyDataSetChanged();
                     }
 
                     @Override
@@ -130,6 +163,7 @@ public class Modify_FundList_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 fundList.clear();
+                bigfundList.clear();
                 //fundList.add(new Fund_List("test","test","test","test","test","test"));
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String day = snapshot.child("Day").getValue(String.class);
@@ -143,8 +177,10 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                         String date = month + "-" + day;
                         fundList.add(new Fund_List(fundId,fundKind,fundDivision,fundMemo,fundValue,date));
                     }
+
                 }
                 adapter.notifyDataSetChanged();
+                bigadapter.notifyDataSetChanged();
             }
 
             @Override
@@ -154,7 +190,72 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         });
 
         adapter = new fundAdapter(this, fundList);
+        bigadapter = new fundAdapter(this, bigfundList);
         todayRecyclerView.setAdapter(adapter);
+        selectRecyclerView.setAdapter(bigadapter);
+
+
+        adapter.setOnItemClickListener(new fundAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, String fundId) {
+                mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid+"/FundData/"+getCurrentMonth()+"월"+kind+"/"+fundId);
+                mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+
+                            String day = snapshot.child("Day").getValue(String.class);
+                            String month = snapshot.child("Month").getValue(String.class);
+                            tempFundId = snapshot.child("FundId").getValue(String.class);
+                            String fundKind = kind;
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            String fundMemo = snapshot.child("Description").getValue(String.class);
+                            String fundValue = snapshot.child("Price").getValue(String.class);
+                            String date = month + "-" + day;
+                            selectKind.setText(fundKind);
+                            selectDivision.setText(fundDivision);
+                            selectMemo.setText(fundMemo);
+                            selectValue.setText(fundValue);
+                            selectDay.setText(date);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+        bigadapter.setOnItemClickListener(new fundAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, String fundId) {
+                mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid+"/FundData/"+getCurrentMonth()+"월"+kind+"/"+fundId);
+                mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+
+                        String day = snapshot.child("Day").getValue(String.class);
+                        String month = snapshot.child("Month").getValue(String.class);
+                        tempFundId = snapshot.child("FundId").getValue(String.class);
+                        String fundKind = kind;
+                        String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                        String fundMemo = snapshot.child("Description").getValue(String.class);
+                        String fundValue = snapshot.child("Price").getValue(String.class);
+                        String date = month + "-" + day;
+                        selectKind.setText(fundKind);
+                        selectDivision.setText(fundDivision);
+                        selectMemo.setText(fundMemo);
+                        selectValue.setText(fundValue);
+                        selectDay.setText(date);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -187,5 +288,374 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        selectDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPeriodSelectionDialog();
+            }
+        });
+
+        selectDivision.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectKind.getText().toString().equals("수입")){
+                    incomeshowKindSelectionDialog();
+                }
+                else {
+                    expenseKindSelectionDialog();
+                }
+            }
+        });
+
+        selectKind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectKind.getText().toString().equals("수입")){
+                    selectKind.setText("지출");
+                }
+                else{
+                    selectKind.setText("수입");
+                }
+            }
+        });
+
+        ModifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid+"/FundData/"+getCurrentMonth()+"월"+kind+"/"+tempFundId);
+                mDatabaseRef.child("FundDivision").setValue(selectDivision.getText().toString());
+                mDatabaseRef.child("Description").setValue(selectMemo.getText().toString());
+                mDatabaseRef.child("Price").setValue(selectValue.getText().toString().trim());
+                mDatabaseRef.child("Month").setValue(String.valueOf(month+1));
+                mDatabaseRef.child("Day").setValue(String.valueOf(day));
+                mDatabaseRef.child("Year").setValue(String.valueOf(year));
+                Toast.makeText(Modify_FundList_Activity.this,"수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        DeleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid+"/FundData/"+getCurrentMonth()+"월"+kind+"/"+tempFundId);
+                mDatabaseRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(Modify_FundList_Activity.this,"해당 내역이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Modify_FundList_Activity.this,"다시 실시해주세요.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
+        selectDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Modify_FundList_Activity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                String selectedDate = (month + 1) + "-" + dayOfMonth;
+                                selectDay.setText(selectedDate);
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
     }
+
+
+    private void incomeshowKindSelectionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("분류 선택");
+
+        // dialog_select_kind.xml 레이아웃을 inflate
+        View view = getLayoutInflater().inflate(R.layout.income_selection_dialog, null);
+        builder.setView(view);
+
+        // 버튼 클릭 리스너를 설정하여 사용자 선택 처리
+        Button btnSalary = view.findViewById(R.id.btnSalary);
+        Button btnAdditionalIncome = view.findViewById(R.id.btnAdditionalIncome);
+        Button btnAllowance = view.findViewById(R.id.btnAllowance);
+        Button btnRemittance = view.findViewById(R.id.btnRemittance);
+        Button btnFinancialIncome = view.findViewById(R.id.btnFinancialIncome);
+        Button btnOther = view.findViewById(R.id.btnOther);
+
+        final AlertDialog dialog = builder.create();
+
+        btnSalary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "월급" 버튼을 클릭한 경우
+                selectDivision.setText("월급"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnAdditionalIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "부수입" 버튼을 클릭한 경우
+                selectDivision.setText("부수입"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnAllowance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("용돈"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnRemittance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("송금"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnFinancialIncome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("금융소득"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("기타"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        // 나머지 버튼들에 대해서도 동일한 방식으로 처리합니다.
+
+        dialog.show();
+    }
+    private void expenseKindSelectionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("분류 선택");
+
+        // dialog_select_kind.xml 레이아웃을 inflate
+        View view = getLayoutInflater().inflate(R.layout.expense_selection_dialog, null);
+        builder.setView(view);
+
+        // 버튼 클릭 리스너를 설정하여 사용자 선택 처리
+        Button btnFoodExpense = view.findViewById(R.id.btnFoodExpense);
+        Button btnTransport = view.findViewById(R.id.btnTransport);
+        Button btnEntertainment = view.findViewById(R.id.btnEntertainment);
+        Button btnMart = view.findViewById(R.id.btnMart);
+        Button btnFashionBeauty = view.findViewById(R.id.btnFashionBeauty);
+        Button btnHouseholdItems = view.findViewById(R.id.btnHouseholdItems);
+        Button btnHousingCommunication = view.findViewById(R.id.btnHousingCommunication);
+        Button btnHealth = view.findViewById(R.id.btnHealth);
+        Button btnEducation = view.findViewById(R.id.btnEducation);
+        Button btnCelebrationDues = view.findViewById(R.id.btnCelebrationDues);
+        Button btnOther = view.findViewById(R.id.btnOther);
+
+        final AlertDialog dialog = builder.create();
+
+        btnFoodExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "월급" 버튼을 클릭한 경우
+                selectDivision.setText("식비"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnTransport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "부수입" 버튼을 클릭한 경우
+                selectDivision.setText("교통/차량"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnEntertainment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("문화생활"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnMart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("마트"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnFashionBeauty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("패션/미용"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnHouseholdItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("생활용품"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnHousingCommunication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("주거/통신"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+        btnHealth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("건강"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+        btnEducation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("교육"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+        btnCelebrationDues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("경조사/회비"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+        btnOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                selectDivision.setText("기타"); // selectKind의 텍스트 업데이트
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        dialog.show();
+    }
+    private void showPeriodSelectionDialog() {
+        final String[] periods = {"오늘", "일주일", "이번 달","전체"};
+        int checkedItem = -1;
+
+        // 현재 선택된 주기에 따라 체크 표시
+        if (selectedPeriod != null) {
+            if (selectedPeriod.equals("오늘")) {
+                checkedItem = 0;
+            } else if (selectedPeriod.equals("일주일")) {
+                checkedItem = 1;
+            } else if (selectedPeriod.equals("이번 달")) {
+                checkedItem = 2;
+            }else if (selectedPeriod.equals("전체")) {
+                checkedItem = 3;
+            }
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("주기 선택");
+        builder.setSingleChoiceItems(periods, checkedItem, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                selectedPeriod = periods[which];
+                dialog.dismiss();
+
+                // 선택된 주기에 따른 작업을 수행
+                if (selectedPeriod.equals("오늘")) {
+                    dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                    selectDateList.setText("오늘");
+                } else if (selectedPeriod.equals("일주일")) {
+                    dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                    limitdayOfMonth = dayOfMonth - 7;
+                    selectDateList.setText("일주일");
+                }else if (selectedPeriod.equals("이번 달")) {
+                    selectDateList.setText("이번 달");
+                } else if (selectedPeriod.equals("전체")) {
+                    dayOfMonth = getCurrentMonth();
+                    selectDateList.setText("전체");
+                }
+                updateBigFundList();
+            }
+        });
+
+        builder.show();
+    }
+    private void updateBigFundList() {
+        bigfundList.clear();
+
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid+"/FundData/"+getCurrentMonth()+"월"+kind);
+        Date today = Calendar.getInstance().getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d");
+        String todayStr = dateFormat.format(today);
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                fundList.clear();
+                bigfundList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String day = snapshot.child("Day").getValue(String.class);
+                    String month = snapshot.child("Month").getValue(String.class);
+                    if (selectedPeriod.equals("오늘") && day.equals(todayStr) && month.equals(String.valueOf(getCurrentMonth()))) {
+                        addFundToList(snapshot);
+                    } else if (selectedPeriod.equals("일주일") && (Integer.valueOf(day) <= Integer.valueOf(todayStr) && Integer.valueOf(day) >= limitdayOfMonth) && month.equals(String.valueOf(getCurrentMonth()))) {
+                        addFundToList(snapshot);
+                    }else if (selectedPeriod.equals("이번 달") && month.equals(String.valueOf(getCurrentMonth()))) {
+                        addFundToList(snapshot);
+                    } else if (selectedPeriod.equals("전체") && month.equals(String.valueOf(getCurrentMonth()))) {
+                        addFundToList(snapshot);
+                    }
+                }
+                bigadapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void addFundToList(DataSnapshot snapshot) {
+        String fundId = snapshot.child("FundId").getValue(String.class);
+        String fundKind = kind;
+        String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+        String fundMemo = snapshot.child("Description").getValue(String.class);
+        String fundValue = snapshot.child("Price").getValue(String.class);
+        String date = snapshot.child("Month").getValue(String.class) + "-" + snapshot.child("Day").getValue(String.class);
+        bigfundList.add(new Fund_List(fundId, fundKind, fundDivision, fundMemo, fundValue, date));
+    }
+
 }

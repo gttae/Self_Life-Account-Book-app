@@ -1,10 +1,12 @@
 package com.example.self_life;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,9 +49,9 @@ public class Select_Board extends AppCompatActivity {
     private CommentAdapter adapter;
     private List<Comment_List> commentList = new ArrayList<>();
     private EditText commentEt;
-    private LinearLayout baseLl,commentLl,uploadComment;
+    private LinearLayout baseLl,commentLl,uploadComment,reportThisPost;
     private FrameLayout selectcomment;
-    private String uid, commentname;
+    private String uid, commentname ,postId;
 
 
     @Override
@@ -65,6 +68,7 @@ public class Select_Board extends AppCompatActivity {
         commentEt = findViewById(R.id.comment);
         baseLl = findViewById(R.id.boardBaseLl);
         commentLl = findViewById(R.id.commentPage);
+        reportThisPost = findViewById(R.id.reportThisPost);
         uploadComment = findViewById(R.id.commentUpload);
         selectcomment = findViewById(R.id.commentPlus);
         picture1 = findViewById(R.id.PictureIv1);
@@ -76,7 +80,7 @@ public class Select_Board extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         StorageReference storageRef = FirebaseStorage.getInstance().getReference("1906053_.png");
         Intent intent = getIntent();
-        String postId = intent.getStringExtra("postId");
+        postId = intent.getStringExtra("postId");
         Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId);
         mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -112,30 +116,6 @@ public class Select_Board extends AppCompatActivity {
                 // 오류 처리
             }
         });
-
-        adapter = new CommentAdapter(this, commentList);
-        recyclerView.setAdapter(adapter);
-        /*
-        storageRef.child("1906053_.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                // 성공적으로 다운로드 링크를 가져왔을 때 처리
-                String imageUrl = uri.toString();
-
-                // Glide 또는 다른 이미지 로딩 라이브러리를 사용하여 이미지 로드
-                Glide.with(Select_Board.this).load(imageUrl).into(picture1);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // 다운로드 링크를 가져오지 못했을 때 처리
-                // 예외 처리를 추가하여 오류를 확인할 수 있습니다.
-                Toast.makeText(Select_Board.this,"오류",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-         */
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -219,6 +199,50 @@ public class Select_Board extends AppCompatActivity {
                 });
             }
         });
+
+        reportThisPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Select_Board.this);
+                builder.setTitle("신고 확인");
+                builder.setMessage("정말로 신고하시겠습니까?");
+
+// 확인 버튼 설정
+                builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String reportTitle = postTitleTextView.getText().toString();
+                        String reportWriter = postWriterTextView.getText().toString();
+                        String reportCategory = postCategoryTextView.getText().toString();
+                        String reportContent = postContentTextView.getText().toString();
+                        String reportTime = postTimeTextView.getText().toString();
+
+                        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/ReportData/PostReport");
+                        String tempReportPost = mDatabaseRef.push().getKey();
+                        mDatabaseRef.child(tempReportPost).child("PostInfo").setValue(postId);
+                        mDatabaseRef.child(tempReportPost).child("Date").setValue(reportTime);
+                        mDatabaseRef.child(tempReportPost).child("Writer").setValue(reportWriter);
+                        mDatabaseRef.child(tempReportPost).child("Title").setValue(reportTitle);
+                        mDatabaseRef.child(tempReportPost).child("Content").setValue(reportContent);
+                        mDatabaseRef.child(tempReportPost).child("Category").setValue(reportCategory);
+                        Toast.makeText(Select_Board.this,"신고가 완료되었습니다.",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+// 취소 버튼 설정
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+// 다이얼로그 표시
+                builder.create().show();
+            }
+        });
+
         mDatabaseRef.child("comment").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -227,12 +251,9 @@ public class Select_Board extends AppCompatActivity {
                     String nickname = snapshot.child("nickname").getValue(String.class);
                     long time = snapshot.child("time").getValue(Long.class);
                     Date currentDate = new Date(time);
-                    // SimpleDateFormat을 사용하여 연월일 형식으로 변환
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String formattedDate = sdf.format(currentDate);
                     String commentId = "";
-                    //Toast.makeText(Select_Board.this, snapshot.getValue(String.class), Toast.LENGTH_SHORT).show();
-                            //snapshot.getValue(String.class);
                     String content = snapshot.child("content").getValue(String.class);
                     commentList.add(new Comment_List(formattedDate,nickname,content,commentId));
                 }
@@ -246,6 +267,71 @@ public class Select_Board extends AppCompatActivity {
         });
         adapter = new CommentAdapter(this, commentList);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemLongClickListener(new CommentAdapter.OnItemLongClickListener() {
+            @Override
+            public void onItemLongClick(int position, String commentId) {
+                commentSelectionDialog(position);
+            }
+        });
+    }
+
+    private void commentSelectionDialog(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        // dialog_select_kind.xml 레이아웃을 inflate
+        View view = getLayoutInflater().inflate(R.layout.comment_selection_dialog, null);
+        builder.setView(view);
+
+        // 버튼 클릭 리스너를 설정하여 사용자 선택 처리
+        Button btnCommentMoidfy = view.findViewById(R.id.btnCommentMoidfy);
+        Button btnCommentReport = view.findViewById(R.id.btnCommentReport);
+        Button btnCommentDelete = view.findViewById(R.id.btnCommentDelete);
+
+        final AlertDialog dialog = builder.create();
+
+        btnCommentMoidfy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "월급" 버튼을 클릭한 경우
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        btnCommentReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "부수입" 버튼을 클릭한 경우
+                int selectedPosition = position/* 여기에 선택한 아이템의 위치를 설정하세요 */;
+                Comment_List selectedComment = commentList.get(selectedPosition);
+
+                String formattedDate = selectedComment.getDate();
+                String nickname = selectedComment.getName();
+                String content = selectedComment.getContent();
+
+                mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/ReportData/CommentReport");
+                String tempReportComment = mDatabaseRef.push().getKey();
+                mDatabaseRef.child(tempReportComment).child("PostInfo").setValue(postId);
+                mDatabaseRef.child(tempReportComment).child("Date").setValue(formattedDate);
+                mDatabaseRef.child(tempReportComment).child("NickName").setValue(nickname);
+                mDatabaseRef.child(tempReportComment).child("Content").setValue(content);
+                Toast.makeText(Select_Board.this,"신고가 완료되었습니다.",Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        btnCommentDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // "용돈" 버튼을 클릭한 경우
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+
+
+        // 나머지 버튼들에 대해서도 동일한 방식으로 처리합니다.
+
+        dialog.show();
     }
 }
 

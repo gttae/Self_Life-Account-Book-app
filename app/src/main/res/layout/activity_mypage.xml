@@ -225,7 +225,7 @@
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_gravity="center"
-        android:layout_margin="49dp"
+        android:layout_marginTop="49dp"
         android:background="@drawable/button_round_scarch_border"
         android:gravity="center"
         android:orientation="vertical"
@@ -301,6 +301,30 @@
             android:textColor="#ed6c59"
             android:textStyle="bold" />
     </LinearLayout>
+    <Button
+        android:id="@+id/reportPost"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        style="@style/Hyperlink"
+        android:layout_gravity="center"
+        android:outlineProvider="none"
+        android:text="게시글신고내역보기"
+        android:textSize="20sp"
+        android:textColor="#ed6c59"
+        android:textStyle="bold"
+        android:visibility="visible"/>
+    <Button
+        android:id="@+id/reportComment"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        style="@style/Hyperlink"
+        android:layout_gravity="center"
+        android:outlineProvider="none"
+        android:text="댓글신고내역보기"
+        android:textSize="20sp"
+        android:textColor="#ed6c59"
+        android:textStyle="bold"
+        android:visibility="visible"/>
 
 
 

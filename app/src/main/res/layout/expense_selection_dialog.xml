@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnFoodExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="식비" />
+
+    <Button
+        android:id="@+id/btnTransport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="교통/차량" />
+
+    <Button
+        android:id="@+id/btnEntertainment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문화생활" />
+
+    <Button
+        android:id="@+id/btnMart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="마트" />
+
+    <Button
+        android:id="@+id/btnFashionBeauty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="패션/미용" />
+
+    <Button
+        android:id="@+id/btnHouseholdItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="생활용품" />
+
+    <Button
+        android:id="@+id/btnHousingCommunication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="주거/통신" />
+
+    <Button
+        android:id="@+id/btnHealth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="건강" />
+
+    <Button
+        android:id="@+id/btnEducation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="교육" />
+
+    <Button
+        android:id="@+id/btnCelebrationDues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="경조사/회비" />
+
+    <Button
+        android:id="@+id/btnOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="기타" />
+</LinearLayout>
