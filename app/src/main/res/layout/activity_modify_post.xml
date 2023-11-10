@@ -3,47 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-
-    <androidx.appcompat.widget.Toolbar
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/Base">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
+
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="50dp"
+            android:background="@color/Base">
 
-            <!-- Person Image -->
-            <ImageView
-                android:id="@+id/mypageBtn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:background="#ffffff"
-                android:src="@drawable/person" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <!-- Chart Text -->
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:letterSpacing="-0.05"
-                android:lineSpacingExtra="60sp"
-                android:text="게시판"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
+                <!-- Person Image -->
+                <ImageView
+                    android:id="@+id/mypageBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="#ffffff"
+                    android:src="@drawable/person" />
 
-        </RelativeLayout>
+                <!-- Chart Text -->
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:letterSpacing="-0.05"
+                    android:lineSpacingExtra="60sp"
+                    android:text="게시판"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
 
-    </androidx.appcompat.widget.Toolbar>
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <LinearLayout
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
             android:orientation="vertical">
-            
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:layout_marginTop="10dp"
                 android:lineSpacingExtra="60sp"
                 android:text="글쓰기"/>
-            
+
             <LinearLayout
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
@@ -90,9 +90,9 @@
                     android:textSize="15dp"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"/>
-            
+
             </LinearLayout>
-            
+
             <RadioGroup
                 android:id="@+id/categoryRadioGroup"
                 android:layout_width="360dp"
@@ -149,7 +149,7 @@
 
 
             </RadioGroup>
-            
+
             <ScrollView
                 android:id="@+id/boardSv"
                 android:layout_width="320dp"
@@ -168,9 +168,9 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="normal" />
-                
+
             </ScrollView>
-            
+
             <LinearLayout
                 android:layout_width="320dp"
                 android:layout_height="40dp"
@@ -205,20 +205,20 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:visibility="gone"
-                     />
+                    />
                 <ImageView
                     android:id="@+id/UserGallaryIv5"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="5dp"
                     android:visibility="gone"
-                     />
+                    />
 
 
 
 
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="356dp"
                 android:layout_height="170dp"
@@ -226,7 +226,7 @@
                 android:layout_marginTop="4dp"
                 android:background="@drawable/gongji"
                 android:orientation="vertical">
-                
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -310,9 +310,9 @@
                     android:text="5) 타인을 비방 및 명예를 훼손하는 내용을 게시하는 것은 금지됩니다."
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="4dp"/>
-                
+
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -326,7 +326,7 @@
                     android:background="@drawable/btnrectangle"
                     android:elevation="5dp"
                     >
-                    
+
                     <TextView
                         android:id="@+id/WriteTv"
                         android:layout_width="wrap_content"
@@ -338,12 +338,12 @@
                         android:layout_gravity="center"
                         android:lineSpacingExtra="62sp"
                         android:layout_marginLeft="27dp"
-                        android:text="작성하기"/>
+                        android:text="수정하기"/>
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
     <FrameLayout
         android:layout_width="60dp"
         android:layout_height="58dp"

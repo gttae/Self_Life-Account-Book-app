@@ -35,7 +35,10 @@ public class Chart_Activity extends AppCompatActivity {
     private LinearLayout modifyFund;
     private TextView leftPage,rightPage,chartMonth,userUseFund,userPlanFund;
     private Button recommendChart;
-    private int segmentCount = 11;
+    private TextView[] expensePlan = new TextView[11];
+    private Integer[] expensePlanId = {R.id.expensePlan1,R.id.expensePlan2,R.id.expensePlan3,R.id.expensePlan4,R.id.expensePlan5,R.id.expensePlan6,R.id.expensePlan7,R.id.expensePlan8,R.id.expensePlan9,R.id.expensePlan10,R.id.expensePlan11};
+    private String[] expenseStr = {"식비", "교통/차량", "문화생활", "마트", "패션/미용", "생활용품", "주거/통신", "건강", "교육", "경조사/회비", "기타"};
+    private int segmentCount = 11, i;
     private float[] segmentValues = new float[segmentCount];
 
     private float[] usedValues = new float[6];
@@ -56,6 +59,9 @@ public class Chart_Activity extends AppCompatActivity {
         userUseFund = findViewById(R.id.userUseFund);
         userPlanFund = findViewById(R.id.userPlanFund);
         modifyFund = findViewById(R.id.button2);
+        for (i=0; i < expensePlan.length;i++) {
+            expensePlan[i] = findViewById(expensePlanId[i]);
+        }
         chartMonth.setText(getCurrentYear()+"년 "+getCurrentMonth()+"월");
 
         recommendChart.setOnClickListener(new View.OnClickListener() {
@@ -282,5 +288,42 @@ public class Chart_Activity extends AppCompatActivity {
 
         float limitWeek = weeklyDayCounts[currentWeek-1] - usedValues[currentWeek-1];
         userUseFund.setText(String.format("%.0f",limitWeek));
+
+        fundDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Integer[] totalValue = new Integer[11];
+                Integer[] usedValue = new Integer[11];
+
+                // 배열 초기화
+                for (i = 0; i < expensePlan.length; i++) {
+                    totalValue[i] = 0;
+                    usedValue[i] = 0;
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String category = snapshot.child("Category").getValue(String.class);
+                        if(category.equals("고정(계획)")){
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            if(fundDivision.equals(expenseStr[i])){
+                                int price = Integer.valueOf(snapshot.child("Price").getValue(String.class));
+                                totalValue[i] += price;
+                            }
+                        } else if ((category.equals("고정(실사용)")) || (category.equals("유동"))) {
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            if(fundDivision.equals(expenseStr[i])){
+                                int price = Integer.valueOf(snapshot.child("Price").getValue(String.class));
+                                usedValue[i] += price;
+                            }
+                        }
+                    }
+                    int tempValue = totalValue[i]-usedValue[i];
+                    expensePlan[i].setText(expenseStr[i] + " : " + usedValue[i] + " / " + totalValue[i] + "  ||  " + "남은금액 : " + tempValue);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 여기서 오류 처리
+            }
+        });
     }
 }

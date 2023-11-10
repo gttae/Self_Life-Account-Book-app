@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="360dp"
-    android:layout_height="760dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <LinearLayout
 
-    android:layout_width="360dp"
-    android:layout_height="760dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@color/Base">
 
         <RelativeLayout
@@ -46,14 +46,14 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#d4d4d8">
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
 
@@ -85,7 +85,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="#d4d4d8">
 
@@ -97,13 +97,13 @@
         android:layout_gravity="center">
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -157,7 +157,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="#d4d4d8">
 
@@ -227,23 +227,26 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#d4d4d8">
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="#f1f1f8"
-                android:gravity="center">
+                android:gravity="right">
 
                 <LinearLayout
+                    android:id="@+id/modifyThisPost"
                     android:layout_width="50dp"
                     android:layout_height="30dp"
                     android:gravity="center"
+                    android:visibility="gone"
                     android:background="@drawable/a"
+                    android:layout_marginRight="10dp"
                     >
                     <TextView
                         android:layout_width="wrap_content"
@@ -256,6 +259,28 @@
                         android:lineSpacingExtra="10sp"/>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/deleteThisPost"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:background="@drawable/a"
+                    android:layout_marginRight="150dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="삭 제"
+                        android:textSize="16dp"
+                        android:textStyle="normal"
+                        android:textColor="#232732"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="10sp"/>
+
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/reportThisPost"
                     android:layout_width="50dp"
@@ -276,28 +301,11 @@
                         android:lineSpacingExtra="10sp"/>
 
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:background="@drawable/a"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="삭 제"
-                        android:textSize="16dp"
-                        android:textStyle="normal"
-                        android:textColor="#232732"
-                        android:letterSpacing="-0.05"
-                        android:lineSpacingExtra="10sp"/>
-
-                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="#d4d4d8">
 
@@ -381,6 +389,64 @@
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="62sp"
                 android:text="작성하기"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/commentRePage"
+        android:layout_width="360dp"
+        android:layout_height="216dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/eotrmf"
+        android:layout_marginBottom="2dp"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <TextView
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="normal"
+            android:textSize="16dp"
+            android:textColor="#000000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="64sp"
+            android:text="댓글수정하기"/>
+
+        <EditText
+            android:id="@+id/commentRe"
+            android:layout_width="310dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:gravity="top|left"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="66sp"
+            android:hint="내용을 입력하세요."
+            android:textSize="14dp"
+            android:background="@drawable/textviewback"/>
+
+        <LinearLayout
+            android:id="@+id/commentReUpload"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnrectangle"
+            android:elevation="6dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="62sp"
+                android:text="수정하기"/>
         </LinearLayout>
     </LinearLayout>
 

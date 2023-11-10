@@ -28,7 +28,8 @@ public class CircleProgressBarView extends View {
     private Paint remainingPaint;
     private RectF rectF;
 
-    private int[] colors = {Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.DKGRAY, Color.WHITE, Color.BLACK, Color.CYAN, Color.RED, Color.GRAY};
+    private String[] colors = {"#ff0000", "#FFFF00", "#0000FF", "#00FF00", "#FF00FF", "#444444", "#FFFFFF", "#000000", "#00FFFF", "#FF0000", "#808080"};
+
 
     public CircleProgressBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -43,7 +44,7 @@ public class CircleProgressBarView extends View {
     }
 
     private void init() {
-        int grayColor = Color.parseColor("#80CCCCCC");
+        int grayColor = Color.parseColor("#CCCCCC");
         remainingPaint = new Paint();
         remainingPaint.setColor(grayColor);
         remainingPaint.setStyle(Paint.Style.STROKE);
@@ -52,10 +53,11 @@ public class CircleProgressBarView extends View {
         usedPaints = new Paint[segmentCount];
         for (int i = 0; i < segmentCount; i++) {
             usedPaints[i] = new Paint();
-            usedPaints[i].setColor(colors[i % colors.length]);
+            usedPaints[i].setColor(Color.parseColor(colors[i % colors.length]));  // 이 부분을 수정
             usedPaints[i].setStyle(Paint.Style.STROKE);
             usedPaints[i].setStrokeWidth(10);
         }
+
 
         rectF = new RectF();
     }

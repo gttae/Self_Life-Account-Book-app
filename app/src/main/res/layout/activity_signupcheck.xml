@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="360dp"
+    android:layout_width="match_parent"
     android:layout_height="760dp"
     android:orientation="vertical"
     >
@@ -11,17 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/Base">
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="#ffffff"
-            android:layout_marginTop="24dp"
-            android:text="회원가입"
-            android:letterSpacing="-0.05"
-            android:lineSpacingExtra="60sp"
-            android:textSize="20sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원가입"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="60sp"
+                android:layout_centerInParent="true" />
+
+        </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -29,7 +33,7 @@
         android:layout_height="66dp"
         app:srcCompat="@drawable/succes"
         android:layout_marginTop="146dp"
-        android:layout_marginLeft="147dp">
+        android:layout_gravity="center">
 
     </ImageView>
 
@@ -37,7 +41,7 @@
         android:layout_width="310dp"
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
-        android:layout_marginLeft="25dp"
+        android:layout_gravity="center"
         android:text="회원가입이 완료되었습니다. 환영합니다"
         android:textStyle="bold"
         android:textSize="28sp"
@@ -49,8 +53,8 @@
     <Button
         android:id="@+id/GoMainBtn1"
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="240dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="160dp"
         android:layout_gravity="center"
         android:text="메인화면 이동하기"
         android:textStyle="normal"

@@ -2,11 +2,631 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="안녕 세상아"
-        android:textSize="30dp"/>
+    android:layout_gravity="center"
+    android:background="@drawable/box"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#ed6c59"
+            android:layout_gravity="bottom">
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="이용 약관"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="60sp"
+            android:textSize="30sp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:layout_gravity="center"
+            android:gravity="center">
+        </TextView>
+
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/box3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="[ 개인정보 수집 및 이용목적 ]"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="Self-Life의 개인정보 수집 목적은 사용자에게 최적화된 \n서비스를 제공하기 위함이며, Self-Life는 다음 항목\n 이용 목적 이외에 다른 용도로 이를 이용하거나 회원의\n 동의 없이 제 3자에게 이를 제공하지 않습니다.\n\n (1) 회원 관리를 위한 본인 확인, 개인 식별,\n        불량 회원의 부정 이용 방지
+\n (2) 가계부 서비스 제공 및 운영
+\n (3) 개인 소비에 관련한 품목, 사용 횟수,\n        용량 등에 따른 통계
+\n (4) 개인화된 금융 조언 제공
+\n (5) 문의 응답 및 고객 지원
+"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="[ 개인정보 수집 항목 ]"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="Self-Life는 회원가입, 이용을 위해 다음과 같은 \n개인정보를 수집하고 있습니다.\n\n(1) 회원 필수 항목 : 이름, 이메일, 비밀번호, 연락처, \n      생년월일, 수입 및 지출 정보"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text="[ 개인정보 삭제 ]"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  개인정보 삭제를 원하시는 경우, 마이 페이지에서 \n회원탈퇴를 신청하면 모든 개인정보가 삭제되며, \n삭제 후 과거 데이터를 확인하실 수 없으니 \n주의 해 주시기 바랍니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제1조(목적) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  이 약관은 팀 반짝반짝이 제공하는 앱 서비스\n(이하 “서비스”라 합니다) 이용과 관련하여 팀과 \n이용자간의 권리∙의무 및 기타 필요한 제반사항을\n정함을 목적으로 합니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제2조(용어의 정의) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" 이 약관에서 사용하는 용어의 정의는 다음 \n각호와 같으며, 정의하지 않은 용어의 해석은 \n관련 법령 및 상관례에 따릅니다.\n
+
+“이용고객”이란 회사가 제공하는 서비스를 \n이용하기 위해 앱스토어사업자 또는 플랫폼사업자가\n 운영하는 앱스토어마켓에서 애플리케이션을 \n다운로드 받은 자를 말합니다.
+
+\n“이용자”란 이 약관 및 개인정보처리방침에 동의하고,\n 회사가 제공하는 서비스 이용자격을 부여 받은 \n이용고객을 말합니다.
+
+\n“서비스”란 팀이 제공하는 서비스 일체를 의미합니다.
+
+\n“단말기”란 서비스를 이용할 수 있는 휴대폰, 스마트폰,\n 태블릿,  등 유∙무선 기기를 말합니다.
+
+\n“애플리케이션”이란 팀이 제공하는 서비스를 \n이용할 수 있는 프로그램 일체를 의미합니다.
+
+\n“앱스토어사업자”란 팀이 제공하는 애플리케이션을 \n다운로드 받을 수 있는 오픈마켓 사업자를 말합니다.
+
+\n“플랫폼사업자”란 팀과 제휴하여 서비스를 제공하는 \n사업자 및 관련 서비스 일체를 말합니다.
+
+\n“이용자 계정”이란 이용자의 식별과 서비스 \n이용을 위하여 이용자가 선정하고 앱스토어사업자 또는 \n플랫폼사업자가 부여하는 문자, 숫자 또는 특수문자의 \n조합을 의미합니다.
+
+\n“콘텐츠”란 팀이 서비스에서 이용할 수 있도록 제작한 \n아이템 등을 말합니다.
+ "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제3조(약관의 효력 및 변경) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  회사는「약관의 규제에 관한 법률」,\n「정보통신망이용촉진 및 정보보호 등에 관한 법률」, \n「콘텐츠산업진흥법」 등 관련 법령에 위배되지 않는 \n범위에서 이 약관을 변경할 수 있습니다. \n변경되는 약관은 적용일자, 변경내용 및 변경사유 등을 \n명시하여 그 적용일 7일 이전부터 게시판 공지사항 등을 \n통해 이용자에게 공지합니다. \n다만, 이용자의 권리∙의무에 중대한 영향을 미치는 \n사항에 대해서는 그 적용일 30일 이전부터 공지합니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제4조(약간 외 준칙) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  이 약관에서 정하지 아니한 사항에 관하여는\n 「약관의 규제에 관한 법률」,\n「정보통신망이용촉진 및 정보보호 등에 관한 법률」, \n「콘텐츠산업진흥법」 등 관련 법령 및 상관례에 따릅니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제5조(이용 계약의 성립) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  ① 서비스 이용계약은 이용고객이 애플리케이션을 설치\n 및 구동하여 이 약관 및 개인정보처리방침에 동의한 다음\n 서비스 이용신청을 하고, 회사가 그 이용신청에 승낙함\n으로써 성립합니다. 이용고객의 서비스 이용신청 완료 후\n 단말기내에서 애플리케이션이 정상적으로 구동되는\n 경우에는 서비스 이용이 승낙된 것으로 봅니다.\n ② 이용자는 서비스 이용과정에서 타인의 개인정보를\n 도용하는 경우 이 약관에 의한 이용자의 권리를 주장할 수\n 없으며, 팀은 이용계약을 취소하거나 해지할 수 있습니다.\n 이용자가 플랫폼사업자에게 개인정보를 제공하고 플랫폼\n사업자를 통해 서비스를 이용하는 경우에도 동일하게 간주\n됩니다.\n ③ 회사는 다음 각호의 어느 하나에 해당하는 이용신청에\n 대해서는 승낙을 하지 않을 수 있습니다.
+
+\n서비스 운영정책에 따라 최근 3개월 내 이용제한을 받았\n거나, 영구제한을 받은 이용자가 이용신청을 하는 경우
+
+\n팀이 체결한 계약에 따라 또는 특정 국가에서 접속하는\n 이용자에게 서비스를 제공하는 것을 제한할 필요가 있는\n 경우
+
+\n「정보통신망 이용촉진 및 정보보호 등에 관한 법률」\n 및 그 밖의 관련 법령에서 금지하는 위법행위를 할 목적\n으로 이용신청을 하는 경우
+
+\n그 밖에 제1호 내지 제3호에 준하는 사유로서 승낙이\n 부적절하다고 판단되는 경우"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제6조(이용자 계정 관리) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 팀은 이용자 계정을 통하여 이용자의 서비스 이용 가능\n 여부 등 제반 이용자 관리업무를 수행합니다.
+\n② 이용자는 자신의 이용자 계정을 선량한 관리자로서의\n 주의 의무를 다하여 관리하여야 합니다. 팀은 이용자가\n 자신의 이용자 계정을 소홀히 관리하거나 제3자에게\n 이용을 승낙함으로써 발생하는 손해에 대해 어떠한 책임\n도 부담하지 않습니다.
+ "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제7조(팀의 의무) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 팀은 관련 법령을 준수하고, 이 약관이 정하는 권리의\n 행사와 의무의 이행을 신의칙에 따라 성실하게 이행\n합니다.
+\n② 팀은 이용자로부터 제기되는 의견이나 불만이 정당\n하다고, 객관적으로 인정될 경우에는 합리적인 기간내에\n 신속하게 처리합니다. 다만, 처리에 장기간이 소요되는\n 경우에는 이용자에게 그 사유와 처리일정을 별도로\n 고지합니다.
+\n③ 팀은 서비스에 장애가 발생하는 경우 부득이한 사유가\n 없는 한 지체없이 이를 수리 또는 복구하도록 최선의\n 노력을 다합니다.
+\n④ 팀은 이용계약의 체결, 계약사항의 변경 및 해지 등\n 이용자와의 계약관련 절차 및 내용 등에 있어 이용자에게\n 편의를 제공하도록 노력합니다.
+ "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제8조(이용자의 의무) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 이용자는 팀에서 제공하는 서비스를 서비스 본래의\n 이용 목적 이외의 용도로 사용하거나 다음 각호의 어느\n 하나에 해당하는 행위를 하여서는 안됩니다.
+
+\n이용자 문의, 등으로 팀에 개인정보 제공 시 타인의 개인\n정보를 사용하거나 허위 사실을 기재하는 행위
+
+\n다른 이용자의 이용자 계정을 도용 또는 부정하게 사용\n하는 행위
+
+\n팀의 서비스 또는 애플리케이션을 이용하여 얻은\n 정보를 상업적/비상업적으로 이용하거나, 알려지지\n 않은 버그 등을 사용하여 서비스를 이용하는 행위
+
+\n팀의 서비스 또는 애플리케이션을 이용하여 자기 또는\n 타인에게 재산상의 이익을 발생시키는 행위
+
+\n타인의 명예를 훼손하거나 손해를 가하는 행위
+
+\n팀 또는 제3자의 지적재산권, 초상권 등 기타 권리를\n 침해하는 행위
+
+\n제3자를 기망하여 이익을 취하거나 또는 팀이 제공\n하는 서비스를 불건전하게 이용하거나 이용하여 제\n3자에게 피해를 주는 행위
+
+\n음란, 저속한 정보를 교류, 게재 또는 음란 사이트를\n 연결(링크)하거나 승인되지 않은 광고 또는 홍보물을\n 게재하는 행위
+
+\n재물을 걸고 도박하는 등 사행행위를 유도하거나 참여\n하는 행위
+
+\n수치심, 혐오감 또는 공포심을 일으키는 문자, 기호,\n 음향, 영상 등을 다른 이용자에게 전송, 유포하는 행위
+
+\n정보통신시스템, 데이터, 프로그램, 애플리케이션 등을\n 멸실, 훼손, 변조, 위조 등을 하거나 그 운용을 방해하는\n 행위
+
+\n애플리케이션을 임의로 변경 또는 애플리케이션에 다른\n 프로그램을 추가∙삽입하거나 서버와 애플리케이션간\n 데이터 통신을 조작, 변경 등을 하는 행위
+
+\n팀의 동의없이 영리, 영업, 광고, 정치활동, 불법 선거\n운동 등을 목적으로 서비스를 사용하는 행위
+
+\n기타 공공질서 및 미풍양속을 위반하거나 불법적,\n 부당한 행위 및 관련법령에 위배되는 행위
+
+\n② 이용자는 팀의 서비스 애플리케이션내의 공지사항\n 및 약관 개정사항 등을 수시로 확인하고 준수할 의무가\n 있으며, 기타 팀의 업무에 방해되는 행위를 하여서는\n 안 됩니다.
+\n③ 이용자는 이용자 계정 및 서비스를 이용하는\n 단말기에 대한 관리 책임을 부담하며, 제3자에게 이를\n 이용하도록 하여서는 안 됩니다.
+\n④ 팀은 서비스 운영정책을 정하여 운영할 수 있으며,\n 이용자는 팀에서 정한 서비스 운영정책을 준수하여\n 서비스를 이용하여야 합니다.
+\n⑤ 팀은 서비스 운영정책을 수시로 변경할 수 있으며,\n 서비스 운영정책을 변경하는 경우에는 제4조 제2항의\n 절차에 따릅니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제9조(서비스의 이용 및 중단 등) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 팀은 이용자에게 서비스 이용을 승낙한 때부터\n 서비스를 개시합니다. 다만, 일부 서비스의 경우 팀의\n 필요에 따라 지정된 일자부터 서비스를 제공합니다.
+\n② 네트워크를 통해 애플리케이션을 다운로드하거나\n 서비스를 이용하는 경우에는 가입한 이동통신사에서\n 정한 별도의 요금이 발생할 수 있습니다. 또한, 단말기\n 변경, 해외 로밍 등의 경우에는 콘텐츠의 전부 또는\n 일부 이용이 불가능할 수 있으며, 다운로드하여 설치한\n 애플리케이션 또는 네트워크를 통해 이용하는\n 서비스의 경우에는 백그라운드 작업이 진행될 수\n 있습니다. 이 경우 단말기 또는 이동통신사의 특성에\n 맞도록 추가요금이 발생할 수 있으며 이와 관련하여\n 팀은 책임을 지지 않습니다.
+\n③ 팀은 업무상 또는 기술상 특별한 지장이 없는 한\n 연중무휴 1일 24시간 서비스를 제공합니다. 다만,\n 시스템 정기점검, 서버의 증설 및 교체, 각종 버그\n 패치, 서비스 변경 등 운영상 필요한 경우 일정기간\n 동안 서비스 이용을 일시 중단할 수 있습니다. 이러한\n 경우 회사는 그 내용 및 시간을애플리케이션내의\n 공지사항 등을 통해 사전에 공지합니다. 다만, 팀이\n 사전에 공지할
+공지할 수 없는 부득이한 사유가 있는\n 경우에는 사후에 공지할 수 있습니다.
+\n④ 팀은 영업양도, 분할∙합병 등에 따른 서비스의 폐지,\n 서비스 제공 계약 만료, 해당 서비스의 수익 악화 등\n 경영상의 중대한 사유로 인해 서비스를 지속하기\n 어려운 경우에는 서비스 전부를 중단할 수 있습니다.\n 이 경우 서비스 중단일 30일 이전에 중단사유 및 보상\n조건 등을 제4조 제2항에서 정한 방법으로 공지하며,\n 기간의 정함이 없는 유료콘텐츠의 이용기간은 서비스\n 중단 공지시 공지된 서비스 중단일까지로 합니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제10조(서비스 내용 및 변경) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 이용자는 이 약관 및 서비스 운영정책 또는 이용\n규칙에 따라 서비스를 이용하여야 합니다.
+\n② 팀은 서비스의 운영, 종료 등 서비스에 관한 포괄\n적인 권한을 가집니다.
+\n③ 팀은 다음 각호의 어느 하나에 해당되는 경우\n 서비스의 전부 또는 일부를 제한하거나 중지 또는\n 종료할 수 있습니다.
+
+\n전시, 사변, 천재지변 또는 국가비상사태 등 \n불가항력적인 사유가 있는 경우
+
+\n정전, 제반 설비의 장애 또는 이용량의 폭주 등으로\n 정상적인 서비스 이용에 지장이 있는 경우
+
+\n서비스 설비의 보수 등 공사로 인한 부득이한 경우
+
+\n기타 팀의 제반 사정으로 서비스를 할 수 없는 경우
+
+\n④ 팀은 서비스가 변경되거나 중지된 원인이 회사의\n 고의 또는 과실로 인한 경우를 제외하고 서비스의\n 변경 및/또는 중지로 인하여 발생하는 문제에 대해\n 책임을 지지 않습니다.
+ "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제11조(계약 해지 및 서비스 이용 중지 등) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" 이용자는 언제든지 서비스의 이용을 원하지 않는\n 경우, 애플리케이션를 삭제하여 서비스를 이용 중지\n 하시면 됩니다.
+ "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제12조(잠정조치로서의 이용제한) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" 팀은 다음 각호의 어느 하나에 해당하는 문제에 대한\n 조사가 완료될 때까지 이용자의 서비스 이용을 잠정적\n으로 중지할 수 있습니다.
+
+\n서비스 운영정책에서 정하고 있는 제재대상 행위에\n 해당된다고 합리적으로 의심되는 경우
+
+\n그 밖에 제1호에 준하는 행위에 해당된다고 판단되는\n 경우"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제13조(손해배상) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 팀은 천재지변, 국가비상사태, 해결이 곤란한 기술적\n 결함 기타 불가항력적 사유로 서비스를 제공할 수 없는\n 경우에는 그 책임이 면제됩니다.
+\n② 팀은 이용자의 귀책사유로 인한 서비스의 중지∙이용\n장애 등에 대해 책임을 지지 않으며, 기간통신사업자가\n 전기통신서비스를 중지하거나 정상적으로 제공하지\n 못함으로 인하여 이용자에게 손해가 발생한 경우에\n 대해서도 책임을 부담하지 않습니다.
+\n③ 팀은 사전에 공지되거나 긴급하게 실시된 서비스\n 설비의 보수, 교체, 정기점검 등 부득이한 사유로\n 서비스가 중지되거나 장애가 발생한 경우에 대해서는\n 그 책임이 면제됩니다.
+\n④ 회사는 이용자가 본인의 개인정보 등(이용자 계정\n 포함)을 변경하여 얻는 불이익 및 정보상실에 대해\n 일체 책임을 지지 않습니다.
+\n⑤ 팀은 이용자의 단말기 환경, 회사의 귀책사유 없는\n 네트워크 환경 등으로 인하여 서비스 이용과정에서\n 발생하는 제반 문제에 대해서 책임을 지지 않습니다.
+\n⑥ 팀은 이용자 상호간 또는 이용자와 제3자 간에\n 서비스를 매개로 발생한 분쟁에 대해 개입할 의무가\n 없으며, 이로 인한 손해를 배상할 책임도 없습니다.
+\n⑦ 팀이 제공하는 서비스 중 무료 서비스 또는 무료\n콘텐츠의 경우에는 손해배상의 대상에서 제외됩니다.\n 다만, 팀의 고의 또는 중과실로 인하여 발생한 손해의\n 경우는 제외합니다. "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제14조(재판권 및 준거법) "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text=" ① 서비스 이용과 관련하여 팀과 이용자간에 발생한\n 분쟁에 관한 소송은 민사소송법 등 관련법령에서 정한\n 절차에 따른 법원을 관할법원으로 합니다.
+\n② 팀과 이용자간에 제기된 소송에는 대한민국 법을\n 적용합니다."
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제조() "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="14sp"
+                android:text=" 제조() "
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14sp"
+                android:textColor="#232732"
+                android:letterSpacing="-0.05"
+                android:lineSpacingExtra="4sp"
+                android:text="  "
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

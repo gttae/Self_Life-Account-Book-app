@@ -48,10 +48,10 @@ public class Select_Board extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CommentAdapter adapter;
     private List<Comment_List> commentList = new ArrayList<>();
-    private EditText commentEt;
-    private LinearLayout baseLl,commentLl,uploadComment,reportThisPost;
+    private EditText commentEt,commentReEt;
+    private LinearLayout baseLl,commentLl,uploadComment,reportThisPost,modifyThisPost,deleteThisPost,commentReLl,uploadReComment;
     private FrameLayout selectcomment;
-    private String uid, commentname ,postId;
+    private String uid, commentname ,postId, postCreater, modifyComment;
 
 
     @Override
@@ -66,9 +66,14 @@ public class Select_Board extends AppCompatActivity {
         postTimeTextView = findViewById(R.id.DateTv);
         postContentTextView = findViewById(R.id.BoardTv);
         commentEt = findViewById(R.id.comment);
+        commentReLl = findViewById(R.id.commentRePage);
+        commentReEt = findViewById(R.id.commentRe);
+        uploadReComment = findViewById(R.id.commentReUpload);
         baseLl = findViewById(R.id.boardBaseLl);
         commentLl = findViewById(R.id.commentPage);
         reportThisPost = findViewById(R.id.reportThisPost);
+        modifyThisPost = findViewById(R.id.modifyThisPost);
+        deleteThisPost = findViewById(R.id.deleteThisPost);
         uploadComment = findViewById(R.id.commentUpload);
         selectcomment = findViewById(R.id.commentPlus);
         picture1 = findViewById(R.id.PictureIv1);
@@ -81,7 +86,6 @@ public class Select_Board extends AppCompatActivity {
         StorageReference storageRef = FirebaseStorage.getInstance().getReference("1906053_.png");
         Intent intent = getIntent();
         postId = intent.getStringExtra("postId");
-        Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId);
         mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -90,6 +94,7 @@ public class Select_Board extends AppCompatActivity {
 
                 String title = dataSnapshot.child("title").getValue(String.class);
                 String writer = dataSnapshot.child("writer").getValue(String.class);
+                postCreater = dataSnapshot.child("writer").getValue(String.class);
                 String category = dataSnapshot.child("category").getValue(String.class);
                 String content = dataSnapshot.child("content").getValue(String.class);
                 //String image = "\"C:\\Users\\gitae\\OneDrive\\Desktop\\image\\one-g2bc6019cf_640.png\"";
@@ -99,6 +104,18 @@ public class Select_Board extends AppCompatActivity {
                 // SimpleDateFormat을 사용하여 연월일 형식으로 변환
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String formattedDate = sdf.format(currentDate);
+                DatabaseReference mDatabaseRef2 = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+writer);
+                mDatabaseRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String userNametemp = dataSnapshot.child("UserInfo").child("userNickName").getValue(String.class);
+                        postWriterTextView.setText(userNametemp);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // 오류 처리
+                    }
+                });
 
                 // 가져온 데이터를 뷰에 설정
                 postTitleTextView.setText(title);
@@ -106,6 +123,10 @@ public class Select_Board extends AppCompatActivity {
                 postCategoryTextView.setText(category);
                 postContentTextView.setText(content);
                 postTimeTextView.setText(formattedDate);
+                if(uid.equals(postCreater) || uid.equals("dC9EUCkwqGeqQELJIYHLOEwYJzk2")){
+                    modifyThisPost.setVisibility(View.VISIBLE);
+                    deleteThisPost.setVisibility(View.VISIBLE);
+                }
                 //Toast.makeText(Select_Board.this,image,Toast.LENGTH_SHORT).show();
                 Glide.with(Select_Board.this).load("https://firebasestorage.googleapis.com/v0/b/self-life-5b8ef.appspot.com/o/dice-g00bf226ea_640.png?alt=media&token=a23256c2-97bd-4a1e-8eb0-0f2f6e12478b&_gl=1*xng3ix*_ga*MzYzMDc0NTAxLjE2Nzk0MDU2OTQ.*_ga_CW55HF8NVT*MTY5NjgxODkzOS42NS4xLjE2OTY4MTg5NTYuNDMuMC4w").into(picture1);
 
@@ -116,6 +137,8 @@ public class Select_Board extends AppCompatActivity {
                 // 오류 처리
             }
         });
+
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -187,9 +210,13 @@ public class Select_Board extends AppCompatActivity {
                         DatabaseReference mDatabaseRef3 = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId).child("comment");
                         String commentId = mDatabaseRef3.push().getKey();
                         mDatabaseRef.child("comment").child(commentId).child("nickname").setValue(commentname);
-                        //Toast.makeText(Select_Board.this, commentname, Toast.LENGTH_SHORT).show();
+                        mDatabaseRef.child("comment").child(commentId).child("CommentId").setValue(commentId);
                         mDatabaseRef.child("comment").child(commentId).child("time").setValue(time);
                         mDatabaseRef.child("comment").child(commentId).child("content").setValue(content);
+                        Toast.makeText(Select_Board.this,"댓글 작성이 완료되었습니다.",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Select_Board.this, Select_Board.class);
+                        intent.putExtra("postId", postId);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -219,6 +246,7 @@ public class Select_Board extends AppCompatActivity {
 
                         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/ReportData/PostReport");
                         String tempReportPost = mDatabaseRef.push().getKey();
+                        mDatabaseRef.child(tempReportPost).child("ReportId").setValue(tempReportPost);
                         mDatabaseRef.child(tempReportPost).child("PostInfo").setValue(postId);
                         mDatabaseRef.child(tempReportPost).child("Date").setValue(reportTime);
                         mDatabaseRef.child(tempReportPost).child("Writer").setValue(reportWriter);
@@ -243,17 +271,38 @@ public class Select_Board extends AppCompatActivity {
             }
         });
 
+        deleteThisPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference deletePostRef = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId);
+                Toast.makeText(Select_Board.this,"게시물을 삭제하였습니다.",Toast.LENGTH_SHORT).show();
+                deletePostRef.removeValue();
+                Intent intent = new Intent(Select_Board.this, Board_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        modifyThisPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Select_Board.this, Modify_Post_Activity.class);
+                intent.putExtra("postId", postId);
+                startActivity(intent);
+            }
+        });
+
         mDatabaseRef.child("comment").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 commentList.clear();
                 for(DataSnapshot snapshot : datasnapshot.getChildren()){
                     String nickname = snapshot.child("nickname").getValue(String.class);
-                    long time = snapshot.child("time").getValue(Long.class);
-                    Date currentDate = new Date(time);
+                    String time = snapshot.child("time").getValue(String.class);
+                    Long timetemp = Long.valueOf(time);
+                    Date currentDate = new Date(timetemp);
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     String formattedDate = sdf.format(currentDate);
-                    String commentId = "";
+                    String commentId = snapshot.child("CommentId").getValue(String.class);
                     String content = snapshot.child("content").getValue(String.class);
                     commentList.add(new Comment_List(formattedDate,nickname,content,commentId));
                 }
@@ -286,32 +335,89 @@ public class Select_Board extends AppCompatActivity {
         Button btnCommentMoidfy = view.findViewById(R.id.btnCommentMoidfy);
         Button btnCommentReport = view.findViewById(R.id.btnCommentReport);
         Button btnCommentDelete = view.findViewById(R.id.btnCommentDelete);
+        btnCommentMoidfy.setVisibility(View.GONE);
+        btnCommentDelete.setVisibility(View.GONE);
+
+        int selectedPosition = position;
+        Comment_List selectedComment = commentList.get(selectedPosition);
+        String nickname = selectedComment.getName();
+        DatabaseReference mDatabaseRef2 = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid);
+        mDatabaseRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String userNametemp = dataSnapshot.child("UserInfo").child("userNickName").getValue(String.class);
+                if(nickname.equals(userNametemp) || uid.equals("dC9EUCkwqGeqQELJIYHLOEwYJzk2")){
+                    btnCommentMoidfy.setVisibility(View.VISIBLE);
+                    btnCommentDelete.setVisibility(View.VISIBLE);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // 오류 처리
+            }
+        });
 
         final AlertDialog dialog = builder.create();
 
         btnCommentMoidfy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "월급" 버튼을 클릭한 경우
+                int selectedPosition = position;
+                Comment_List selectedComment = commentList.get(selectedPosition);
+                modifyComment = selectedComment.getCommentId();
+                Toast.makeText(Select_Board.this,modifyComment,Toast.LENGTH_SHORT).show();
+                String content = selectedComment.getContent();
+                commentReLl.setVisibility(View.VISIBLE);
+                commentReEt.setText(content);
                 dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        uploadReComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference mDatabaseRef3 = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId + "/comment");
+                mDatabaseRef3.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String content = commentReEt.getText().toString();
+                        String commentId = modifyComment;
+                        mDatabaseRef3.child(commentId).child("content").setValue(content);
+                        Intent intent = new Intent(Select_Board.this, Select_Board.class);
+                        intent.putExtra("postId", postId);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // 오류 처리
+                    }
+                });
+            }
+        });
+
+        commentReLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
         btnCommentReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "부수입" 버튼을 클릭한 경우
-                int selectedPosition = position/* 여기에 선택한 아이템의 위치를 설정하세요 */;
+                int selectedPosition = position;
                 Comment_List selectedComment = commentList.get(selectedPosition);
-
                 String formattedDate = selectedComment.getDate();
                 String nickname = selectedComment.getName();
                 String content = selectedComment.getContent();
-
+                String commentId = selectedComment.getCommentId(); // commentId를 가져옴
                 mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/ReportData/CommentReport");
                 String tempReportComment = mDatabaseRef.push().getKey();
+                mDatabaseRef.child(tempReportComment).child("ReportId").setValue(tempReportComment);
                 mDatabaseRef.child(tempReportComment).child("PostInfo").setValue(postId);
                 mDatabaseRef.child(tempReportComment).child("Date").setValue(formattedDate);
+                mDatabaseRef.child(tempReportComment).child("commentId").setValue(commentId);
                 mDatabaseRef.child(tempReportComment).child("NickName").setValue(nickname);
                 mDatabaseRef.child(tempReportComment).child("Content").setValue(content);
                 Toast.makeText(Select_Board.this,"신고가 완료되었습니다.",Toast.LENGTH_SHORT).show();
@@ -322,14 +428,18 @@ public class Select_Board extends AppCompatActivity {
         btnCommentDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
+                int selectedPosition = position;
+                Comment_List selectedComment = commentList.get(selectedPosition);
+                String deleteComment = selectedComment.getCommentId();
+                DatabaseReference deleteCommentRef = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId + "/comment/" + deleteComment);
+                Toast.makeText(Select_Board.this,"댓글을 삭제하였습니다.",Toast.LENGTH_SHORT).show();
+                deleteCommentRef.removeValue();
                 dialog.dismiss(); // 다이얼로그 닫기
+                Intent intent = new Intent(Select_Board.this, Select_Board.class);
+                intent.putExtra("postId", postId);
+                startActivity(intent);
             }
         });
-
-
-
-        // 나머지 버튼들에 대해서도 동일한 방식으로 처리합니다.
 
         dialog.show();
     }

@@ -36,7 +36,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreatePost_Activity extends AppCompatActivity {
+public class CreateNotice_Activity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private ImageView mypageBtn;
@@ -66,7 +66,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_post);
+        setContentView(R.layout.activity_create_post_includenotice);
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         mypageBtn = findViewById(R.id.mypageBtn);
         editTextTitle = findViewById(R.id.TitleEt);
@@ -109,7 +109,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(CreatePost_Activity.this, "최대 5개의 이미지를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateNotice_Activity.this, "최대 5개의 이미지를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -132,7 +132,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                             selectedImageUris.add(selectedImageUri);
                             selectedImageCount++;
                         } else {
-                            Toast.makeText(CreatePost_Activity.this, "최대 5개의 이미지를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateNotice_Activity.this, "최대 5개의 이미지를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -141,19 +141,19 @@ public class CreatePost_Activity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.action_cal) {
-                    Intent intent = new Intent(CreatePost_Activity.this, Calendar_Activity.class);
+                    Intent intent = new Intent(CreateNotice_Activity.this, Calendar_Activity.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_chart) {
-                    Intent intent = new Intent(CreatePost_Activity.this, Chart_Activity.class);
+                    Intent intent = new Intent(CreateNotice_Activity.this, Chart_Activity.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_lifeitem) {
-                    Intent intent = new Intent(CreatePost_Activity.this, LifeItem_Activity.class);
+                    Intent intent = new Intent(CreateNotice_Activity.this, LifeItem_Activity.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_board) {
-                    Intent intent = new Intent(CreatePost_Activity.this, Board_Activity.class);
+                    Intent intent = new Intent(CreateNotice_Activity.this, Board_Activity.class);
                     startActivity(intent);
                     return true;
                 }
@@ -164,7 +164,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         mypageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CreatePost_Activity.this, MyPage_Activity.class);
+                Intent intent = new Intent(CreateNotice_Activity.this, MyPage_Activity.class);
                 startActivity(intent);
             }
         });
@@ -213,7 +213,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 // 이미지 업로드 실패 처리
-                                Toast.makeText(CreatePost_Activity.this, "이미지 업로드 실패", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateNotice_Activity.this, "이미지 업로드 실패", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
@@ -246,8 +246,8 @@ public class CreatePost_Activity extends AppCompatActivity {
         mDatabaseRef.child(postId).child("time").setValue(postTime);
         mDatabaseRef.child(postId).child("image").setValue(imageUrls);
         mDatabaseRef.child(postId).child("comment").setValue("");
-        Toast.makeText(CreatePost_Activity.this, "게시글 작성이 성공되었습니다.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(CreatePost_Activity.this, Board_Activity.class);
-        startActivity(intent);
+        Toast.makeText(CreateNotice_Activity.this, "게시글 작성이 성공되었습니다.", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }
+

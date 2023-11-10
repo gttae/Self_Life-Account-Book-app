@@ -66,10 +66,26 @@ public class MyPage_Activity extends AppCompatActivity {
         userId = firebaseUser.getUid();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId);
 
-        if(userId.equals("4UgQCxYnrvWjwZTZkiN6JS0ur8D3")){
+        if(userId.equals("dC9EUCkwqGeqQELJIYHLOEwYJzk2")){
             reportPost.setVisibility(View.VISIBLE);
             reportComment.setVisibility(View.VISIBLE);
         }
+
+        reportPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyPage_Activity.this, PostReportList_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        reportComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyPage_Activity.this, CommentReportList_Activity.class);
+                startActivity(intent);
+            }
+        });
 
         mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

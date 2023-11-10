@@ -85,8 +85,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
 
     @Override
-    public int getItemCount() {
-        return Math.min(boardList.size(), 10);
+    public int getItemCount(){
+        return (boardList != null ? boardList.size() : 0);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
