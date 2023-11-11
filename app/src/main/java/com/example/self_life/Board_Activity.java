@@ -26,6 +26,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Board_Activity extends AppCompatActivity {
@@ -129,6 +130,9 @@ public class Board_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 searchQuery = queryTitle.getText().toString();
+                if(searchQuery.equals("")){
+                    loadPage(currentPage);
+                }
                 performSearch(searchQuery);
             }
         });
@@ -143,9 +147,7 @@ public class Board_Activity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 boardList.clear();
                 List<Board_List> noticeList = new ArrayList<>();
-                int startIndex = (page - 1) * itemsPerPage;
-                int endIndex = page * itemsPerPage;
-                int currentItem = 0;
+
 
                 for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                     // 기존 코드와 동일
@@ -158,17 +160,13 @@ public class Board_Activity extends AppCompatActivity {
                         noticeList.add(new Board_List(category, title, postId));
                     } else {
                         // "공지" 카테고리가 아니면 기존 방식대로 리스트에 추가
-                        if (currentItem >= startIndex && currentItem < endIndex) {
                             boardList.add(new Board_List(category, title, postId));
-                        }
-                        currentItem++;
+
                     }
                 }
-
+                Collections.reverse(boardList);
                 // "공지" 카테고리의 항목들을 boardList의 맨 앞에 추가
                 boardList.addAll(0, noticeList);
-
-                // 나머지 코드...
                 adapter.notifyDataSetChanged();
             }
 
@@ -186,27 +184,25 @@ public class Board_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 boardList.clear();
-                int startIndex = (page - 1) * itemsPerPage;
-                int endIndex = page * itemsPerPage;
-                int currentItem = 0;
+                List<Board_List> noticeList = new ArrayList<>();
 
                 for (DataSnapshot snapshot : datasnapshot.getChildren()) {
-                    if (currentItem >= startIndex && currentItem < endIndex) {
                         // 기존 코드와 동일
                         category = snapshot.child("category").getValue(String.class);
                         title = snapshot.child("title").getValue(String.class);
                         postId = snapshot.child("postId").getValue(String.class);
-
-                        // 검색어가 비어 있거나, 타이틀에 검색어가 포함된 경우에만 리스트에 추가
-                        if (searchQuery.isEmpty() || title.toLowerCase().contains(searchQuery.toLowerCase())) {
-                            boardList.add(new Board_List(category, title, postId));
+                        if ("공지".equals(category)) {
+                            noticeList.add(new Board_List(category, title, postId));
+                        } else {
+                            // "공지" 카테고리가 아니면 기존 방식대로 리스트에 추가
+                            if (searchQuery.isEmpty() || title.toLowerCase().contains(searchQuery.toLowerCase())) {
+                                boardList.add(new Board_List(category, title, postId));
+                            }
                         }
-                    }
-                    if (currentItem >= endIndex) {
-                        break;
-                    }
-                    currentItem++;
+                        // 검색어가 비어 있거나, 타이틀에 검색어가 포함된 경우에만 리스트에 추가
                 }
+                Collections.reverse(boardList);
+                boardList.addAll(0, noticeList);
                 adapter.notifyDataSetChanged();
             }
 

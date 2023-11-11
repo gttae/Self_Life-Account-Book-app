@@ -25,7 +25,7 @@
                 android:lineSpacingExtra="60sp"
                 android:text="ID 찾기"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -45,7 +45,7 @@
             android:text="회원가입 시 등록한 정보로\n아이디를 확인 할 수 있습니다."
             android:textAlignment="gravity"
             android:textColor="#191919"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="normal" />
 
     </LinearLayout>
@@ -65,7 +65,7 @@
             android:background="@drawable/txtcolor"
             android:hint="이름을 입력해주세요."
             android:inputType="textCapWords"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:padding="10dp"
             android:textColor="#181818" />
 
@@ -77,7 +77,7 @@
             android:background="@drawable/txtcolor"
             android:hint="생년월일을 입력해주세요."
             android:inputType="textCapWords"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:padding="10dp"
             android:textColor="#181818" />
 
@@ -89,10 +89,12 @@
             android:background="@drawable/txtcolor"
             android:hint="휴대폰 번호를 입력해주세요.(-제외)"
             android:padding="10dp"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="#181818" />
 
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="300dp"
@@ -107,12 +109,40 @@
             android:layout_marginTop="30dp"
             android:text="ID 찾기"
             android:textStyle="normal"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textColor="#f8f8fa"
             android:lineSpacingExtra="12sp"
             android:gravity="center"
             android:background="@drawable/btncolor"/>
 
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/firstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textStyle="normal"
+        android:textSize="20dp"
+        android:textColor="#343aef"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="12sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="당신의 아이디는"/>
+    <TextView
+        android:id="@+id/secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="normal"
+        android:textSize="20dp"
+        android:textColor="#343aef"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="12sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="입니다."/>
 
 </LinearLayout>

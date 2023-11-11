@@ -55,6 +55,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         holder.categoryTextView.setText(boardData.getCategory());
         holder.titleTextView.setText(boardData.getTitle());
         holder.postIdTextView.setText(boardData.getPostId());
+
         int sequenceNumber = position + 1;
         holder.numberTextView.setText(String.valueOf(sequenceNumber));
 
@@ -64,7 +65,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
                 if (listener != null) {
                     // 수정된 부분: postId를 가져와서 전달
                     String postId = boardData.getPostId();
-
                     listener.onItemClick(position, postId);
                 }
             }

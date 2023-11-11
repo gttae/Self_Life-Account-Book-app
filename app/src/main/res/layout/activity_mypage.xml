@@ -99,6 +99,7 @@
         android:orientation="vertical"
         android:outlineProvider="none"
         android:padding="5dp"
+
         >
 
         <LinearLayout
@@ -230,6 +231,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:outlineProvider="none"
+
         >
 
 

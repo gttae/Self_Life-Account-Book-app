@@ -52,7 +52,7 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="40dp"
                 android:textStyle="normal"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#ed6c59"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="62sp"
@@ -66,7 +66,7 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="40dp"
                 android:textStyle="normal"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#d4d4d8"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="62sp"
@@ -100,7 +100,7 @@
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="normal"
                         android:text="날짜" />
 
@@ -130,7 +130,7 @@
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="normal"
                         android:text="분류" />
 
@@ -186,7 +186,7 @@
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="normal"
                         android:text="내용" />
 
@@ -270,7 +270,7 @@
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:text="월급"
-                                android:textSize="14sp"
+                                android:textSize="14dp"
                                 android:textStyle="normal" />
                         </LinearLayout>
 

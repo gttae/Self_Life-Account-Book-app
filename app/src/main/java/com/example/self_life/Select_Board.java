@@ -30,8 +30,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +39,7 @@ import java.util.List;
 public class Select_Board extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-    private ImageView mypageBtn, picture1;
+    private ImageView mypageBtn, picture1,picture2,picture3,picture4,picture5;
     private TextView postTitleTextView, postWriterTextView, postCategoryTextView, postTimeTextView, postContentTextView;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mFirebaseAuth;
@@ -77,13 +75,16 @@ public class Select_Board extends AppCompatActivity {
         uploadComment = findViewById(R.id.commentUpload);
         selectcomment = findViewById(R.id.commentPlus);
         picture1 = findViewById(R.id.PictureIv1);
+        picture2 = findViewById(R.id.PictureIv2);
+        picture3 = findViewById(R.id.PictureIv3);
+        picture4 = findViewById(R.id.PictureIv4);
+        picture5 = findViewById(R.id.PictureIv5);
         recyclerView = findViewById(R.id.commentVIew);
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         uid = firebaseUser.getUid();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference("1906053_.png");
         Intent intent = getIntent();
         postId = intent.getStringExtra("postId");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/BoardData/" + postId);
@@ -92,13 +93,29 @@ public class Select_Board extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                List<String> imageUris = new ArrayList<>();
+                for (DataSnapshot imageSnapshot : dataSnapshot.child("image").getChildren()) {
+                    String uri = imageSnapshot.getValue(String.class);
+                    imageUris.add(uri);
+                }
+
+                ImageView[] pictureViews = {picture1, picture2, picture3, picture4, picture5};
+                for (int i = 0; i < pictureViews.length; i++) {
+                    // i번째 ImageView에 대한 visibility 및 이미지 설정
+                    if (i < imageUris.size()) {
+                        pictureViews[i].setVisibility(View.VISIBLE);
+                        Glide.with(Select_Board.this).load(imageUris.get(i)).into(pictureViews[i]);
+                    } else {
+                        pictureViews[i].setVisibility(View.GONE);
+                    }
+                }
+
                 String title = dataSnapshot.child("title").getValue(String.class);
                 String writer = dataSnapshot.child("writer").getValue(String.class);
                 postCreater = dataSnapshot.child("writer").getValue(String.class);
                 String category = dataSnapshot.child("category").getValue(String.class);
+
                 String content = dataSnapshot.child("content").getValue(String.class);
-                //String image = "\"C:\\Users\\gitae\\OneDrive\\Desktop\\image\\one-g2bc6019cf_640.png\"";
-                //dataSnapshot.child("image").getValue(String.class);
                 long time = dataSnapshot.child("time").getValue(Long.class);
                 Date currentDate = new Date(time);
                 // SimpleDateFormat을 사용하여 연월일 형식으로 변환
@@ -127,9 +144,6 @@ public class Select_Board extends AppCompatActivity {
                     modifyThisPost.setVisibility(View.VISIBLE);
                     deleteThisPost.setVisibility(View.VISIBLE);
                 }
-                //Toast.makeText(Select_Board.this,image,Toast.LENGTH_SHORT).show();
-                Glide.with(Select_Board.this).load("https://firebasestorage.googleapis.com/v0/b/self-life-5b8ef.appspot.com/o/dice-g00bf226ea_640.png?alt=media&token=a23256c2-97bd-4a1e-8eb0-0f2f6e12478b&_gl=1*xng3ix*_ga*MzYzMDc0NTAxLjE2Nzk0MDU2OTQ.*_ga_CW55HF8NVT*MTY5NjgxODkzOS42NS4xLjE2OTY4MTg5NTYuNDMuMC4w").into(picture1);
-
             }
 
             @Override

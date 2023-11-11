@@ -122,7 +122,7 @@
             android:lineSpacingExtra="12sp"
             android:text="로그인"
             android:textColor="#f8f8fa"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="normal" />
     </LinearLayout>
 

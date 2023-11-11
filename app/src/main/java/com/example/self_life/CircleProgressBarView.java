@@ -28,7 +28,7 @@ public class CircleProgressBarView extends View {
     private Paint remainingPaint;
     private RectF rectF;
 
-    private String[] colors = {"#ff0000", "#FFFF00", "#0000FF", "#00FF00", "#FF00FF", "#444444", "#FFFFFF", "#000000", "#00FFFF", "#FF0000", "#808080"};
+    private int[] colors = {Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.DKGRAY, Color.WHITE, Color.BLACK, Color.CYAN, Color.RED, Color.GRAY};
 
 
     public CircleProgressBarView(Context context, AttributeSet attrs) {
@@ -53,7 +53,7 @@ public class CircleProgressBarView extends View {
         usedPaints = new Paint[segmentCount];
         for (int i = 0; i < segmentCount; i++) {
             usedPaints[i] = new Paint();
-            usedPaints[i].setColor(Color.parseColor(colors[i % colors.length]));  // 이 부분을 수정
+            usedPaints[i].setColor(colors[i % colors.length]);  // 이 부분을 수정
             usedPaints[i].setStyle(Paint.Style.STROKE);
             usedPaints[i].setStrokeWidth(10);
         }
@@ -151,7 +151,7 @@ public class CircleProgressBarView extends View {
 
         float centerX = width / 2f;
         float centerY = height / 2f;
-        float radius = Math.min(width, height) / 2f - 20; // 중앙으로부터의 거리 조정
+        float radius = Math.min(width, height) / 2f - 20;
 
         float totalSegmentValue = calculateArraySum(segmentValues);
         float totalValue = totalSegmentValue;
@@ -159,18 +159,22 @@ public class CircleProgressBarView extends View {
 
         for (int i = 0; i < segmentCount; i++) {
             float remainingSweepAngle = (segmentValues[i] / totalValue) * 360;
-            float usedSweepAngle = (usedValues[i] / segmentValues[i]) * remainingSweepAngle;
+            float usedSweepAngle = (segmentValues[i] != 0) ? (usedValues[i] / segmentValues[i]) * remainingSweepAngle : 0;
+
+            rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
 
             // 남은 부분 그리기
-            rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
             canvas.drawArc(rectF, startAngle, remainingSweepAngle, false, usedPaints[i]);
 
             // 사용된 부분 그리기
-            canvas.drawArc(rectF, startAngle, usedSweepAngle, false, remainingPaint);
+            if (usedSweepAngle > 0) {
+                canvas.drawArc(rectF, startAngle, usedSweepAngle, false, remainingPaint);
+            }
 
-            startAngle += remainingSweepAngle; // 다음 세그먼트의 시작 각도 조정
+            startAngle += remainingSweepAngle;
         }
     }
+
 
     public static float calculateArraySum(float[] array) {
         float sum = 0;

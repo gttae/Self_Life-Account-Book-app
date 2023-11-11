@@ -95,6 +95,7 @@ public class Modify_Post_Activity extends AppCompatActivity {
                     if (selectedImageUris.size() > index) {
                         // 해당 이미지뷰에 선택한 이미지를 표시
                         imageViews[index].setImageURI(selectedImageUris.get(index));
+                        removeSelectedImage(index);
                     }
                 }
             });
@@ -115,12 +116,12 @@ public class Modify_Post_Activity extends AppCompatActivity {
             }
         });
 
-
         galleryImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedImageCount < MAX_IMAGE_COUNT) {
                     try {
+
                         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         imagePickerLauncher.launch(intent);
                     } catch (Exception e) {
@@ -146,6 +147,7 @@ public class Modify_Post_Activity extends AppCompatActivity {
                         // 선택한 이미지를 이미지뷰에 표시
                         if (selectedImageCount < MAX_IMAGE_COUNT) {
                             imageViews[selectedImageCount].setImageURI(selectedImageUri);
+                            imageViews[selectedImageCount].setVisibility(View.VISIBLE);
                             // 이미지 Uri를 리스트에 추가
                             selectedImageUris.add(selectedImageUri);
                             selectedImageCount++;
@@ -264,7 +266,17 @@ public class Modify_Post_Activity extends AppCompatActivity {
         mDatabaseRef.child(postId).child("image").setValue(imageUrls);
         mDatabaseRef.child(postId).child("comment").setValue("");
         Toast.makeText(Modify_Post_Activity.this, "게시글 수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
-        finish();
+        Intent intent = new Intent(Modify_Post_Activity.this, Select_Board.class);
+        intent.putExtra("postId", postId);
+        startActivity(intent);
+    }
+    private void removeSelectedImage(int index) {
+        if (selectedImageUris.size() > index) {
+            selectedImageUris.remove(index);
+            selectedImageCount--;
+            // 이미지를 지운 후에 해당 이미지뷰를 숨김
+            imageViews[index].setVisibility(View.GONE);
+        }
     }
 }
 

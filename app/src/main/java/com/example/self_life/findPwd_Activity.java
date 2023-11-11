@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class findPwd_Activity extends AppCompatActivity
 {
     private EditText userName, userEmail, userDOB, userPhoneNumber;
+    private TextView firstText, secondText;
     private Button findPwd;
     private DatabaseReference mDatabaseRef;
     private FirebaseAuth mFirebaseAuth;
@@ -38,6 +40,8 @@ public class findPwd_Activity extends AppCompatActivity
         userEmail = findViewById(R.id.eT3Et);
         userDOB = findViewById(R.id.eT4Et);
         userPhoneNumber = findViewById(R.id.eT5Et);
+        firstText = findViewById(R.id.firstText);
+        secondText = findViewById(R.id.secondText);
         findPwd = findViewById(R.id.btn2Btn);
 
         findPwd.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +62,8 @@ public class findPwd_Activity extends AppCompatActivity
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
-                                                Toast.makeText(findPwd_Activity.this,"메일보내기 성공", Toast.LENGTH_SHORT).show();
+                                                firstText.setVisibility(View.VISIBLE);
+                                                secondText.setVisibility(View.VISIBLE);
                                             }
                                         }
                                     });

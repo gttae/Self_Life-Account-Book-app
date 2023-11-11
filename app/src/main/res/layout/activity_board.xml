@@ -40,7 +40,7 @@
                     android:lineSpacingExtra="60sp"
                     android:text="게시판"
                     android:textColor="#ffffff"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
             </RelativeLayout>
 

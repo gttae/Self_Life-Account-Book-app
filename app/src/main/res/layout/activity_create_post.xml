@@ -39,7 +39,7 @@
                 android:lineSpacingExtra="60sp"
                 android:text="게시판"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
         </RelativeLayout>
 
@@ -73,7 +73,7 @@
                     android:layout_width="44dp"
                     android:layout_height="25dp"
                     android:textStyle="normal"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"
@@ -149,13 +149,13 @@
 
 
             </RadioGroup>
-            
             <ScrollView
                 android:id="@+id/boardSv"
                 android:layout_width="320dp"
                 android:layout_height="180dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp">
+
 
                 <EditText
                     android:id="@+id/WriteEt"
@@ -231,7 +231,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"
@@ -243,7 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="4sp"
+                    android:textSize="4dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="66sp"
@@ -255,7 +255,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="10sp"
@@ -267,7 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="10sp"
@@ -279,7 +279,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="10sp"
@@ -291,7 +291,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="10sp"
@@ -303,7 +303,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:textSize="13sp"
+                    android:textSize="13dp"
                     android:textColor="#000000"
                     android:letterSpacing="-0.05"
                     android:lineSpacingExtra="10sp"

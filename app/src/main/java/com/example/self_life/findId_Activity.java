@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 public class findId_Activity extends AppCompatActivity
 {
     private EditText userName, userDOB, userPhoneNumber;
+    private TextView firstText,secondText;
     private DatabaseReference mDatabaseRef;
+
 
     private Button findId;
 
@@ -30,11 +33,12 @@ public class findId_Activity extends AppCompatActivity
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_findid);
-
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData");
         userName = findViewById(R.id.eT1Et);
         userDOB = findViewById(R.id.eT2Et);
         userPhoneNumber = findViewById(R.id.eT3Et);
+        firstText = findViewById(R.id.firstText);
+        secondText = findViewById(R.id.secondText);
         findId = findViewById(R.id.btn2Btn);
         findId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +51,12 @@ public class findId_Activity extends AppCompatActivity
                         boolean userFound = false;
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             String phoneNumber = snapshot.child("UserInfo").child("userPhoneNumber").getValue(String.class);
-                            if (userPhoneNumber.getText().toString().trim().equals(phoneNumber)) {
+                            String DOB = snapshot.child("UserInfo").child("userDOB").getValue(String.class);
+                            if (userPhoneNumber.getText().toString().trim().equals(phoneNumber) && userDOB.getText().toString().trim().equals(DOB)) {
                                 String userEmail = snapshot.child("UserInfo").child("userEmail").getValue(String.class);
-                                Toast.makeText(findId_Activity.this, userEmail, Toast.LENGTH_SHORT).show();
+                                firstText.setVisibility(View.VISIBLE);
+                                secondText.setText(userEmail + " 입니다.");
+                                secondText.setVisibility(View.VISIBLE);
                                 userFound = true;
                                 break; // 원하는 데이터를 찾았으므로 더 이상 반복할 필요가 없습니다.
                             }

@@ -32,7 +32,7 @@ public class Modify_Info_Activity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mDatabaseRef;
     private TextView userEmail, userJoin, changeNickNameTv, changePwdTv, changePhoneNumberTv;
-    private LinearLayout changeNickNameLayout, changePwdLayout,changePhoneNumberLayout,backFl, changeNickName, changePwd,changePhoneNumber;
+    private LinearLayout changeNickNameLayout, changePwdLayout,changePhoneNumberLayout,backFl, changeNickName, changePwd,changePhoneNumber,changeName;
     private EditText userName,changeNickNameEt,changePhoneNumberEt;
     private String userId;
 
@@ -48,6 +48,7 @@ public class Modify_Info_Activity extends AppCompatActivity {
         changeNickNameTv = findViewById(R.id.changeNickNameTv);
         changeNickNameEt = findViewById(R.id.changeNickNameEt);
         changeNickName = findViewById(R.id.changeNickName);
+        changeName = findViewById(R.id.changeName);
         changePwdTv = findViewById(R.id.changePwdTv);
         changePwd = findViewById(R.id.changePwd);
         changePhoneNumberTv = findViewById(R.id.changePhoneNumberTv);
@@ -156,13 +157,56 @@ public class Modify_Info_Activity extends AppCompatActivity {
         changeNickName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabaseRef.child("UserInfo").child("userNickName").setValue(changeNickNameEt.getText().toString().trim());
+                DatabaseReference nicknameRef = FirebaseDatabase.getInstance().getReference("self_life/userAccount");
+                nicknameRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            boolean isNicknameDuplicate = false;
+                            for (DataSnapshot nicknameSnapshot : dataSnapshot.getChildren()) {
+                                String existingNickname = nicknameSnapshot.getValue(String.class);
+                                if (existingNickname != null && existingNickname.equals(changeNickNameEt.getText().toString())) {
+                                    isNicknameDuplicate = true;
+                                    break;
+                                }
+                            }
+                            if(isNicknameDuplicate){
+                                Toast.makeText(Modify_Info_Activity.this, "존재하는 닉네임입니다.", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                mDatabaseRef.child("UserInfo").child("userNickName").setValue(changeNickNameEt.getText().toString().trim());
+                                Toast.makeText(Modify_Info_Activity.this, "닉네임이 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                                String NicknameKey = mDatabaseRef.child("userAccount").push().getKey(); // 새로운 닉네임을 위한 고유한 키 생성
+                                nicknameRef.child(NicknameKey).setValue(changeNickNameEt.getText().toString());
+                                Intent intent = new Intent(Modify_Info_Activity.this, MyPage_Activity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+        changeName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDatabaseRef.child("UserInfo").child("userName").setValue(userName.getText().toString().trim());
+                Toast.makeText(Modify_Info_Activity.this, "이름이 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Modify_Info_Activity.this, MyPage_Activity.class);
+                startActivity(intent);
             }
         });
         changePhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mDatabaseRef.child("UserInfo").child("userPhoneNumber").setValue(changePhoneNumberEt.getText().toString().trim());
+                Toast.makeText(Modify_Info_Activity.this, "휴대폰 번호가 변경되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Modify_Info_Activity.this, MyPage_Activity.class);
+                startActivity(intent);
             }
         });
         changePwd.setOnClickListener(new View.OnClickListener() {

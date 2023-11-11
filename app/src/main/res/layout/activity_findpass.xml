@@ -23,7 +23,7 @@
                 android:lineSpacingExtra="60sp"
                 android:text="비밀번호 찾기"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -43,7 +43,7 @@
             android:text="회원가입 시 등록한 정보로\n비밀번호를 확인 할 수 있습니다."
             android:textAlignment="gravity"
             android:textColor="#191919"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="normal" />
 
     </LinearLayout>
@@ -62,7 +62,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/txtcolor"
             android:hint="이름을 입력해주세요."
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:inputType="textCapWords"
             android:padding="10dp"
             android:textColor="#181818" />
@@ -74,7 +74,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/txtcolor"
             android:hint="아이디를 입력해주세요."
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:inputType="textCapWords"
             android:padding="10dp"
             android:textColor="#181818" />
@@ -86,7 +86,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/txtcolor"
             android:hint="생년월일을 입력해주세요."
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:padding="10dp"
             android:textColor="#181818" />
 
@@ -97,7 +97,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/txtcolor"
             android:hint="휴대폰 번호를 입력해주세요.(-제외)"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:padding="10dp"
             android:textColor="#181818" />
 
@@ -119,9 +119,36 @@
             android:lineSpacingExtra="12sp"
             android:text="비밀번호 찾기"
             android:textColor="#f8f8fa"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textStyle="normal" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/firstText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textStyle="normal"
+        android:textSize="20dp"
+        android:textColor="#343aef"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="12sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="아이디(이메일) 주소로"/>
+    <TextView
+        android:id="@+id/secondText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="normal"
+        android:textSize="20dp"
+        android:textColor="#343aef"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="12sp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:text="비밀번호 변경 메일을 보내드렸습니다."/>
 
 </LinearLayout>
