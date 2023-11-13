@@ -53,19 +53,21 @@
         android:layout_gravity="center">
 
         <FrameLayout
+            android:id="@+id/itemMenu"
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:background="@drawable/square"
             android:layout_marginTop="15dp">
 
             <TextView
+                android:id="@+id/lifeitem_category"
                 android:layout_width="82dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="44dp"
                 android:letterSpacing="-0.05"
                 android:lineSpacingExtra="10sp"
-                android:text="세안도구"
+                android:text="세안용품"
                 android:textColor="#232732"
                 android:textSize="20sp"
                 android:textStyle="normal" />
@@ -83,24 +85,24 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/seAndogu"
         android:layout_width="340dp"
         android:layout_height="534dp"
         android:layout_gravity="center"
+        android:visibility="visible"
         android:background="@drawable/boxback2">
 
-
+<!-- 세안도구 -->
         <LinearLayout
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
             android:orientation="vertical">
-
-
             <LinearLayout
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/boxback"
                 android:elevation="10dp"
                 android:orientation="horizontal">
@@ -187,7 +189,7 @@
                         android:gravity="center"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
-                        android:text="1l"
+                        android:text="1000ml"
                         android:textColor="#232732"
                         android:textSize="16sp"
                         android:textStyle="normal" />
@@ -201,7 +203,7 @@
                         android:background="@drawable/etback"
                         android:elevation="4dp"
                         android:gravity="center"
-                        android:hint="3ml"
+                        android:hint="5ml"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
                         android:textColor="#232732"
@@ -214,6 +216,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
                     android:orientation="vertical">
 
 
@@ -222,34 +225,17 @@
                         android:layout_height="30dp"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/Day1Et"
-                            android:layout_width="10dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center|center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/etback"
-                            android:elevation="4dp"
-                            android:gravity="center|top"
-                            android:hint="1"
-                            android:letterSpacing="-0.06"
-                            android:lineSpacingExtra="14sp"
-                            android:textColor="#232732"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-
                         <TextView
-                            android:layout_width="60dp"
+                            android:layout_width="62dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_marginTop="8dp"
                             android:letterSpacing="-0.05"
                             android:lineSpacingExtra="16sp"
-                            android:text="일 사용횟수"
+                            android:text="1일 사용횟수"
                             android:textColor="#232732"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
-
 
                     </LinearLayout>
 
@@ -307,18 +293,51 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn1"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
             <TextView
                 android:id="@+id/rebuy1Tv"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
+                android:visibility="gone"
                 android:lineSpacingExtra="16sp"
                 android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                 android:textColor="#a6343aef"
                 android:textSize="12sp"
                 android:textStyle="normal" />
-
+                <TextView
+                    android:id="@+id/regressionValue1Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
@@ -355,12 +374,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="27dp"
+                        android:layout_marginLeft="18dp"
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="12sp"
-                        android:text="샴푸"
+                        android:text="바디워시"
                         android:textColor="#232732"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         android:textStyle="normal" />
                 </FrameLayout>
 
@@ -410,7 +429,7 @@
                         android:gravity="center"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
-                        android:text="1l"
+                        android:text="1000ml"
                         android:textColor="#232732"
                         android:textSize="16sp"
                         android:textStyle="normal" />
@@ -424,7 +443,7 @@
                         android:background="@drawable/etback"
                         android:elevation="4dp"
                         android:gravity="center"
-                        android:hint="3ml"
+                        android:hint="8ml"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
                         android:textColor="#232732"
@@ -437,6 +456,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
                     android:orientation="vertical">
 
 
@@ -445,34 +465,17 @@
                         android:layout_height="30dp"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/Day2Et"
-                            android:layout_width="10dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center|center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/etback"
-                            android:elevation="4dp"
-                            android:gravity="center|top"
-                            android:hint="1"
-                            android:letterSpacing="-0.06"
-                            android:lineSpacingExtra="14sp"
-                            android:textColor="#232732"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-
                         <TextView
-                            android:layout_width="60dp"
+                            android:layout_width="62dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_marginTop="8dp"
                             android:letterSpacing="-0.05"
                             android:lineSpacingExtra="16sp"
-                            android:text="일 사용횟수"
+                            android:text="1일 사용횟수"
                             android:textColor="#232732"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
-
 
                     </LinearLayout>
 
@@ -530,17 +533,51 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/rebuy2Tv"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:lineSpacingExtra="16sp"
-                android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
-                android:textColor="#a6343aef"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn2"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy2Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue2Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
 
             <LinearLayout
@@ -572,7 +609,7 @@
                         android:layout_height="35dp"
                         android:layout_marginLeft="26dp"
                         android:layout_marginTop="13dp"
-                        android:background="@drawable/shampoo"
+                        android:background="@drawable/tooth"
                         android:elevation="10dp" />
 
                     <TextView
@@ -582,7 +619,7 @@
                         android:layout_marginLeft="27dp"
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="12sp"
-                        android:text="샴푸"
+                        android:text="치약"
                         android:textColor="#232732"
                         android:textSize="18sp"
                         android:textStyle="normal" />
@@ -634,7 +671,7 @@
                         android:gravity="center"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
-                        android:text="1l"
+                        android:text="1000ml"
                         android:textColor="#232732"
                         android:textSize="16sp"
                         android:textStyle="normal" />
@@ -648,7 +685,7 @@
                         android:background="@drawable/etback"
                         android:elevation="4dp"
                         android:gravity="center"
-                        android:hint="3ml"
+                        android:hint="1.2ml"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
                         android:textColor="#232732"
@@ -661,6 +698,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
                     android:orientation="vertical">
 
 
@@ -669,34 +707,17 @@
                         android:layout_height="30dp"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/Day3Et"
-                            android:layout_width="10dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center|center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/etback"
-                            android:elevation="4dp"
-                            android:gravity="center|top"
-                            android:hint="1"
-                            android:letterSpacing="-0.06"
-                            android:lineSpacingExtra="14sp"
-                            android:textColor="#232732"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-
                         <TextView
-                            android:layout_width="60dp"
+                            android:layout_width="62dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_marginTop="8dp"
                             android:letterSpacing="-0.05"
                             android:lineSpacingExtra="16sp"
-                            android:text="일 사용횟수"
+                            android:text="1일 사용횟수"
                             android:textColor="#232732"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
-
 
                     </LinearLayout>
 
@@ -754,17 +775,51 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/rebuy3Tv"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:lineSpacingExtra="16sp"
-                android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
-                android:textColor="#a6ff0000"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn3"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy3Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue3Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
 
             <LinearLayout
@@ -796,7 +851,7 @@
                         android:layout_height="35dp"
                         android:layout_marginLeft="26dp"
                         android:layout_marginTop="13dp"
-                        android:background="@drawable/shampoo"
+                        android:background="@drawable/toothbrush"
                         android:elevation="10dp" />
 
                     <TextView
@@ -806,7 +861,988 @@
                         android:layout_marginLeft="27dp"
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="12sp"
-                        android:text="샴푸"
+                        android:text="칫솔"
+                        android:textColor="#232732"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  수량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <EditText
+                        android:id="@+id/Max4Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1개"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/Option4Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn4"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy4Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue4Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/container"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="클렌징폼"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max5Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000ml"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min5Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="2ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num5Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option5Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn5"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy5Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue5Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/towel"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="27dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="수건"
+                        android:textColor="#232732"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  수량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <EditText
+                        android:id="@+id/Max6Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1개"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/Option6Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn6"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy6Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue6Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/towel"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="샤워타월"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  수량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <EditText
+                        android:id="@+id/Max7Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1개"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/Option7Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn7"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy7Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue7Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/shaving"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="면도기날"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  수량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <EditText
+                        android:id="@+id/Max8Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1개"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/Option8Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn8"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy8Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue8Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- 세안도구 -->
+
+
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/hwajangdogu"
+        android:layout_width="340dp"
+        android:layout_height="534dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/boxback2">
+
+        <!-- 세안도구 -->
+        <LinearLayout
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/toner"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="27dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="토너"
                         android:textColor="#232732"
                         android:textSize="18sp"
                         android:textStyle="normal" />
@@ -848,7 +1884,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/Max4Et"
+                        android:id="@+id/Max21Et"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
@@ -858,13 +1894,13 @@
                         android:gravity="center"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
-                        android:text="1l"
+                        android:text="1000ml"
                         android:textColor="#232732"
                         android:textSize="16sp"
                         android:textStyle="normal" />
 
                     <EditText
-                        android:id="@+id/Min4Et"
+                        android:id="@+id/Min21Et"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
@@ -872,7 +1908,7 @@
                         android:background="@drawable/etback"
                         android:elevation="4dp"
                         android:gravity="center"
-                        android:hint="3ml"
+                        android:hint="2ml"
                         android:letterSpacing="-0.06"
                         android:lineSpacingExtra="14sp"
                         android:textColor="#232732"
@@ -885,6 +1921,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
                     android:orientation="vertical">
 
 
@@ -893,34 +1930,17 @@
                         android:layout_height="30dp"
                         android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/Day4Et"
-                            android:layout_width="10dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center|center_horizontal"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/etback"
-                            android:elevation="4dp"
-                            android:gravity="center|top"
-                            android:hint="1"
-                            android:letterSpacing="-0.06"
-                            android:lineSpacingExtra="14sp"
-                            android:textColor="#232732"
-                            android:textSize="16sp"
-                            android:textStyle="normal" />
-
                         <TextView
-                            android:layout_width="60dp"
+                            android:layout_width="62dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_marginTop="8dp"
                             android:letterSpacing="-0.05"
                             android:lineSpacingExtra="16sp"
-                            android:text="일 사용횟수"
+                            android:text="1일 사용횟수"
                             android:textColor="#232732"
-                            android:textSize="13sp"
+                            android:textSize="12sp"
                             android:textStyle="normal" />
-
 
                     </LinearLayout>
 
@@ -945,7 +1965,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/Num4Et"
+                        android:id="@+id/Num21Et"
                         android:layout_width="40dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal"
@@ -961,7 +1981,7 @@
                         android:textStyle="normal" />
 
                     <Button
-                        android:id="@+id/Option4Btn"
+                        android:id="@+id/Option21Btn"
                         android:layout_width="45dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center"
@@ -978,22 +1998,2189 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/rebuy4Tv"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:lineSpacingExtra="16sp"
-                android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
-                android:textColor="#ff0000"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn21"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy21Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue21Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/ampoules"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="27dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="앰플"
+                        android:textColor="#232732"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max22Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000ml"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min22Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="2ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num22Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option22Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn22"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy22Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue22Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/cream"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="수분크림"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max23Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000g"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min23Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="8g"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num23Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option23Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn23"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy23Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue23Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/perfume"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="27dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="향수"
+                        android:textColor="#232732"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max24Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="100ml"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min24Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="0.05ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num24Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option24Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn24"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy24Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue24Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/lotion"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="바디로션"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max25Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000ml"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min25Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="10ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num25Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option25Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn25"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy25Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue25Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/suncream"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="20dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="선크림"
+                        android:textColor="#232732"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max26Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000g"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min26Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="2ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num26Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option26Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn26"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy26Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue26Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- 세안도구 -->
+
+
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/lifeItem"
+        android:layout_width="340dp"
+        android:layout_height="534dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:background="@drawable/boxback2">
+
+        <!-- 세안도구 -->
+        <LinearLayout
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/lotation"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="주방세제"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max31Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000l"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min31Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="2ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1일 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num31Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option31Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn31"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy31Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue31Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/detergent"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="세탁세제"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max32Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000ml"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min32Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="30ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1달 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num32Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option32Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn32"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy32Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue32Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/makeup"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="12dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="섬유유연제"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="9dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="59dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="18dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="1회 사용량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Max33Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1000ml"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <EditText
+                        android:id="@+id/Min33Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:hint="30ml"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="2dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="62dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="-0.05"
+                            android:lineSpacingExtra="16sp"
+                            android:text="1달 사용횟수"
+                            android:textColor="#232732"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/Num33Et"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="6회"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Button
+                        android:id="@+id/Option33Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn33"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy33Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue33Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/boxback"
+                android:elevation="10dp"
+                android:orientation="horizontal">
+
+
+                <FrameLayout
+                    android:layout_width="79dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="57dp"
+                        android:layout_height="54dp"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/roundshape"
+                        android:elevation="5dp">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:layout_width="33dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="26dp"
+                        android:layout_marginTop="13dp"
+                        android:background="@drawable/sponge"
+                        android:elevation="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="20dp"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="12sp"
+                        android:text="수세미"
+                        android:textColor="#232732"
+                        android:textSize="18sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="59dp"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="총  수량"
+                        android:textColor="#232732"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="56dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <EditText
+                        android:id="@+id/Max34Et"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="14sp"
+                        android:text="1개"
+                        android:textColor="#232732"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center"
+                        android:letterSpacing="-0.05"
+                        android:lineSpacingExtra="16sp"
+                        android:text="구매날짜"
+                        android:textColor="#232732"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/Option34Btn"
+                        android:layout_width="45dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/etback"
+                        android:elevation="4dp"
+                        android:letterSpacing="-0.06"
+                        android:lineSpacingExtra="18sp"
+                        android:text="설정하기"
+                        android:textColor="#232732"
+                        android:textSize="12sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/regressionBtn34"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/etback"
+                    android:elevation="4dp"
+                    android:letterSpacing="-0.06"
+                    android:lineSpacingExtra="18sp"
+                    android:text="예측하기"
+                    android:textColor="#232732"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/rebuy34Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/regressionValue34Tv"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text=""
+                    android:textColor="#a6343aef"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
 
 
 
 
         </LinearLayout>
+        <!-- 세안도구 -->
+
 
 
     </ScrollView>
@@ -1098,7 +4285,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <EditText
-                    android:id="@+id/Max5Et"
+                    android:id="@+id/MaxPlusEt"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_horizontal"
@@ -1112,7 +4299,7 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
                 <EditText
-                    android:id="@+id/Min5Et"
+                    android:id="@+id/MinPlusEt"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_horizontal"
@@ -1136,7 +4323,7 @@
                     android:layout_height="30dp"
                     android:orientation="horizontal">
                     <EditText
-                        android:id="@+id/Day5Et"
+                        android:id="@+id/DayPlusEt"
                         android:layout_width="10dp"
                         android:layout_height="20dp"
                         android:layout_gravity="center|center_horizontal"
@@ -1186,7 +4373,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/Num5Et"
+                    android:id="@+id/NumPlusEt"
                     android:layout_width="40dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_horizontal"
@@ -1201,7 +4388,7 @@
                     android:textStyle="normal" />
 
                 <Button
-                    android:id="@+id/Option5Btn"
+                    android:id="@+id/OptionPlusBtn"
                     android:layout_width="45dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"

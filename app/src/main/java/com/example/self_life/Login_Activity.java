@@ -140,6 +140,7 @@ public class Login_Activity extends AppCompatActivity
                     }
                     Intent intent = new Intent(Login_Activity.this, Chart_Activity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     if (task.getException() instanceof FirebaseAuthInvalidUserException) {
                         // 해당 이메일로 가입된 계정이 없는 경우

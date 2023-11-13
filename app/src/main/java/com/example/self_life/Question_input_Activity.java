@@ -98,6 +98,7 @@ public class Question_input_Activity extends AppCompatActivity {
                 Toast.makeText(Question_input_Activity.this,"문의가 전달되었습니다.",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Question_input_Activity.this, MyPage_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -249,6 +249,8 @@ public class CreateNotice_Activity extends AppCompatActivity {
         mDatabaseRef.child(postId).child("image").setValue(imageUrls);
         mDatabaseRef.child(postId).child("comment").setValue("");
         Toast.makeText(CreateNotice_Activity.this, "게시글 작성이 성공되었습니다.", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CreateNotice_Activity.this, Board_Activity.class);
+        startActivity(intent);
         finish();
     }
     private void removeSelectedImage(int index) {

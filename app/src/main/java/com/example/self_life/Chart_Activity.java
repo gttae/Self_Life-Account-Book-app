@@ -80,8 +80,6 @@ public class Chart_Activity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_chart) {
-                    Intent intent = new Intent(Chart_Activity.this, Chart_Activity.class);
-                    startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_lifeitem) {
                     Intent intent = new Intent(Chart_Activity.this, LifeItem_Activity.class);

@@ -252,6 +252,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         Toast.makeText(CreatePost_Activity.this, "게시글 작성이 성공되었습니다.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(CreatePost_Activity.this, Board_Activity.class);
         startActivity(intent);
+        finish();
     }
     private void removeSelectedImage(int index) {
         if (selectedImageUris.size() > index) {

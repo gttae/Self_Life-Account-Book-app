@@ -96,8 +96,6 @@ public class Board_Activity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_board) {
-                    Intent intent = new Intent(Board_Activity.this, Board_Activity.class);
-                    startActivity(intent);
                     return true;
                 }
                 return false;

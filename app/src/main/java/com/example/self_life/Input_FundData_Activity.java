@@ -246,6 +246,9 @@ public class Input_FundData_Activity extends AppCompatActivity {
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Description").setValue(incomeMemoEt.getText().toString());
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Category").setValue(incomeCategory);
                                     Toast.makeText(Input_FundData_Activity.this, "입력이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Input_FundData_Activity.this, Chart_Activity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }catch (ParseException e) {
                                     e.printStackTrace();
                                 }

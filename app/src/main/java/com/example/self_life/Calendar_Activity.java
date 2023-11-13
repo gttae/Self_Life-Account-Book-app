@@ -90,8 +90,6 @@ public class Calendar_Activity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.action_cal) {
-                    Intent intent = new Intent(Calendar_Activity.this, Calendar_Activity.class);
-                    startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.action_chart) {
                     Intent intent = new Intent(Calendar_Activity.this, Chart_Activity.class);

@@ -147,6 +147,7 @@ public class MyPage_Activity extends AppCompatActivity {
                 editor.apply();
                 Intent intent = new Intent(MyPage_Activity.this, Login_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
