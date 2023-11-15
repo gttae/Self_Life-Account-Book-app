@@ -64,9 +64,7 @@ public class Board_Activity extends AppCompatActivity {
         boardList = new ArrayList<>();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/BoardData");
 
-        // 초기 페이지 로드
         loadPage(currentPage);
-
 
         adapter = new BoardAdapter(this, boardList);
         recyclerView.setAdapter(adapter);

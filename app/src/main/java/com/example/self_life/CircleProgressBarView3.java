@@ -1,6 +1,6 @@
 package com.example.self_life;
 
-import static com.example.self_life.YearMonth_Value.getCurrentMonth;
+import static com.example.self_life.YearMonth_Value.MonthValue;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -57,7 +57,7 @@ public class CircleProgressBarView3 extends View {
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         String userId = firebaseUser.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String monthString = getCurrentMonth() + "월";
+        String monthString = MonthValue + "월";
         DatabaseReference incomeRef = database.getReference("self_life/UserData/" + userId + "/FundData/"+monthString+"수입");
         DatabaseReference expenseRef = database.getReference("self_life/UserData/" + userId + "/FundData/"+monthString+"지출");
         incomeRef.addValueEventListener(new ValueEventListener() {

@@ -84,13 +84,18 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="342dp"
+        android:layout_height="538dp"
+        android:layout_gravity="center"
+        android:background="@drawable/boxback2">
     <ScrollView
         android:id="@+id/seAndogu"
         android:layout_width="340dp"
         android:layout_height="534dp"
         android:layout_gravity="center"
         android:visibility="visible"
-        android:background="@drawable/boxback2">
+        >
 
 <!-- 세안도구 -->
         <LinearLayout
@@ -4184,6 +4189,7 @@
 
 
     </ScrollView>
+    </LinearLayout>
 
 </LinearLayout>
     <LinearLayout

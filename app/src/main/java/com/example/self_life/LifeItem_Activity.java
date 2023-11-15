@@ -15,17 +15,27 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class LifeItem_Activity extends AppCompatActivity {
 
@@ -34,6 +44,8 @@ public class LifeItem_Activity extends AppCompatActivity {
     private FrameLayout input_LifeItem,page_input,itemMenu;
     private ScrollView seAn, lifeitem, hwajang;
     private TextView lifeItemCategory;
+    private FirebaseAuth mFirebaseAuth;
+    private DatabaseReference mDatabaseRef;
     private EditText[] MaxEt = new EditText[13];
     private EditText[] MaxEt2 = new EditText[5];
     private EditText[] MinEt = new EditText[13];
@@ -58,8 +70,10 @@ public class LifeItem_Activity extends AppCompatActivity {
     private Integer[] rebuyTvIds2 = {R.id.rebuy4Tv,R.id.rebuy6Tv,R.id.rebuy7Tv,R.id.rebuy8Tv,R.id.rebuy34Tv};
     private Integer[] regressionValueTvIds = {R.id.regressionValue1Tv,R.id.regressionValue2Tv,R.id.regressionValue3Tv,R.id.regressionValue5Tv,R.id.regressionValue21Tv,R.id.regressionValue22Tv,R.id.regressionValue23Tv,R.id.regressionValue24Tv,R.id.regressionValue25Tv,R.id.regressionValue26Tv,R.id.regressionValue31Tv,R.id.regressionValue32Tv,R.id.regressionValue33Tv};
     private Integer[] regressionValueTvIds2 = {R.id.regressionValue4Tv,R.id.regressionValue6Tv,R.id.regressionValue7Tv,R.id.regressionValue8Tv,R.id.regressionValue34Tv};
+    private String[] itemNames = {"샴푸","바디워시","치약","클렌징폼","토너","앰플","수분크림","향수","바디로션","선크림","주방세제","세탁세제","섬유유연제"};
+    private String[] itemNames2 = {"칫솔","수건","샤워타월","면도기날","수세미"};
     private LinearLayout backLayout;
-    private double temp;
+    private String userId;
     private int i;
 
 
@@ -70,6 +84,10 @@ public class LifeItem_Activity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         itemMenu = findViewById(R.id.itemMenu);
         mypageBtn = findViewById(R.id.mypageBtn);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+        userId = firebaseUser.getUid();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/" + userId + "/LifeItemData");
         lifeItemCategory = findViewById(R.id.lifeitem_category);
         seAn =findViewById(R.id.seAndogu);
         lifeitem = findViewById(R.id.lifeItem);
@@ -100,20 +118,45 @@ public class LifeItem_Activity extends AppCompatActivity {
         for(i=0; i < regressionBtn.length; i++){
             regressionBtn[i] = findViewById(regressionBtnIds[i]);
         }
+        for(i=0; i < regressionBtn2.length; i++){
+            regressionBtn2[i] = findViewById(regressionBtnIds2[i]);
+        }
         for(i=0; i < rebuyTv.length; i++){
             rebuyTv[i] = findViewById(rebuyTvIds[i]);
+            rebuyTv[i].setVisibility(View.GONE);
+        }
+        for(i=0; i < rebuyTv2.length; i++){
+            rebuyTv2[i] = findViewById(rebuyTvIds2[i]);
+            rebuyTv2[i].setVisibility(View.GONE);
         }
         for(i=0; i < regressionValueTv.length; i++){
             regressionValueTv[i] = findViewById(regressionValueTvIds[i]);
+        }
+        for(i=0; i < regressionValueTv2.length; i++){
+            regressionValueTv2[i] = findViewById(regressionValueTvIds2[i]);
         }
         for(i=0; i < MaxEt2.length; i++){
             MaxEt2[i] = findViewById(MaxEtIds2[i]);
         }
         for(i=0; i < optionBtn2.length; i++){
+            final int index = i;
             optionBtn2[i] = findViewById(optionBtnIds2[i]);
+            optionBtn2[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showDateInputDialog2(index);
+                }
+            });
         }
         for(i=0; i < regressionBtn2.length; i++){
+            final int index = i;
             regressionBtn2[i] = findViewById(regressionBtnIds2[i]);
+            regressionBtn2[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rebuyTv2[index].setVisibility(View.VISIBLE);
+                }
+            });
         }
         for(i=0; i < rebuyTv2.length; i++){
             rebuyTv2[i] = findViewById(rebuyTvIds2[i]);
@@ -128,10 +171,107 @@ public class LifeItem_Activity extends AppCompatActivity {
             regressionBtn[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showDateInputDialog(index);
+                    rebuyTv[index].setVisibility(View.VISIBLE);
                 }
             });
         }
+
+        for (i = 0; i < itemNames.length; i++) {
+            final int index = i;
+            DatabaseReference mDatabaseRef2 = FirebaseDatabase.getInstance().getReference("self_life/UserData/" + userId + "/LifeItemData/" + itemNames[index]);
+            mDatabaseRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    if (snapshot.exists()) {
+                        String rebuyDayStr = snapshot.child("RebuyDay").getValue(String.class);
+                        Calendar calendar2 = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
+                        String currentDateStr = dateFormat.format(calendar2.getTime());
+
+                        try {
+                            // RebuyDay와 시스템 날짜를 Date 형식으로 변환
+                            Date rebuyDay = dateFormat.parse(rebuyDayStr);
+                            Date currentDate = dateFormat.parse(currentDateStr);
+                            long diffMillis = rebuyDay.getTime() - currentDate.getTime();
+                            long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+
+                            if (currentDate.compareTo(rebuyDay) >= 0) {
+                                mDatabaseRef2.removeValue();
+                                rebuyTv[index].setVisibility(View.GONE);
+                            }
+                            else {
+                                MaxEt[index].setText(snapshot.child("TotalCapacity").getValue(String.class));
+                                MinEt[index].setText(snapshot.child("OnceCapacity").getValue(String.class));
+                                NumEt[index].setText(snapshot.child("DailyUses").getValue(String.class));
+                                rebuyTv[index].setText(diffDays + "일 뒤에 재구매 예정입니다. (" + rebuyDayStr + ")");
+                                rebuyTv[index].setVisibility(View.VISIBLE);
+
+                                if (diffDays <= 3) {
+                                    rebuyTv[index].setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                                }
+                            }
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // 에러 처리
+                }
+            });
+        }
+
+        for (i = 0; i < itemNames2.length; i++) {
+            final int index = i;
+            DatabaseReference mDatabaseRef2 = FirebaseDatabase.getInstance().getReference("self_life/UserData/" + userId + "/LifeItemData/" + itemNames2[index]);
+            mDatabaseRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+
+                        String rebuyDayStr = snapshot.child("RebuyDay").getValue(String.class);
+                        Calendar calendar3 = Calendar.getInstance();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
+                        String currentDateStr2 = dateFormat.format(calendar3.getTime());
+
+                        try {
+                            // RebuyDay와 시스템 날짜를 Date 형식으로 변환
+                            Date rebuyDay = dateFormat.parse(rebuyDayStr);
+                            Date currentDate = dateFormat.parse(currentDateStr2);
+                            long diffMillis = rebuyDay.getTime() - currentDate.getTime();
+                            long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+
+                            if (currentDate.compareTo(rebuyDay) >= 0) {
+                                mDatabaseRef2.removeValue();
+                                rebuyTv2[index].setVisibility(View.GONE);
+                            } else {
+                                MaxEt2[index].setText(snapshot.child("TotalCapacity").getValue(String.class));
+                                rebuyTv2[index].setText(diffDays + "일 뒤에 재구매 예정입니다. (" + rebuyDayStr + ")");
+                                rebuyTv2[index].setVisibility(View.VISIBLE);
+
+                                if (diffDays <= 3) {
+                                    rebuyTv2[index].setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+                                }
+                            }
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // 에러 처리
+                }
+            });
+        }
+
+
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -244,24 +384,62 @@ public class LifeItem_Activity extends AppCompatActivity {
 
         Date lastUsageDate = calendar.getTime();
 
+        SimpleDateFormat newdateFormat = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
+        String lastUsageDateString = newdateFormat.format(lastUsageDate);
+
+
+        // 시스템 날짜와 선택 날짜 간의 차이를 계산
+        int daysDifference = getDaysDifference(Calendar.getInstance().getTime(),lastUsageDate) + 1;
+
+        rebuyTv[index].setText(daysDifference + "일 뒤에 재구매 예정입니다. (" + lastUsageDateString +")");
+        regressionValueTv[index].setText(lastUsageDateString);
+        mDatabaseRef.child(itemNames[index]).child("TotalCapacity").setValue(MaxEt[index].getText().toString());
+        mDatabaseRef.child(itemNames[index]).child("OnceCapacity").setValue(MinEt[index].getText().toString());
+        mDatabaseRef.child(itemNames[index]).child("DailyUses").setValue(NumEt[index].getText().toString());
+        mDatabaseRef.child(itemNames[index]).child("RebuyDay").setValue(lastUsageDateString);
+
+    }
+
+    private void calculateRegressionDate2(final int index, Date selectedDate) {
+        double max = getNumericValueFromEditText(MaxEt2[index]);
+        double daysLeft = 0;
+        switch (index){
+            case 0:
+                daysLeft = max * 21;
+                break;
+            case 1:
+                daysLeft = max * 365;
+                break;
+            case 2:
+                daysLeft = max * 60;
+                break;
+            case 3:
+                daysLeft = max * 60;
+                break;
+            case 4:
+                daysLeft = max * 30;
+                break;
+            default:
+                break;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(selectedDate); // 선택한 날짜로 설정
+        calendar.add(Calendar.DAY_OF_MONTH, (int) daysLeft);
+
+        Date lastUsageDate = calendar.getTime();
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
         String lastUsageDateString = dateFormat.format(lastUsageDate);
 
         // 시스템 날짜와 선택 날짜 간의 차이를 계산
-        int daysDifference = getDaysDifference(selectedDate, Calendar.getInstance().getTime());
+        int daysDifference = getDaysDifference(Calendar.getInstance().getTime(),lastUsageDate) + 1;
 
-        rebuyTv[index].setText(daysDifference + "일 뒤에 재구매 예정입니다. (" + lastUsageDateString +")");
-        rebuyTv[index].setVisibility(View.VISIBLE);
+        rebuyTv2[index].setText(daysDifference + "일 뒤에 재구매 예정입니다. (" + lastUsageDateString +")");
+        regressionValueTv2[index].setText(lastUsageDateString);
 
-        double regressionDays = max / (min * num);
-        calendar = Calendar.getInstance();
-        calendar.setTime(selectedDate); // 선택한 날짜로 설정
-        calendar.add(Calendar.DAY_OF_MONTH, (int) regressionDays);
+        mDatabaseRef.child(itemNames2[index]).child("TotalCapacity").setValue(MaxEt2[index].getText().toString());
+        mDatabaseRef.child(itemNames2[index]).child("RebuyDay").setValue(lastUsageDateString);
 
-        Date regressionDate = calendar.getTime();
-
-        String regressionDateString = dateFormat.format(regressionDate);
-        regressionValueTv[index].setText(regressionDateString);
     }
 
     private int getDaysDifference(Date startDate, Date endDate) {
@@ -279,7 +457,7 @@ public class LifeItem_Activity extends AppCompatActivity {
             // 숫자와 소수점만 포함된 문자열이 비어있지 않으면 해당 숫자를 반환
             return Double.parseDouble(numericText);
         } else {
-            // 숫자가 없는 경우 기본값이나 에러 처리를 수행할 수 있습니다.
+            Toast.makeText(LifeItem_Activity.this, "올바른 값을 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
             return 0.0;
         }
     }
@@ -311,4 +489,31 @@ public class LifeItem_Activity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    private void showDateInputDialog2(final int index) {
+        // 현재 날짜를 가져옴
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // DatePickerDialog 생성
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        // 날짜가 선택되면 실행되는 콜백
+                        // 선택된 날짜를 형식에 맞게 가공하여 EditText에 표시
+                        calendar.set(year, month, dayOfMonth);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
+                        Date selectedDate = calendar.getTime();
+                        optionBtn[index].setText("선택완료");
+
+                        // 선택된 날짜를 기반으로 재구매 날짜 예측
+                        calculateRegressionDate2(index, selectedDate);
+                    }
+                }, year, month, day);
+
+        // 다이얼로그 보이기
+        datePickerDialog.show();
+    }
 }

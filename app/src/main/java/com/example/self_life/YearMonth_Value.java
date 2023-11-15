@@ -10,6 +10,8 @@ public class YearMonth_Value {
     private static final int currentYear;
     private static final int currentMonth;
 
+    public static int updateMonth;
+
     static {
         // 현재 시간을 밀리초로 가져옴
         long currentTimeMillis = System.currentTimeMillis();
@@ -24,8 +26,9 @@ public class YearMonth_Value {
     public static int getCurrentYear() {
         return currentYear;
     }
-
     public static int getCurrentMonth() {
         return currentMonth;
     }
+    public static int MonthValue = getCurrentMonth();
+    public static int YearValue = getCurrentYear();
 }

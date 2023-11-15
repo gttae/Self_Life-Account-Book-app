@@ -1,7 +1,7 @@
 package com.example.self_life;
 
 import static com.example.self_life.CircleProgressBarView.calculateArraySum;
-import static com.example.self_life.YearMonth_Value.getCurrentMonth;
+import static com.example.self_life.YearMonth_Value.MonthValue;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -60,7 +60,7 @@ public class CircleProgressBarView2 extends View {
         userId = firebaseUser.getUid();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String monthString = getCurrentMonth() + "월";
+        String monthString = MonthValue + "월";
         String monthexpense = monthString + "지출";
         DatabaseReference fundDataRef = database.getReference("self_life/UserData/"+userId+"/FundData/"+monthexpense);
 

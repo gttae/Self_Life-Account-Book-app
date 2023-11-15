@@ -1,5 +1,6 @@
 package com.example.self_life;
 
+import static com.example.self_life.YearMonth_Value.MonthValue;
 import static com.example.self_life.YearMonth_Value.getCurrentMonth;
 
 import android.content.Context;
@@ -23,6 +24,7 @@ public class CircleProgressBarView extends View {
     private int segmentCount = 11;
     private float[] segmentValues = new float[segmentCount];
     private float[] usedValues = new float[segmentCount];
+    public int monthValue = getCurrentMonth();
 
     private Paint[] usedPaints;
     private Paint remainingPaint;
@@ -30,18 +32,19 @@ public class CircleProgressBarView extends View {
 
     private int[] colors = {Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.DKGRAY, Color.WHITE, Color.BLACK, Color.CYAN, Color.RED, Color.GRAY};
 
-
     public CircleProgressBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
-        fetchDataFromFirebase(); // Firebase에서 데이터 가져오기
+        fetchDataFromFirebase(MonthValue);// Firebase에서 데이터 가져오기
     }
 
     public CircleProgressBarView(Context context) {
         super(context);
         init();
-        fetchDataFromFirebase(); // Firebase에서 데이터 가져오기
+        fetchDataFromFirebase(MonthValue); // Firebase에서 데이터 가져오기
     }
+
+
 
     private void init() {
         int grayColor = Color.parseColor("#CCCCCC");
@@ -62,13 +65,13 @@ public class CircleProgressBarView extends View {
         rectF = new RectF();
     }
 
-    private void fetchDataFromFirebase() {
+    private void fetchDataFromFirebase(int monthValue) {
         // Firebase Database 인스턴스 생성
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         String userId;
         userId = firebaseUser.getUid();
-        String monthString = getCurrentMonth() + "월";
+        String monthString = monthValue + "월";
         String monthexpense = monthString + "지출";
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference fundDataRef = database.getReference("self_life/UserData/"+userId+"/FundData/"+monthexpense);
@@ -137,7 +140,7 @@ public class CircleProgressBarView extends View {
         }
     }
 
-    private void updateData() {
+    public void updateData() {
         // 뷰를 다시 그리도록 invalidate()를 호출하여 업데이트된 데이터로 뷰를 그립니다.
         invalidate();
     }
