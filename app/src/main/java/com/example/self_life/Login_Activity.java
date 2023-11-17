@@ -19,10 +19,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login_Activity extends AppCompatActivity
 {
     private FirebaseAuth mFirebaseAuth;             //파이어베이스 인증
+    private DatabaseReference mDatabaseRef;
     private EditText UserId, UserPwd;
     private Button Login, SignUp ;
     private TextView findId, findPwd, autotext, wrongEmail, wrongPwd;
@@ -37,6 +43,7 @@ public class Login_Activity extends AppCompatActivity
         setContentView(R.layout.activity_login);
         //변수선언
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData");
         UserId=findViewById(R.id.UserIdTv);
         UserPwd=findViewById(R.id.UserPwdTv);
         Login=findViewById(R.id.btn3Bt);
@@ -57,6 +64,7 @@ public class Login_Activity extends AppCompatActivity
 
             // 저장된 이메일과 비밀번호가 있으면 자동으로 로그인 시도
             if (!email.isEmpty() && !password.isEmpty()) {
+
                 loginWithEmailAndPassword(email, password);
             }
         }
@@ -70,7 +78,31 @@ public class Login_Activity extends AppCompatActivity
                     // 입력값이 없는 경우 Toast 메시지 출력
                     Toast.makeText(Login_Activity.this, "입력값이 없습니다.", Toast.LENGTH_SHORT).show();
                 } else {
-                    loginWithEmailAndPassword(strEmail, strPwd);
+                    mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                String userEmail = snapshot.child("UserInfo").child("userEmail").getValue(String.class);
+                                if(strEmail.equals(userEmail)){
+                                    loginWithEmailAndPassword(strEmail, strPwd);
+                                    break;
+                                }
+                                else {
+                                    wrongEmail.setVisibility(View.VISIBLE);
+                                    int drawableResourceId = getResources().getIdentifier("backwrong", "drawable", getPackageName());
+                                    UserId.setBackgroundResource(drawableResourceId);
+                                    wrongPwd.setVisibility(View.GONE);
+                                    drawableResourceId = getResources().getIdentifier("textviewback", "drawable", getPackageName());
+                                    UserPwd.setBackgroundResource(drawableResourceId);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
         });

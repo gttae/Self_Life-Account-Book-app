@@ -27,7 +27,8 @@ public class CircleProgressBarView2 extends View {
     private Paint[] segmentPaints;
     private RectF rectF;
 
-    private int[] colors = {Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN, Color.MAGENTA, Color.DKGRAY, Color.WHITE, Color.BLACK, Color.CYAN, Color.RED, Color.GRAY};
+    private int[] colors = {Color.parseColor("#EB385A"), Color.parseColor("#FA8231"), Color.parseColor("#FED330"), Color.parseColor("#2BCBBA"), Color.parseColor("#45AAF2"), Color.parseColor("#3867D6"), Color.parseColor("#A65EEA"), Color.parseColor("#E99386"), Color.parseColor("#E84493"), Color.parseColor("#A29BFE"), Color.parseColor("#00B894")};
+
 
     public CircleProgressBarView2(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -71,18 +72,25 @@ public class CircleProgressBarView2 extends View {
                 for (int i = 0; i < segmentCount; i++) {
                     segmentValues[i] = 0;
                 }
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                        float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
+                        String category = snapshot.child("Category").getValue(String.class);
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String fundDivision = snapshot.child("FundDivision").getValue(String.class);
-                    float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
-                    String category = snapshot.child("Category").getValue(String.class);
-
-                    // fundDivision을 기반으로 해당 세그먼트에 가격 할당
-                    int segmentIndex = getSegmentIndexByDivision(fundDivision);
-                    if (segmentIndex != -1) {
-                        if ("고정(계획)".equals(category)) {
-                            segmentValues[segmentIndex] += price;
+                        // fundDivision을 기반으로 해당 세그먼트에 가격 할당
+                        int segmentIndex = getSegmentIndexByDivision(fundDivision);
+                        if (segmentIndex != -1) {
+                            if ("고정(계획)".equals(category)) {
+                                segmentValues[segmentIndex] += price;
+                            }
                         }
+                    }
+                }
+                else{
+                    segmentValues[0] = 1;
+                    for (int i = 1; i < segmentCount; i++) {
+                        segmentValues[i] = 0;
                     }
                 }
                 updateData();
@@ -141,13 +149,21 @@ public class CircleProgressBarView2 extends View {
         float totalValue = totalSegmentValue;
         float startAngle = -90; // 시작 각도
 
-        for (int i = 0; i < segmentCount; i++) {
-            float sweepAngle = (segmentValues[i] / totalValue) * 360;
-
+        if(totalValue < 2) {
             rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
-            canvas.drawArc(rectF, startAngle, sweepAngle, true, segmentPaints[i]);
+            Paint greyPaint = new Paint();
+            greyPaint.setColor(Color.GRAY);
+            greyPaint.setStyle(Paint.Style.FILL);
+            canvas.drawArc(rectF, startAngle, 360, true, greyPaint);
+        } else {
+            for (int i = 0; i < segmentCount; i++) {
+                float sweepAngle = (segmentValues[i] / totalValue) * 360;
 
-            startAngle += sweepAngle; // 다음 구간의 시작 각도를 조정
+                rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                canvas.drawArc(rectF, startAngle, sweepAngle, true, segmentPaints[i]);
+
+                startAngle += sweepAngle; // 다음 구간의 시작 각도를 조정
+            }
         }
     }
 }

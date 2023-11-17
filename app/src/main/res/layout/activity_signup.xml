@@ -111,6 +111,29 @@
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="18sp"
+            android:text="닉네임"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/eT5Et"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/txtcolor"
+            android:hint="부 적절한 닉네임 사용 금지"
+            android:lineSpacingExtra="18sp"
+            android:padding="10dp"
+            android:textColor="#767676"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="18sp"
             android:text="비밀번호"
             android:textColor="#000000"
             android:textSize="12sp"
@@ -122,12 +145,13 @@
             android:layout_height="40dp"
             android:background="@drawable/txtcolor"
             android:hint="영문, 숫자, 특수기호 포함(8~20자)"
+            android:inputType="textPassword"
             android:lineSpacingExtra="18sp"
             android:padding="10dp"
             android:textColor="#767676"
             android:textSize="13sp"
             android:textStyle="normal"/>
-        
+
     </LinearLayout>
 
     <LinearLayout
@@ -145,7 +169,7 @@
             android:layout_weight="1"
             android:background="@drawable/btn2"
             android:lineSpacingExtra="18sp"
-            android:text="ID/닉네임 중복확인"
+            android:text="닉네임 중복확인"
             android:textColor="#000000"
             android:textSize="12sp"
             android:textStyle="normal" />
@@ -173,28 +197,7 @@
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="18sp"
-            android:text="닉네임"
-            android:textColor="#000000"
-            android:textSize="12sp"
-            android:textStyle="normal" />
 
-        <EditText
-            android:id="@+id/eT5Et"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/txtcolor"
-            android:hint="부 적절한 닉네임 사용 금지"
-            android:lineSpacingExtra="18sp"
-            android:padding="10dp"
-            android:textColor="#767676"
-            android:textSize="13sp"
-            android:textStyle="normal" />
 
         <TextView
             android:layout_width="wrap_content"

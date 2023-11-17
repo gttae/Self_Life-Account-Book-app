@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/fundKindValue"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
+        android:textStyle="normal"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="62sp"
+        android:gravity="center"
+        android:text="지 출"
+        android:background="@drawable/box"/>
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center"
+        android:textStyle="normal"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="62sp"
+        android:gravity="center"
+        android:background="@drawable/box">
+        <ImageView
+            android:id="@+id/changeCategory"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/baseline_arrow_upward_24"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/widgetCategory"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="4dp"
+        android:layout_gravity="center"
+        android:textStyle="normal"
+        android:textSize="13dp"
+        android:textColor="@color/black"
+        android:letterSpacing="-0.05"
+        android:lineSpacingExtra="62sp"
+        android:gravity="center"
+        android:text="식비"
+        android:background="@drawable/box"/>
+    <EditText
+        android:id="@+id/widgetFund"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="18dp"
+        android:hint="금 액"
+        android:textSize="18dp"
+        android:background="@drawable/edittext_underline" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/widgetMemo"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:hint="내 용"
+            android:textSize="18dp"
+            android:background="@drawable/edittext_underline" />
+        <Button
+            android:id="@+id/widgetSaveBtn"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:textStyle="normal"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:letterSpacing="-0.05"
+            android:lineSpacingExtra="62sp"
+            android:gravity="center"
+            android:text="저 장"
+            android:background="@drawable/box"/>
+    </LinearLayout>
+
+</LinearLayout>

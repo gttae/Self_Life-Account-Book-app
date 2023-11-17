@@ -82,37 +82,38 @@ public class Register_Activity extends AppCompatActivity {
                     return;
                 }
 
-                //Firebase Auth 진행
-                mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(Register_Activity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                if (registerPwdAccess && registerIdAccess) {
+                    //Firebase Auth 진행
+                    mFirebaseAuth.createUserWithEmailAndPassword(strEmail, strPwd).addOnCompleteListener(Register_Activity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+                                User_Account account = new User_Account();
+                                long currentTimeMillis = System.currentTimeMillis();
+                                account.setIdToken(firebaseUser.getUid());
+                                account.setEmailId(firebaseUser.getEmail());
+                                account.setCreationDate(currentTimeMillis);
+                                mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userEmail").setValue(account.getEmailId());
+                                mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userName").setValue(name);
+                                mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userPhoneNumber").setValue(phoneNumber);
+                                mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userNickName").setValue(nickname);
+                                String NicknameKey = mDatabaseRef.child("userAccount").push().getKey(); // 새로운 닉네임을 위한 고유한 키 생성
+                                mDatabaseRef.child("userAccount").child(NicknameKey).setValue(nickname);
+                                mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userDOB").setValue(DOB);
+                                mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("CreateTime").setValue(account.getCreationDate());
+                                Intent intent = new Intent(Register_Activity.this, SignUpSucces_Activity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(Register_Activity.this, "존재하는 이메일입니다.", Toast.LENGTH_SHORT).show();
+                            }
 
-                        if(registerIdAccess && registerPwdAccess) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
-                                    User_Account account = new User_Account();
-                                    long currentTimeMillis = System.currentTimeMillis();
-                                    account.setIdToken(firebaseUser.getUid());
-                                    account.setEmailId(firebaseUser.getEmail());
-                                    account.setCreationDate(currentTimeMillis);
-                                    mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userEmail").setValue(account.getEmailId());
-                                    mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userName").setValue(name);
-                                    mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userPhoneNumber").setValue(phoneNumber);
-                                    mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userNickName").setValue(nickname);
-                                    String NicknameKey = mDatabaseRef.child("userAccount").push().getKey(); // 새로운 닉네임을 위한 고유한 키 생성
-                                    mDatabaseRef.child("userAccount").child(NicknameKey).setValue(nickname);
-                                    mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("userDOB").setValue(DOB);
-                                    mDatabaseRef.child("UserData").child(account.getIdToken()).child("UserInfo").child("CreateTime").setValue(account.getCreationDate());
-                                    Intent intent = new Intent(Register_Activity.this, SignUpSucces_Activity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(Register_Activity.this, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
-                                }
-                        } else {
-                            Toast.makeText(Register_Activity.this, "내용을 확인해주세요.", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                });
+                    });
+                }
+                else {
+                    Toast.makeText(Register_Activity.this, "이메일/닉네임/비밀번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -130,21 +131,23 @@ public class Register_Activity extends AppCompatActivity {
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.RED);
-                    userPwd.setText("");
-                    userNickname.setText("");
-                    userEmail.setText("");
+                    //userPwd.setText("");
+                    //userNickname.setText("");
+                    //userEmail.setText("");
                     checkPwd.setText("입력된 비밀번호X");
                     userPwd.setBackgroundResource(drawableResourceId);
+                    registerPwdAccess = false;
                 }
                 if (!isValidPwd(userPwd.getText().toString().trim())) {
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
-                    userPwd.setText("");
-                    userNickname.setText("");
-                    userEmail.setText("");
+                    //userPwd.setText("");
+                    //userNickname.setText("");
+                    //userEmail.setText("");
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.RED);
                     checkPwd.setText("유효하지 않은 비밀번호");
                     userPwd.setBackgroundResource(drawableResourceId);
+                    registerPwdAccess = false;
                 }
                 else {
                     int drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());
@@ -198,10 +201,11 @@ public class Register_Activity extends AppCompatActivity {
                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                     checkEmailNickName.setTextColor(Color.RED);
                     checkEmailNickName.setText("유효하지 않는 이메일");
-                    userPwd.setText("");
-                    userNickname.setText("");
-                    userEmail.setText("");
+                    //userPwd.setText("");
+                    //userNickname.setText("");
+                    //userEmail.setText("");
                     userEmail.setBackgroundResource(drawableResourceId);
+                    registerIdAccess = false;
                 }
                 else {
                     int drawableResourceId = getResources().getIdentifier("txtcolor", "drawable", getPackageName());
@@ -211,10 +215,11 @@ public class Register_Activity extends AppCompatActivity {
                         checkEmailNickName.setBackgroundResource(drawableResourceId);
                         checkEmailNickName.setTextColor(Color.RED);
                         checkEmailNickName.setText("유효하지 않는 닉네임");
-                        userPwd.setText("");
-                        userNickname.setText("");
-                        userEmail.setText("");
+                        //userPwd.setText("");
+                        //userNickname.setText("");
+                        //userEmail.setText("");
                         userNickname.setBackgroundResource(drawableResourceId);
+                        registerIdAccess = false;
 
                     }
                     else {
@@ -232,10 +237,11 @@ public class Register_Activity extends AppCompatActivity {
                                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                                     checkEmailNickName.setTextColor(Color.RED);
                                     checkEmailNickName.setText("존재하는 닉네임");
-                                    userPwd.setText("");
-                                    userNickname.setText("");
-                                    userEmail.setText("");
+                                    //userPwd.setText("");
+                                    //userNickname.setText("");
+                                    //userEmail.setText("");
                                     userNickname.setBackgroundResource(drawableResourceId);
+                                    registerIdAccess = false;
 
                                 } else {
                                     drawableResourceId = getResources().getIdentifier("righttext", "drawable", getPackageName());

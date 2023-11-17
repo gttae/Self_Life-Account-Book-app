@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Self Life</string>
     <string name="차트">차트</string>
     <string name="_2023_5"><![CDATA[<2023년 5월>]]></string>
     <string name="상품">추천상품</string>
     <string name="product">Your Product Text Here</string>
+    <string name="widget_name">내역 입력하기</string>
 </resources>

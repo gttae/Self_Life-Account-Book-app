@@ -9,4 +9,7 @@
     <item
         android:id="@+id/menu_item3"
         android:title="화장품"/>
+    <item
+        android:id="@+id/menu_item4"
+        android:title="기타"/>
 </menu>

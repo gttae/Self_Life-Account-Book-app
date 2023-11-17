@@ -96,6 +96,7 @@
         <activity
             android:name=".CreateNotice_Activity"
             android:exported="true"/>
+
     </application>
 
 </manifest>

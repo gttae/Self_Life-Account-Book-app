@@ -63,15 +63,19 @@ public class CircleProgressBarView3 extends View {
         incomeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                float incomeTotal = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String category = snapshot.child("Category").getValue(String.class);
-                    if("고정(계획)".equals(category)) {
-                        float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
-                        incomeTotal += price;
+                if(dataSnapshot.exists()) {
+                    float incomeTotal = 0;
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String category = snapshot.child("Category").getValue(String.class);
+                        if ("고정(계획)".equals(category)) {
+                            float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
+                            incomeTotal += price;
+                        }
                     }
+                    segmentValues[0] = incomeTotal;
+                } else {
+                    segmentValues[0] = 1.0f;
                 }
-                segmentValues[0] = incomeTotal;
 
                 // 데이터 업데이트
                 updateData();
@@ -86,15 +90,19 @@ public class CircleProgressBarView3 extends View {
         expenseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                float expenseTotal = 0;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String category = snapshot.child("Category").getValue(String.class);
-                    if("고정(실사용)".equals(category)) {
-                        float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
-                        expenseTotal += price;
+                if(dataSnapshot.exists()) {
+                    float expenseTotal = 0;
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String category = snapshot.child("Category").getValue(String.class);
+                        if ("고정(실사용)".equals(category)) {
+                            float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
+                            expenseTotal += price;
+                        }
                     }
+                    segmentValues[1] = expenseTotal;
+                } else {
+                    segmentValues[1] = 1.0f;
                 }
-                segmentValues[1] = expenseTotal;
 
                 // 데이터 업데이트
                 updateData();
@@ -127,13 +135,21 @@ public class CircleProgressBarView3 extends View {
         float totalValue = segmentValues[0] + segmentValues[1]; // 총 값은 두 세그먼트의 합
         float startAngle = -90; // 시작 각도
 
-        for (int i = 0; i < segmentCount; i++) {
-            float sweepAngle = (segmentValues[i] / totalValue) * 360;
-
+        if(totalValue <= 2){
             rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
-            canvas.drawArc(rectF, startAngle, sweepAngle, true, segmentPaints[i]);
+            Paint greyPaint = new Paint();
+            greyPaint.setColor(Color.GRAY);
+            greyPaint.setStyle(Paint.Style.FILL);
+            canvas.drawArc(rectF, startAngle, 360, true, greyPaint);
+        } else {
+            for (int i = 0; i < segmentCount; i++) {
+                float sweepAngle = (segmentValues[i] / totalValue) * 360;
 
-            startAngle += sweepAngle; // 다음 세그먼트의 시작 각도를 조정
+                rectF.set(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                canvas.drawArc(rectF, startAngle, sweepAngle, true, segmentPaints[i]);
+
+                startAngle += sweepAngle; // 다음 세그먼트의 시작 각도를 조정
+            }
         }
     }
 }
