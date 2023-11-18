@@ -98,7 +98,6 @@ public class PostReportList_Activity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
     private void showReportOptionsDialog(int position, String postId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -141,5 +140,4 @@ public class PostReportList_Activity extends AppCompatActivity {
 
         builder.show();
     }
-
 }

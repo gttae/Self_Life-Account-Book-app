@@ -67,7 +67,7 @@ public class CircleProgressBarView3 extends View {
                     float incomeTotal = 0;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String category = snapshot.child("Category").getValue(String.class);
-                        if ("고정(계획)".equals(category)) {
+                        if ("실수령".equals(category)) {
                             float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
                             incomeTotal += price;
                         }
@@ -94,7 +94,7 @@ public class CircleProgressBarView3 extends View {
                     float expenseTotal = 0;
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String category = snapshot.child("Category").getValue(String.class);
-                        if ("고정(실사용)".equals(category)) {
+                        if ("실사용".equals(category)) {
                             float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
                             expenseTotal += price;
                         }

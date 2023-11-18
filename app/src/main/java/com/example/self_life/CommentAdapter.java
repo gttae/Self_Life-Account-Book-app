@@ -84,6 +84,4 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             commentIdTextView = itemView.findViewById(R.id.CommentIdTv);
         }
     }
-
-
 }

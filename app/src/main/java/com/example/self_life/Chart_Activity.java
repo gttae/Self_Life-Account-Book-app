@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,7 +36,6 @@ public class Chart_Activity extends AppCompatActivity {
     private FrameLayout dataInput;
     private LinearLayout modifyFund;
     private TextView leftPage,rightPage,chartMonth,userUseFund,userPlanFund;
-    private Button recommendChart;
     private TextView[] expensePlan = new TextView[11];
     private Integer[] expensePlanId = {R.id.expensePlan1,R.id.expensePlan2,R.id.expensePlan3,R.id.expensePlan4,R.id.expensePlan5,R.id.expensePlan6,R.id.expensePlan7,R.id.expensePlan8,R.id.expensePlan9,R.id.expensePlan10,R.id.expensePlan11};
     private String[] expenseStr = {"식비", "교통/차량", "문화생활", "마트", "패션/미용", "생활용품", "주거/통신", "건강", "교육", "경조사/회비", "기타"};
@@ -58,27 +56,18 @@ public class Chart_Activity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView5);
         mypageBtn = findViewById(R.id.mypageBtn);
         dataInput = findViewById(R.id.chartPlus);
-        recommendChart = findViewById(R.id.button1);
         leftPage = findViewById(R.id.leftPage);
         chartMonth = findViewById(R.id.chartMonth);
         rightPage = findViewById(R.id.rightPage);
         userUseFund = findViewById(R.id.userUseFund);
         userPlanFund = findViewById(R.id.userPlanFund);
         modifyFund = findViewById(R.id.button2);
-        //chartMonth.setText(yearValue+"년 "+ MonthValue+"월");
 
         for (i=0; i < expensePlan.length;i++) {
             expensePlan[i] = findViewById(expensePlanId[i]);
         }
         chartMonth.setText(YearValue+"년 "+MonthValue+"월");
 
-        recommendChart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Chart_Activity.this, Recommend_Model_Activity.class);
-                startActivity(intent);
-            }
-        });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -154,9 +143,96 @@ public class Chart_Activity extends AppCompatActivity {
             }
         });
 
+        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
+        String userId;
+        userId = firebaseUser.getUid();
+        DatabaseReference fixExpenseFundRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId+"/FundData/고정지출");
+        fixExpenseFundRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        if(snapshot.child("Month").getValue(String.class).equals(String.valueOf(getCurrentMonth()))){
+
+                        } else {
+                            DatabaseReference fundTempRef = snapshot.getRef();
+                            fundTempRef.child("Month").setValue(String.valueOf(getCurrentMonth()));
+                            String FundId = snapshot.child("FundId").getValue(String.class);
+                            String year = snapshot.child("Year").getValue(String.class);
+                            String day = snapshot.child("Day").getValue(String.class);
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            String price = snapshot.child("Price").getValue(String.class);
+                            String memo = snapshot.child("Description").getValue(String.class);
+                            String category = "실사용";
+
+                            DatabaseReference fundRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId+"/FundData/"+getCurrentMonth()+"월지출");
+                            String fundKey = fundRef.push().getKey();
+                            fundRef.child(fundKey).child("FundId").setValue(FundId);
+                            fundRef.child(fundKey).child("Year").setValue(year);
+                            fundRef.child(fundKey).child("Month").setValue(String.valueOf(getCurrentMonth()));
+                            fundRef.child(fundKey).child("Day").setValue(day);
+                            fundRef.child(fundKey).child("FundDivision").setValue(fundDivision);
+                            fundRef.child(fundKey).child("Price").setValue(price);
+                            fundRef.child(fundKey).child("Description").setValue(memo);
+                            fundRef.child(fundKey).child("Category").setValue(category);
+                        }
+                    }
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        DatabaseReference fixIncomeFundRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId+"/FundData/고정수입");
+        fixIncomeFundRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        if(snapshot.child("Month").getValue(String.class).equals(String.valueOf(getCurrentMonth()))){
+
+                        } else {
+                            DatabaseReference fundTempRef = snapshot.getRef();
+                            fundTempRef.child("Month").setValue(String.valueOf(getCurrentMonth()));
+                            String FundId = snapshot.child("FundId").getValue(String.class);
+                            String year = snapshot.child("Year").getValue(String.class);
+                            String day = snapshot.child("Day").getValue(String.class);
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            String price = snapshot.child("Price").getValue(String.class);
+                            String memo = snapshot.child("Description").getValue(String.class);
+                            String category = "실수령";
+
+                            DatabaseReference fundRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+userId+"/FundData/"+getCurrentMonth()+"월수입");
+                            String fundKey = fundRef.push().getKey();
+                            fundRef.child(fundKey).child("FundId").setValue(FundId);
+                            fundRef.child(fundKey).child("Year").setValue(year);
+                            fundRef.child(fundKey).child("Month").setValue(String.valueOf(getCurrentMonth()));
+                            fundRef.child(fundKey).child("Day").setValue(day);
+                            fundRef.child(fundKey).child("FundDivision").setValue(fundDivision);
+                            fundRef.child(fundKey).child("Price").setValue(price);
+                            fundRef.child(fundKey).child("Description").setValue(memo);
+                            fundRef.child(fundKey).child("Category").setValue(category);
+                        }
+                    }
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         monthChart(monthValue);
         expenseOfPlan(MonthValue);
-
     }
 
     private int getSegmentIndexByDivision(String fundDivision) {
@@ -215,7 +291,7 @@ public class Chart_Activity extends AppCompatActivity {
                         // fundDivision을 기반으로 해당 세그먼트에 가격 할당
                         int segmentIndex = getSegmentIndexByDivision(fundDivision);
                         if (segmentIndex != -1) {
-                            if ("고정(계획)".equals(category)) {
+                            if ("계 획".equals(category)) {
                                 segmentValues[segmentIndex] += price;
                             }
                         }
@@ -241,28 +317,22 @@ public class Chart_Activity extends AppCompatActivity {
     private void weekendFund(float fund){
         Calendar calendar = Calendar.getInstance();
 
-        // 현재 월의 시작일과 끝일 설정
-        //calendar.set(Calendar.DAY_OF_MONTH, 1);
         int currentMonth = calendar.get(Calendar.MONTH);
         int currentYear = calendar.get(Calendar.YEAR);
         int currentWeek = calendar.get(Calendar.WEEK_OF_MONTH);
 
-        // 원하는 연도와 월로 설정
         calendar.set(Calendar.YEAR, currentYear);
-        calendar.set(Calendar.MONTH, monthValue);
+        calendar.set(Calendar.MONTH, currentMonth);
 
-        // 마지막 날짜를 구하기 위해 월을 다음 월로 설정하고 1일 전으로 이동
         calendar.add(Calendar.MONTH, 1);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         calendar.add(Calendar.DAY_OF_MONTH, -1);
 
         int lastDay = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // 초기 temp 값
         float temp = fund;
         float dailyfund = temp / lastDay;
 
-        // 주차별 한 주의 균등한 값의 합을 저장할 배열
         float[] weeklyDayCounts = {0,0,0,0,0,0}; // 주차에 포함된 요일 수
 
         for (int i = 1; i <= lastDay; i++) {
@@ -284,9 +354,11 @@ public class Chart_Activity extends AppCompatActivity {
         else{
             weeklyDayCounts2[4] = lastDay;
         }
+
         for (int i =0; i<=weeklyDayCounts.length-1; i++){
             weeklyDayCounts[i] = weeklyDayCounts[i] * dailyfund;
         }
+
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();
         String userId;
@@ -308,7 +380,7 @@ public class Chart_Activity extends AppCompatActivity {
                         float price = Float.valueOf(snapshot.child("Price").getValue(String.class));
                         int day = Integer.valueOf(snapshot.child("Day").getValue(String.class));
                         String category = snapshot.child("Category").getValue(String.class);
-                        if ("고정(실사용)".equals(category) || "유동".equals(category)) {
+                        if ("실사용".equals(category)) {
                             if(day <= weeklyDayCounts2[0]){
                                 usedValues[0] += price;
                             } else if (day <= weeklyDayCounts2[1]) {
@@ -324,9 +396,7 @@ public class Chart_Activity extends AppCompatActivity {
                             }
                         }
                     }
-                    limitWeek = 0.0F;
                     limitWeek = weeklyDayCounts[currentWeek-1] - usedValues[currentWeek-1];
-
                     userUseFund.setText("주간동안 ￦"+String.format("%.0f",usedValues[currentWeek-1])+"원 사용하셨습니다.");
                     userPlanFund.setText("남은 기간동안 ￦"+String.format("%.0f",limitWeek)+"원을 사용하셔야합니다.");
             }
@@ -355,33 +425,33 @@ public class Chart_Activity extends AppCompatActivity {
         fundDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                    Integer[] totalValue = new Integer[11];
-                    Integer[] usedValue = new Integer[11];
+                Integer[] totalValue = new Integer[11];
+                Integer[] usedValue = new Integer[11];
 
                     // 배열 초기화
-                    for (i = 0; i < expensePlan.length; i++) {
-                        totalValue[i] = 0;
-                        usedValue[i] = 0;
+                for (i = 0; i < expensePlan.length; i++) {
+                    totalValue[i] = 0;
+                    usedValue[i] = 0;
 
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String category = snapshot.child("Category").getValue(String.class);
-                            if (category.equals("고정(계획)")) {
-                                String fundDivision = snapshot.child("FundDivision").getValue(String.class);
-                                if (fundDivision.equals(expenseStr[i])) {
-                                    int price = Integer.valueOf(snapshot.child("Price").getValue(String.class));
-                                    totalValue[i] += price;
-                                }
-                            } else if ((category.equals("고정(실사용)")) || (category.equals("유동"))) {
-                                String fundDivision = snapshot.child("FundDivision").getValue(String.class);
-                                if (fundDivision.equals(expenseStr[i])) {
-                                    int price = Integer.valueOf(snapshot.child("Price").getValue(String.class));
-                                    usedValue[i] += price;
-                                }
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String category = snapshot.child("Category").getValue(String.class);
+                        if (category.equals("계 획")) {
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            if (fundDivision.equals(expenseStr[i])) {
+                                int price = Integer.valueOf(snapshot.child("Price").getValue(String.class));
+                                totalValue[i] += price;
+                            }
+                        } else if ( category.equals("실사용")) {
+                            String fundDivision = snapshot.child("FundDivision").getValue(String.class);
+                            if (fundDivision.equals(expenseStr[i])) {
+                                int price = Integer.valueOf(snapshot.child("Price").getValue(String.class));
+                                usedValue[i] += price;
                             }
                         }
-                        int tempValue = totalValue[i] - usedValue[i];
-                        expensePlan[i].setText(expenseStr[i] + " : " + usedValue[i] + " / " + totalValue[i] + " || " + "남은금액 : " + tempValue);
                     }
+                    int tempValue = totalValue[i] - usedValue[i];
+                    expensePlan[i].setText(expenseStr[i] + " : " + usedValue[i] + " / " + totalValue[i] + " || " + "남은금액 : " + tempValue);
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

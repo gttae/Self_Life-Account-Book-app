@@ -6,7 +6,6 @@ public class Account_Data {
     public Account_Data(){
 
     }
-
     private Integer price; //금액
 
     public Integer getPrice(){return price;}

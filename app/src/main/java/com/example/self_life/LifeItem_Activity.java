@@ -374,9 +374,9 @@ public class LifeItem_Activity extends AppCompatActivity {
                         }
                     }
                     if(snapshot.child("사용자정의1").exists()) {
-                        String MaxEt = snapshot.child("사용자정의1").child("TotalCapacity").getValue(String.class);
-                        String MinEt = snapshot.child("사용자정의1").child("OnceCapacity").getValue(String.class);
-                        String NumEt = snapshot.child("사용자정의1").child("DailyUses").getValue(String.class);
+                        String MaxEt = String.valueOf(snapshot.child("사용자정의1").child("TotalCapacity").getValue(Long.class));
+                        String MinEt = String.valueOf(snapshot.child("사용자정의1").child("OnceCapacity").getValue(Long.class));
+                        String NumEt = String.valueOf(snapshot.child("사용자정의1").child("DailyUses").getValue(Long.class));
                         String RebuyDay = snapshot.child("사용자정의1").child("RebuyDay").getValue(String.class);
 
                         Calendar calendar4 = Calendar.getInstance();
@@ -495,13 +495,11 @@ public class LifeItem_Activity extends AppCompatActivity {
                     }
                 }
 
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 
                 }
             });
-
 
         itemPlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -516,7 +514,6 @@ public class LifeItem_Activity extends AppCompatActivity {
                 showDateInputDialog3();
             }
         });
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -579,7 +576,6 @@ public class LifeItem_Activity extends AppCompatActivity {
 
             }
         });
-
 
     }
     private void showPopupMenu(View view) {
@@ -719,7 +715,6 @@ public class LifeItem_Activity extends AppCompatActivity {
         long diff = endDate.getTime() - startDate.getTime();
         return (int) (diff / (24 * 60 * 60 * 1000));
     }
-
 
     private double getNumericValueFromEditText(EditText editText) {
         String text = editText.getText().toString();

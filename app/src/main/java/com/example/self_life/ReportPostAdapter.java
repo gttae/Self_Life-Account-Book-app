@@ -66,9 +66,6 @@ public class ReportPostAdapter extends RecyclerView.Adapter<ReportPostAdapter.Vi
         return (RPList != null ? RPList.size() : 0);
     }
 
-
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView reportIdTextView;
         public TextView writerTextView;

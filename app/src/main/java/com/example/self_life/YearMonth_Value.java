@@ -6,10 +6,8 @@ import java.util.GregorianCalendar;
 public class YearMonth_Value {
     private static final long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000; // 1일의 밀리초
     private static final long MILLISECONDS_IN_MONTH = 30 * MILLISECONDS_IN_DAY; // 한 달의 밀리초
-
     private static final int currentYear;
     private static final int currentMonth;
-
     public static int updateMonth;
 
     static {

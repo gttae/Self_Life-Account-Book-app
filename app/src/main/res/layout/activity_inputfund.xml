@@ -87,7 +87,38 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
+                <RadioGroup
+                    android:id="@+id/incomeRgroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal">
 
+                    <RadioButton
+                        android:id="@+id/incomeRbtn1"
+                        android:layout_weight="1"
+                        android:text="고 정"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp" />
+
+                    <RadioButton
+                        android:id="@+id/incomeRbtn2"
+                        android:layout_weight="1"
+                        android:text="계 획"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp" />
+
+                    <RadioButton
+                        android:id="@+id/incomeRbtn3"
+                        android:layout_weight="1"
+                        android:text="실수령"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp" />
+
+                </RadioGroup>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -96,7 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="14dp"
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
@@ -109,7 +140,7 @@
                         android:layout_width="200dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="27dp"
+                        android:layout_marginTop="12dp"
                         android:background="@drawable/edittext_underline"
                         android:text="날짜 선택"
                         android:textColor="#ed6c59"
@@ -203,37 +234,7 @@
                 </LinearLayout>
 
 
-                <RadioGroup
-                    android:id="@+id/incomeRgroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/incomeRbtn1"
-                        android:layout_weight="1"
-                        android:text="고정(실수령)"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="11dp" />
-
-                    <RadioButton
-                        android:id="@+id/incomeRbtn2"
-                        android:layout_weight="1"
-                        android:text="고정(계획)"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="12dp" />
-
-                    <RadioButton
-                        android:id="@+id/incomeRbtn3"
-                        android:layout_weight="1"
-                        android:text="유동"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp" />
-
-                </RadioGroup>
 
 
                 <LinearLayout
@@ -241,7 +242,7 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:elevation="10dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="vertical"
                     android:background="@drawable/a">
 
@@ -426,6 +427,41 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+                <RadioGroup
+                    android:id="@+id/expenseRgroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/expenseRbtn1"
+                        android:layout_weight="1"
+                        android:text="고 정"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/expenseRbtn2"
+                        android:layout_weight="1"
+                        android:text="계 획"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/expenseRbtn3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="실사용"
+                        android:textSize="14sp" />
+
+                </RadioGroup>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -434,7 +470,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="14dp"
                         android:letterSpacing="-0.05"
                         android:lineSpacingExtra="62sp"
                         android:textColor="#ed6c59"
@@ -447,7 +483,7 @@
                         android:layout_width="200dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="27dp"
+                        android:layout_marginTop="12dp"
                         android:background="@drawable/edittext_underline"
                         android:gravity="center"
                         android:text="날짜 선택"
@@ -541,47 +577,14 @@
 
                 </LinearLayout>
 
-                <RadioGroup
-                    android:id="@+id/expenseRgroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/expenseRbtn1"
-                        android:layout_weight="1"
-                        android:text="고정(실사용)"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textStyle="normal"
-                        android:textSize="11sp"
-                        android:textColor="#000000"
-                        />
-
-                    <RadioButton
-                        android:id="@+id/expenseRbtn2"
-                        android:layout_weight="1"
-                        android:text="고정(계획)"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp" />
-
-                    <RadioButton
-                        android:id="@+id/expenseRbtn3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="유동"
-                        android:textSize="14sp" />
-
-                </RadioGroup>
 
 
                 <LinearLayout
                     android:layout_width="280dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     android:elevation="10dp"
                     android:orientation="vertical"
                     android:background="@drawable/a">

@@ -128,14 +128,12 @@
         android:layout_height="248dp"
         android:orientation="vertical"
         >
-        <Button
-            android:id="@+id/button1"
+        <View
             android:layout_width="80dp"
             android:layout_height="36dp"
             android:layout_gravity="right"
             android:layout_marginTop="6dp"
             android:layout_marginRight="4dp"
-            android:background="@drawable/but"
             android:text="추천모델"
             tools:ignore="TouchTargetSizeCheck" />
     <LinearLayout
@@ -183,7 +181,7 @@
             android:layout_height="wrap_content"
             android:letterSpacing="-0.04"
             android:lineSpacingExtra="14sp"
-            android:layout_marginLeft="99dp"
+            android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:textColor="#232732"
             android:textSize="16dp"
@@ -320,7 +318,7 @@
             android:textStyle="normal"
             android:textSize="16dp"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="123dp"
+            android:layout_gravity="center"
             android:textColor="#232732"
             android:letterSpacing="-0.04"
             android:lineSpacingExtra="14sp"

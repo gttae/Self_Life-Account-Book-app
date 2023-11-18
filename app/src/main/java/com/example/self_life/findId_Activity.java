@@ -23,8 +23,6 @@ public class findId_Activity extends AppCompatActivity
     private EditText userName, userDOB, userPhoneNumber;
     private TextView firstText,secondText;
     private DatabaseReference mDatabaseRef;
-
-
     private Button findId;
 
     @SuppressLint("WrongViewCast")
@@ -73,5 +71,4 @@ public class findId_Activity extends AppCompatActivity
             }
         });
     }
-
 }

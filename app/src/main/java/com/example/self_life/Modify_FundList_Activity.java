@@ -331,6 +331,9 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                 mDatabaseRef.child("Day").setValue(String.valueOf(day));
                 mDatabaseRef.child("Year").setValue(String.valueOf(year));
                 Toast.makeText(Modify_FundList_Activity.this,"수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Modify_FundList_Activity.this, Modify_FundList_Activity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -342,6 +345,9 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(Modify_FundList_Activity.this,"해당 내역이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Modify_FundList_Activity.this, Modify_FundList_Activity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 })
                         .addOnFailureListener(new OnFailureListener() {
@@ -374,11 +380,9 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("분류 선택");
 
-        // dialog_select_kind.xml 레이아웃을 inflate
         View view = getLayoutInflater().inflate(R.layout.income_selection_dialog, null);
         builder.setView(view);
 
-        // 버튼 클릭 리스너를 설정하여 사용자 선택 처리
         Button btnSalary = view.findViewById(R.id.btnSalary);
         Button btnAdditionalIncome = view.findViewById(R.id.btnAdditionalIncome);
         Button btnAllowance = view.findViewById(R.id.btnAllowance);
@@ -391,54 +395,48 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         btnSalary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "월급" 버튼을 클릭한 경우
-                selectDivision.setText("월급"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("월급");
+                dialog.dismiss();
             }
         });
 
         btnAdditionalIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "부수입" 버튼을 클릭한 경우
-                selectDivision.setText("부수입"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("부수입");
+                dialog.dismiss();
             }
         });
 
         btnAllowance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("용돈"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("용돈");
+                dialog.dismiss();
             }
         });
 
         btnRemittance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("송금"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("송금");
+                dialog.dismiss();
             }
         });
 
         btnFinancialIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("금융소득"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("금융소득");
+                dialog.dismiss();
             }
         });
 
         btnOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("기타"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("기타");
+                dialog.dismiss();
             }
         });
 
@@ -472,36 +470,32 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         btnFoodExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "월급" 버튼을 클릭한 경우
-                selectDivision.setText("식비"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("식비");
+                dialog.dismiss();
             }
         });
 
         btnTransport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "부수입" 버튼을 클릭한 경우
-                selectDivision.setText("교통/차량"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("교통/차량");
+                dialog.dismiss();
             }
         });
 
         btnEntertainment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("문화생활"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("문화생활");
+                dialog.dismiss();
             }
         });
 
         btnMart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("마트"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("마트");
+                dialog.dismiss();
             }
         });
 
@@ -517,60 +511,53 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         btnHouseholdItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("생활용품"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("생활용품");
+                dialog.dismiss();
             }
         });
 
         btnHousingCommunication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("주거/통신"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("주거/통신");
+                dialog.dismiss();
             }
         });
         btnHealth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("건강"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("건강");
+                dialog.dismiss();
             }
         });
         btnEducation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("교육"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("교육");
+                dialog.dismiss();
             }
         });
         btnCelebrationDues.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("경조사/회비"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("경조사/회비");
+                dialog.dismiss();
             }
         });
         btnOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // "용돈" 버튼을 클릭한 경우
-                selectDivision.setText("기타"); // selectKind의 텍스트 업데이트
-                dialog.dismiss(); // 다이얼로그 닫기
+                selectDivision.setText("기타");
+                dialog.dismiss();
             }
         });
 
         dialog.show();
     }
     private void showPeriodSelectionDialog() {
-        final String[] periods = {"오늘", "일주일", "이번 달","전체"};
+        final String[] periods = {"오늘", "일주일", "이번 달","*고정"};
         int checkedItem = -1;
 
-        // 현재 선택된 주기에 따라 체크 표시
         if (selectedPeriod != null) {
             if (selectedPeriod.equals("오늘")) {
                 checkedItem = 0;
@@ -578,9 +565,10 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                 checkedItem = 1;
             } else if (selectedPeriod.equals("이번 달")) {
                 checkedItem = 2;
-            }else if (selectedPeriod.equals("전체")) {
+            }else if (selectedPeriod.equals("*고정")) {
                 checkedItem = 3;
             }
+
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -600,11 +588,12 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                     limitdayOfMonth = dayOfMonth - 7;
                     selectDateList.setText("일주일");
                 }else if (selectedPeriod.equals("이번 달")) {
-                    selectDateList.setText("이번 달");
-                } else if (selectedPeriod.equals("전체")) {
                     dayOfMonth = getCurrentMonth();
-                    selectDateList.setText("전체");
+                    selectDateList.setText("이번 달");
+                } else if (selectedPeriod.equals("*고정")) {
+                    selectDateList.setText("*고정");
                 }
+
                 updateBigFundList();
             }
         });
@@ -622,7 +611,7 @@ public class Modify_FundList_Activity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                fundList.clear();
+                //fundList.clear();
                 bigfundList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String day = snapshot.child("Day").getValue(String.class);
@@ -632,8 +621,6 @@ public class Modify_FundList_Activity extends AppCompatActivity {
                     } else if (selectedPeriod.equals("일주일") && (Integer.valueOf(day) <= Integer.valueOf(todayStr) && Integer.valueOf(day) >= limitdayOfMonth) && month.equals(String.valueOf(getCurrentMonth()))) {
                         addFundToList(snapshot);
                     }else if (selectedPeriod.equals("이번 달") && month.equals(String.valueOf(getCurrentMonth()))) {
-                        addFundToList(snapshot);
-                    } else if (selectedPeriod.equals("전체") && month.equals(String.valueOf(getCurrentMonth()))) {
                         addFundToList(snapshot);
                     }
                 }
@@ -646,6 +633,25 @@ public class Modify_FundList_Activity extends AppCompatActivity {
 
             }
         });
+
+        if(selectedPeriod.equals("*고정")){
+            DatabaseReference fixFundRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/"+uid+"/FundData/"+"고정"+kind);
+            fixFundRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    bigfundList.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        addFundToList(snapshot);
+                    }
+                    bigadapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
     }
 
     private void addFundToList(DataSnapshot snapshot) {
@@ -657,5 +663,4 @@ public class Modify_FundList_Activity extends AppCompatActivity {
         String date = snapshot.child("Month").getValue(String.class) + "-" + snapshot.child("Day").getValue(String.class);
         bigfundList.add(new Fund_List(fundId, fundKind, fundDivision, fundMemo, fundValue, date));
     }
-
 }

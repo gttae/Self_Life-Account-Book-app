@@ -269,6 +269,7 @@ public class Modify_Post_Activity extends AppCompatActivity {
         Intent intent = new Intent(Modify_Post_Activity.this, Select_Board.class);
         intent.putExtra("postId", postId);
         startActivity(intent);
+        finish();
     }
     private void removeSelectedImage(int index) {
         if (selectedImageUris.size() > index) {

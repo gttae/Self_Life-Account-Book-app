@@ -40,7 +40,6 @@ public class MyPage_Activity extends AppCompatActivity {
     private TextView logout, userNickName, userName, userEmail, userJoin;
     private String userId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -234,7 +233,6 @@ public class MyPage_Activity extends AppCompatActivity {
                         });
             }
         });
-
     }
     private void showAppInfoDialog() {
         // Dialog 레이아웃 설정
@@ -263,5 +261,4 @@ public class MyPage_Activity extends AppCompatActivity {
         AlertDialog dialog = dialogBuilder.create();
         dialog.show();
     }
-
 }

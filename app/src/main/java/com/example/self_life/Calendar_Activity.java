@@ -243,7 +243,7 @@ public class Calendar_Activity extends AppCompatActivity {
                     if (day.equals(String.valueOf(selectDay)) && month.equals(String.valueOf(selectMonth))) {
                         String fundValue = snapshot.child("Price").getValue(String.class);
                         String fundCategory = snapshot.child("Category").getValue(String.class);
-                        if (fundCategory.equals("고정(실사용)") ||fundCategory.equals("유동")) {
+                        if (fundCategory.equals("실사용")) {
                             int value = Integer.parseInt(fundValue);
                                 totalExpenseValue += value;
                         }
@@ -271,7 +271,7 @@ public class Calendar_Activity extends AppCompatActivity {
                     if (day.equals(String.valueOf(selectDay)) && month.equals(String.valueOf(selectMonth))) {
                         String fundValue = snapshot.child("Price").getValue(String.class);
                         String fundCategory = snapshot.child("Category").getValue(String.class);
-                        if (fundCategory.equals("고정(실수령)") ||fundCategory.equals("유동")) {
+                        if (fundCategory.equals("실수령")) {
                             int value = Integer.parseInt(fundValue);
                             totalIncomeValue += value;
                         }

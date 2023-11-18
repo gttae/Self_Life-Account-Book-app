@@ -51,7 +51,6 @@ public class Select_Board extends AppCompatActivity {
     private FrameLayout selectcomment;
     private String uid, commentname ,postId, postCreater, modifyComment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,8 +151,6 @@ public class Select_Board extends AppCompatActivity {
             }
         });
 
-
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -231,6 +228,7 @@ public class Select_Board extends AppCompatActivity {
                         Intent intent = new Intent(Select_Board.this, Select_Board.class);
                         intent.putExtra("postId", postId);
                         startActivity(intent);
+                        finish();
                     }
 
                     @Override
@@ -248,7 +246,6 @@ public class Select_Board extends AppCompatActivity {
                 builder.setTitle("신고 확인");
                 builder.setMessage("정말로 신고하시겠습니까?");
 
-// 확인 버튼 설정
                 builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -272,7 +269,6 @@ public class Select_Board extends AppCompatActivity {
                     }
                 });
 
-// 취소 버튼 설정
                 builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -293,6 +289,7 @@ public class Select_Board extends AppCompatActivity {
                 deletePostRef.removeValue();
                 Intent intent = new Intent(Select_Board.this, Board_Activity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -302,6 +299,7 @@ public class Select_Board extends AppCompatActivity {
                 Intent intent = new Intent(Select_Board.this, Modify_Post_Activity.class);
                 intent.putExtra("postId", postId);
                 startActivity(intent);
+                finish();
             }
         });
 

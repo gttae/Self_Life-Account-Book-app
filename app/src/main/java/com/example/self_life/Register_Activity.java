@@ -131,18 +131,12 @@ public class Register_Activity extends AppCompatActivity {
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.RED);
-                    //userPwd.setText("");
-                    //userNickname.setText("");
-                    //userEmail.setText("");
                     checkPwd.setText("입력된 비밀번호X");
                     userPwd.setBackgroundResource(drawableResourceId);
                     registerPwdAccess = false;
                 }
                 if (!isValidPwd(userPwd.getText().toString().trim())) {
                     int drawableResourceId = getResources().getIdentifier("wrongtext", "drawable", getPackageName());
-                    //userPwd.setText("");
-                    //userNickname.setText("");
-                    //userEmail.setText("");
                     checkPwd.setBackgroundResource(drawableResourceId);
                     checkPwd.setTextColor(Color.RED);
                     checkPwd.setText("유효하지 않은 비밀번호");
@@ -201,9 +195,6 @@ public class Register_Activity extends AppCompatActivity {
                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                     checkEmailNickName.setTextColor(Color.RED);
                     checkEmailNickName.setText("유효하지 않는 이메일");
-                    //userPwd.setText("");
-                    //userNickname.setText("");
-                    //userEmail.setText("");
                     userEmail.setBackgroundResource(drawableResourceId);
                     registerIdAccess = false;
                 }
@@ -215,9 +206,6 @@ public class Register_Activity extends AppCompatActivity {
                         checkEmailNickName.setBackgroundResource(drawableResourceId);
                         checkEmailNickName.setTextColor(Color.RED);
                         checkEmailNickName.setText("유효하지 않는 닉네임");
-                        //userPwd.setText("");
-                        //userNickname.setText("");
-                        //userEmail.setText("");
                         userNickname.setBackgroundResource(drawableResourceId);
                         registerIdAccess = false;
 
@@ -237,9 +225,6 @@ public class Register_Activity extends AppCompatActivity {
                                     checkEmailNickName.setBackgroundResource(drawableResourceId);
                                     checkEmailNickName.setTextColor(Color.RED);
                                     checkEmailNickName.setText("존재하는 닉네임");
-                                    //userPwd.setText("");
-                                    //userNickname.setText("");
-                                    //userEmail.setText("");
                                     userNickname.setBackgroundResource(drawableResourceId);
                                     registerIdAccess = false;
 
@@ -262,6 +247,4 @@ public class Register_Activity extends AppCompatActivity {
             }
         });
     }
-
-
 }

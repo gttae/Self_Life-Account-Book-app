@@ -81,7 +81,7 @@ public class CircleProgressBarView2 extends View {
                         // fundDivision을 기반으로 해당 세그먼트에 가격 할당
                         int segmentIndex = getSegmentIndexByDivision(fundDivision);
                         if (segmentIndex != -1) {
-                            if ("고정(계획)".equals(category)) {
+                            if ("계 획".equals(category)) {
                                 segmentValues[segmentIndex] += price;
                             }
                         }

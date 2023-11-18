@@ -65,8 +65,6 @@ public class ReportCommentAdapter extends RecyclerView.Adapter<ReportCommentAdap
         return (RCList != null ? RCList.size() : 0);
     }
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView reportIdTextView;
         public TextView nicknameTextView;

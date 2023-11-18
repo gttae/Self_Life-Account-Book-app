@@ -7,23 +7,14 @@ public class User_Account{
 
     }
     public String getIdToken(){return idToken;}
-
     public void setIdToken(String idToken){
         this.idToken=idToken;
     }
-
     private String idToken;
-
     public String getEmailId(){return emailId;}
-
     public void setEmailId(String emailId){this.emailId=emailId;}
-
     private String emailId;
-
     public long getCreationDate() { return creationDate; }
-
     public void setCreationDate(long creationDate) { this.creationDate = creationDate; }
-
     private long creationDate; // 계정 생성일자 정보 추가
-
 }
