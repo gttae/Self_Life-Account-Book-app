@@ -88,9 +88,9 @@ public class Login_Activity extends AppCompatActivity
                                     break;
                                 }
                                 else {
-                                    wrongEmail.setVisibility(View.VISIBLE);
+                                    //wrongEmail.setVisibility(View.VISIBLE);
                                     int drawableResourceId = getResources().getIdentifier("backwrong", "drawable", getPackageName());
-                                    UserId.setBackgroundResource(drawableResourceId);
+                                    //UserId.setBackgroundResource(drawableResourceId);
                                     wrongPwd.setVisibility(View.GONE);
                                     drawableResourceId = getResources().getIdentifier("textviewback", "drawable", getPackageName());
                                     UserPwd.setBackgroundResource(drawableResourceId);

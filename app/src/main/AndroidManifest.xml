@@ -76,9 +76,6 @@
             android:name=".Question_input_Activity"
             android:exported="true"/>
         <activity
-            android:name=".Recommend_Model_Activity"
-            android:exported="true"/>
-        <activity
             android:name=".Modify_model_Activity"
             android:exported="true"/>
         <activity

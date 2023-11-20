@@ -314,37 +314,39 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/regressionBtn1"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:layout_marginBottom="2dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginBottom="2dp"
                     android:background="@drawable/etback"
                     android:elevation="4dp"
                     android:letterSpacing="-0.06"
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
-            <TextView
-                android:id="@+id/rebuy1Tv"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:visibility="gone"
-                android:lineSpacingExtra="16sp"
-                android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
-                android:textColor="#a6343aef"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/rebuy1Tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="16sp"
+                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:textColor="#a6343aef"
+                    android:textSize="10sp"
+                    android:textStyle="normal"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/regressionValue1Tv"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
@@ -353,8 +355,10 @@
                     android:text=""
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:visibility="gone" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
@@ -551,41 +555,43 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="55dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/regressionBtn2"
                     android:layout_width="50dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:layout_marginBottom="2dp"
                     android:layout_marginRight="10dp"
+                    android:layout_marginBottom="2dp"
                     android:background="@drawable/etback"
                     android:elevation="4dp"
                     android:letterSpacing="-0.06"
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
+
                 <TextView
                     android:id="@+id/rebuy2Tv"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
-                    android:visibility="gone"
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:visibility="gone" />
+
                 <TextView
                     android:id="@+id/regressionValue2Tv"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
@@ -594,7 +600,8 @@
                     android:text=""
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:visibility="gone" />
             </LinearLayout>
 
 
@@ -824,7 +831,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue3Tv"
@@ -994,7 +1001,7 @@
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/rebuy4Tv"
@@ -1235,7 +1242,7 @@
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/rebuy5Tv"
@@ -1416,7 +1423,7 @@
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/rebuy6Tv"
@@ -1596,7 +1603,7 @@
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/rebuy7Tv"
@@ -1790,7 +1797,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue8Tv"
@@ -2053,7 +2060,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue21Tv"
@@ -2295,7 +2302,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue22Tv"
@@ -2538,7 +2545,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue23Tv"
@@ -2781,7 +2788,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue24Tv"
@@ -3023,7 +3030,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue25Tv"
@@ -3265,7 +3272,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue26Tv"
@@ -3528,7 +3535,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue31Tv"
@@ -3769,7 +3776,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue32Tv"
@@ -4012,7 +4019,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue33Tv"
@@ -4193,7 +4200,7 @@
                     android:lineSpacingExtra="16sp"
                     android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/regressionValue34Tv"
@@ -4463,7 +4470,7 @@
                         android:lineSpacingExtra="16sp"
                         android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                         android:textColor="#a6343aef"
-                        android:textSize="12sp"
+                        android:textSize="9sp"
                         android:textStyle="normal" />
                     <TextView
                         android:id="@+id/regressionValue41Tv"
@@ -4707,7 +4714,7 @@
                         android:lineSpacingExtra="16sp"
                         android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                         android:textColor="#a6343aef"
-                        android:textSize="12sp"
+                        android:textSize="9sp"
                         android:textStyle="normal" />
                     <TextView
                         android:id="@+id/regressionValue42Tv"
@@ -4953,7 +4960,7 @@
                         android:lineSpacingExtra="16sp"
                         android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                         android:textColor="#a6343aef"
-                        android:textSize="12sp"
+                        android:textSize="9sp"
                         android:textStyle="normal" />
                     <TextView
                         android:id="@+id/regressionValue43Tv"
@@ -5201,7 +5208,7 @@
                         android:lineSpacingExtra="16sp"
                         android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
                         android:textColor="#a6343aef"
-                        android:textSize="12sp"
+                        android:textSize="9sp"
                         android:textStyle="normal" />
                     <TextView
                         android:id="@+id/regressionValue44Tv"

@@ -173,7 +173,7 @@ public class Register_Activity extends AppCompatActivity {
 
     private boolean isValidName(String name) {
 
-        return name.matches("^[a-zA-Z]{1,10}$");
+        return name.matches("^[a-zA-Z가-힣]{1,10}$");
     }
 
     private boolean isValidEmail(String email) {

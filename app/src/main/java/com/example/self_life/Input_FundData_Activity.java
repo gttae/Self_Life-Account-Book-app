@@ -241,7 +241,7 @@ public class Input_FundData_Activity extends AppCompatActivity {
                             else{
                                 if(incomeCategory.equals("고 정")){
                                     kind = "수입";
-                                    String fundName = monthString + kind;
+                                    String fundName = "고정" + kind;
                                     String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Year").setValue(year);
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Month").setValue(month);
@@ -256,7 +256,7 @@ public class Input_FundData_Activity extends AppCompatActivity {
                                     finish();
                                 } else {
                                     kind = "수입";
-                                    String fundName = "고정" + kind;
+                                    String fundName = monthString + kind;
                                     String fundKey = mDatabaseRef.child("FundData").child(fundName).push().getKey();
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Year").setValue(year);
                                     mDatabaseRef.child("FundData").child(fundName).child(fundKey).child("Month").setValue(month);
