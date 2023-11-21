@@ -334,9 +334,9 @@ public class LifeItem_Activity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.child("사용자정의4").exists()) {
-                        String MaxEt = String.valueOf(snapshot.child("사용자정의4").child("TotalCapacity").getValue(Long.class));
-                        String MinEt = String.valueOf(snapshot.child("사용자정의4").child("OnceCapacity").getValue(Long.class));
-                        String NumEt = String.valueOf(snapshot.child("사용자정의4").child("DailyUses").getValue(Long.class));
+                        String MaxEt = snapshot.child("사용자정의4").child("TotalCapacity").getValue(String.class);
+                        String MinEt = snapshot.child("사용자정의4").child("OnceCapacity").getValue(String.class);
+                        String NumEt = snapshot.child("사용자정의4").child("DailyUses").getValue(String.class);
                         String RebuyDay = snapshot.child("사용자정의4").child("RebuyDay").getValue(String.class);
 
                         Calendar calendar4 = Calendar.getInstance();
@@ -374,9 +374,9 @@ public class LifeItem_Activity extends AppCompatActivity {
                         }
                     }
                     if(snapshot.child("사용자정의1").exists()) {
-                        String MaxEt = String.valueOf(snapshot.child("사용자정의1").child("TotalCapacity").getValue(Long.class));
-                        String MinEt = String.valueOf(snapshot.child("사용자정의1").child("OnceCapacity").getValue(Long.class));
-                        String NumEt = String.valueOf(snapshot.child("사용자정의1").child("DailyUses").getValue(Long.class));
+                        String MaxEt = snapshot.child("사용자정의1").child("TotalCapacity").getValue(String.class);
+                        String MinEt = snapshot.child("사용자정의1").child("OnceCapacity").getValue(String.class);
+                        String NumEt = snapshot.child("사용자정의1").child("DailyUses").getValue(String.class);
                         String RebuyDay = snapshot.child("사용자정의1").child("RebuyDay").getValue(String.class);
 
                         Calendar calendar4 = Calendar.getInstance();
@@ -414,9 +414,9 @@ public class LifeItem_Activity extends AppCompatActivity {
                         }
                     }
                     if(snapshot.child("사용자정의2").exists()) {
-                        String MaxEt = String.valueOf(snapshot.child("사용자정의2").child("TotalCapacity").getValue(Long.class));
-                        String MinEt = String.valueOf(snapshot.child("사용자정의2").child("OnceCapacity").getValue(Long.class));
-                        String NumEt = String.valueOf(snapshot.child("사용자정의2").child("DailyUses").getValue(Long.class));
+                        String MaxEt = snapshot.child("사용자정의2").child("TotalCapacity").getValue(String.class);
+                        String MinEt = snapshot.child("사용자정의2").child("OnceCapacity").getValue(String.class);
+                        String NumEt = snapshot.child("사용자정의2").child("DailyUses").getValue(String.class);
                         String RebuyDay = snapshot.child("사용자정의2").child("RebuyDay").getValue(String.class);
 
                         Calendar calendar4 = Calendar.getInstance();
@@ -454,9 +454,9 @@ public class LifeItem_Activity extends AppCompatActivity {
                         }
                     }
                     if(snapshot.child("사용자정의3").exists()) {
-                        String MaxEt = String.valueOf(snapshot.child("사용자정의3").child("TotalCapacity").getValue(Long.class));
-                        String MinEt = String.valueOf(snapshot.child("사용자정의3").child("OnceCapacity").getValue(Long.class));
-                        String NumEt = String.valueOf(snapshot.child("사용자정의3").child("DailyUses").getValue(Long.class));
+                        String MaxEt = snapshot.child("사용자정의3").child("TotalCapacity").getValue(String.class);
+                        String MinEt = snapshot.child("사용자정의3").child("OnceCapacity").getValue(String.class);
+                        String NumEt = snapshot.child("사용자정의3").child("DailyUses").getValue(String.class);
                         String RebuyDay = snapshot.child("사용자정의3").child("RebuyDay").getValue(String.class);
 
                         Calendar calendar4 = Calendar.getInstance();
@@ -832,9 +832,9 @@ public class LifeItem_Activity extends AppCompatActivity {
                     finish();
                 } else {
                     userRef.child("사용자정의"+tempNum).child("Num").setValue(String.valueOf(tempNum));
-                    userRef.child("사용자정의"+tempNum).child("TotalCapacity").setValue(getNumericValueFromEditText(MaxPlusEt));
-                    userRef.child("사용자정의"+tempNum).child("OnceCapacity").setValue(getNumericValueFromEditText(MinPlusEt));
-                    userRef.child("사용자정의"+tempNum).child("DailyUses").setValue(getNumericValueFromEditText(NumPlusEt));
+                    userRef.child("사용자정의"+tempNum).child("TotalCapacity").setValue(String.valueOf(getNumericValueFromEditText(MaxPlusEt)));
+                    userRef.child("사용자정의"+tempNum).child("OnceCapacity").setValue(String.valueOf(getNumericValueFromEditText(MinPlusEt)));
+                    userRef.child("사용자정의"+tempNum).child("DailyUses").setValue(String.valueOf(getNumericValueFromEditText(NumPlusEt)) );
                     userRef.child("사용자정의"+tempNum).child("RebuyDay").setValue(rebuy);
                 }
             }

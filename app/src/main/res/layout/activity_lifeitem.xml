@@ -339,7 +339,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="10sp"
                     android:textStyle="normal"
@@ -555,7 +555,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="55dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
@@ -584,9 +584,9 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textStyle="normal"
                     android:visibility="gone" />
 
@@ -819,7 +819,7 @@
                     android:lineSpacingExtra="18sp"
                     android:text="예측하기"
                     android:textColor="#232732"
-                    android:textSize="12sp"
+                    android:textSize="9sp"
                     android:textStyle="normal" />
                 <TextView
                     android:id="@+id/rebuy3Tv"
@@ -829,7 +829,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -1011,7 +1011,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
                     android:textStyle="normal" />
@@ -1252,7 +1252,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
                     android:textStyle="normal" />
@@ -1433,7 +1433,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
                     android:textStyle="normal" />
@@ -1613,7 +1613,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="12sp"
                     android:textStyle="normal" />
@@ -1795,7 +1795,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -2058,7 +2058,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -2300,7 +2300,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -2543,7 +2543,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -2786,7 +2786,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -3028,7 +3028,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -3270,7 +3270,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -3533,7 +3533,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -3774,7 +3774,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -4017,7 +4017,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
@@ -4198,7 +4198,7 @@
                     android:layout_marginTop="5dp"
                     android:visibility="gone"
                     android:lineSpacingExtra="16sp"
-                    android:text="55일 뒤에 재구매 예정입니다. (2023.07.03)"
+                    android:text="모든 내용을 입력해주세요."
                     android:textColor="#a6343aef"
                     android:textSize="9sp"
                     android:textStyle="normal" />
