@@ -19,11 +19,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class Login_Activity extends AppCompatActivity
 {
@@ -78,31 +75,7 @@ public class Login_Activity extends AppCompatActivity
                     // 입력값이 없는 경우 Toast 메시지 출력
                     Toast.makeText(Login_Activity.this, "입력값이 없습니다.", Toast.LENGTH_SHORT).show();
                 } else {
-                    mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                String userEmail = snapshot.child("UserInfo").child("userEmail").getValue(String.class);
-                                if(strEmail.equals(userEmail)){
-                                    loginWithEmailAndPassword(strEmail, strPwd);
-                                    break;
-                                }
-                                else {
-                                    //wrongEmail.setVisibility(View.VISIBLE);
-                                    int drawableResourceId = getResources().getIdentifier("backwrong", "drawable", getPackageName());
-                                    //UserId.setBackgroundResource(drawableResourceId);
-                                    wrongPwd.setVisibility(View.GONE);
-                                    drawableResourceId = getResources().getIdentifier("textviewback", "drawable", getPackageName());
-                                    UserPwd.setBackgroundResource(drawableResourceId);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    loginWithEmailAndPassword(strEmail, strPwd);
                 }
             }
         });

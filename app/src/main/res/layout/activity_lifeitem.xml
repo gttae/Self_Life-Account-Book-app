@@ -1823,7 +1823,7 @@
     <ScrollView
         android:id="@+id/hwajangdogu"
         android:layout_width="340dp"
-        android:layout_height="534dp"
+        android:layout_height="520dp"
         android:layout_gravity="center"
         android:visibility="gone"
         android:background="@drawable/boxback2">
@@ -3298,7 +3298,7 @@
     <ScrollView
         android:id="@+id/lifeItem"
         android:layout_width="340dp"
-        android:layout_height="534dp"
+        android:layout_height="520dp"
         android:layout_gravity="center"
         android:visibility="gone"
         android:background="@drawable/boxback2">

@@ -377,7 +377,6 @@ public class Select_Board extends AppCompatActivity {
                 int selectedPosition = position;
                 Comment_List selectedComment = commentList.get(selectedPosition);
                 modifyComment = selectedComment.getCommentId();
-                Toast.makeText(Select_Board.this,modifyComment,Toast.LENGTH_SHORT).show();
                 String content = selectedComment.getContent();
                 commentReLl.setVisibility(View.VISIBLE);
                 commentReEt.setText(content);
