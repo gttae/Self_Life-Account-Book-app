@@ -413,7 +413,6 @@ public class Chart_Activity extends AppCompatActivity {
     }
 
     private void expenseOfPlan(int monthValue){
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = mFirebaseAuth.getCurrentUser();

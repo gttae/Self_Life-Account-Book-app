@@ -20,16 +20,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class CircleProgressBarView extends View {
-
     private int segmentCount = 11;
     private float[] segmentValues = new float[segmentCount];
     private float[] usedValues = new float[segmentCount];
     public int monthValue = getCurrentMonth();
-
     private Paint[] usedPaints;
     private Paint remainingPaint;
     private RectF rectF;
-
     private int[] colors = {Color.parseColor("#EB385A"), Color.parseColor("#FA8231"), Color.parseColor("#FED330"), Color.parseColor("#2BCBBA"), Color.parseColor("#45AAF2"), Color.parseColor("#3867D6"), Color.parseColor("#A65EEA"), Color.parseColor("#E99386"), Color.parseColor("#E84493"), Color.parseColor("#A29BFE"), Color.parseColor("#00B894")};
 
     public CircleProgressBarView(Context context, AttributeSet attrs) {
@@ -43,8 +40,6 @@ public class CircleProgressBarView extends View {
         init();
         fetchDataFromFirebase(MonthValue); // Firebase에서 데이터 가져오기
     }
-
-
 
     private void init() {
         int grayColor = Color.parseColor("#CCCCCC");
@@ -60,8 +55,6 @@ public class CircleProgressBarView extends View {
             usedPaints[i].setStyle(Paint.Style.STROKE);
             usedPaints[i].setStrokeWidth(10);
         }
-
-
         rectF = new RectF();
     }
 

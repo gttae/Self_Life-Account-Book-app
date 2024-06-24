@@ -198,7 +198,6 @@ public class Calendar_Activity extends AppCompatActivity {
 
     }
     private void updateDataForSelectedDate() {
-        // Fetch and display data for the selected date based on the 'kind' (expense or income)
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("self_life/UserData/" + uid + "/FundData/" + selectMonth + "월" + kind);
         mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -221,13 +220,13 @@ public class Calendar_Activity extends AppCompatActivity {
                         bigfundList.add(new Fund_List(fundId, fundKind, fundDivision, fundMemo, fundValue, date));
                     }
                 }
-                adapter.notifyDataSetChanged(); // Notify the adapter of data changes
+                adapter.notifyDataSetChanged();
                 bigadapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Handle errors
+
             }
         });
     }
